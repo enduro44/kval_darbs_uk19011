@@ -18,7 +18,7 @@ namespace Controllers
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,1);
 
-            socket.socketActive = !socket.socketActive;
+            socket.socketActive = true;
         }
         
         public void ToggleSocketRight(XRBaseInteractable obj)
@@ -26,7 +26,15 @@ namespace Controllers
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,2);
 
-            socket.socketActive = !socket.socketActive;
+            socket.socketActive = true;
+        }
+        
+        public void ToggleSocketCeiling(XRBaseInteractable obj)
+        {
+            GameObject childObj = obj.transform.GetChild(0).gameObject;
+            XRSocketInteractor socket = GetSocket(childObj,3);
+
+            socket.socketActive = true;
         }
 
         public void ResetSocketLeft(XRBaseInteractable obj)
@@ -34,7 +42,7 @@ namespace Controllers
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,1);
 
-            socket.socketActive = true;
+            socket.socketActive = false;
         }
         
         public void ResetSocketRight(XRBaseInteractable obj)
@@ -42,7 +50,15 @@ namespace Controllers
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,2);
 
-            socket.socketActive = true;
+            socket.socketActive = false;
+        }
+        
+        public void ResetSocketCeiling(XRBaseInteractable obj)
+        {
+            GameObject childObj = obj.transform.GetChild(0).gameObject;
+            XRSocketInteractor socket = GetSocket(childObj,3);
+
+            socket.socketActive = false;
         }
     }
 }

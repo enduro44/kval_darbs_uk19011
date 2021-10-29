@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9999999, y: 0.5179179, z: 0.50642264}
-  m_Center: {x: 0, y: 0.005812963, z: 0.022314265}
+  m_Size: {x: 0.50785947, y: 0.43561405, z: 0.60682225}
+  m_Center: {x: -0.24606977, y: 0.041074462, z: -0.006750703}
 --- !u!114 &2692202686053224295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 192
   m_AttachTransform: {fileID: 8894996660744145450}
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
@@ -189,10 +189,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8c23b263ca749d446a32c900dc61dedf, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
-  m_SocketActive: 1
-  m_InteractableHoverScale: 1
+  m_SocketActive: 0
+  m_InteractableHoverScale: 0.5
   m_RecycleDelayTime: 1
 --- !u!114 &4822455123853832799
 MonoBehaviour:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3776710658787230385}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2346511047abdc4e86ba038f8ab9cfd, type: 3}
   m_Name: 
@@ -397,8 +397,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9999999, y: 0.49811438, z: 0.5150585}
-  m_Center: {x: 0, y: -0.007898222, z: -0.024662495}
+  m_Size: {x: 0.569931, y: 0.48006508, z: 0.4568547}
+  m_Center: {x: 0.21503417, y: 0.036488988, z: 0.034196764}
 --- !u!114 &3776710659193985280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 192
   m_AttachTransform: {fileID: 4907537930291810593}
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_ShowInteractableHoverMeshes: 1
   m_InteractableHoverMeshMaterial: {fileID: 0}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
-  m_SocketActive: 1
+  m_SocketActive: 0
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
 --- !u!114 &4326219810700076290
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3776710659193985341}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0459990079bc81b45a6951fe44f9ffc1, type: 3}
   m_Name: 
@@ -603,8 +603,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.34807527, y: 1, z: 0.5156227}
-  m_Center: {x: 0.008548651, y: 0, z: 0.0094670355}
+  m_Size: {x: 0.46799907, y: 0.7036651, z: 0.5241697}
+  m_Center: {x: 0.0027358353, y: -0.14816749, z: -0.0098480135}
 --- !u!114 &7400148510406564633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 192
   m_AttachTransform: {fileID: 1338416154930030013}
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3776710659469902076}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b48d480648689645a4793a276d82ced, type: 3}
   m_Name: 
