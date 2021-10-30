@@ -3,26 +3,24 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
 {
+    //Class controls if the room can be picked up by the player or not
     public class RoomController : MonoBehaviour
     {
-        public XRGrabInteractable grabber;
-        private XRSocketInteractor socketL;
-        private XRSocketInteractor socketR;
-        private XRSocketInteractor socketC;
-        private bool hasObjectL;
-        private bool hasObjectR;
-        private bool hasObjectC;
+        private XRGrabInteractable _grabber;
+        private bool _hasObjectL;
+        private bool _hasObjectR;
+        private bool _hasObjectC;
 
         void Awake()
         {
-            grabber = gameObject.GetComponent<XRGrabInteractable>();
+            _grabber = gameObject.GetComponent<XRGrabInteractable>();
             GameObject box = gameObject.transform.GetChild(0).gameObject;
             GameObject left = box.transform.GetChild(1).gameObject;
             GameObject right = box.transform.GetChild(2).gameObject;
             GameObject ceiling = box.transform.GetChild(3).gameObject;
-            socketL = left.GetComponent<XRSocketInteractor>();
-            socketR = right.GetComponent<XRSocketInteractor>();
-            socketC = ceiling.GetComponent<XRSocketInteractor>();
+            XRSocketInteractor socketL = left.GetComponent<XRSocketInteractor>();
+            XRSocketInteractor socketR = right.GetComponent<XRSocketInteractor>();
+            XRSocketInteractor socketC = ceiling.GetComponent<XRSocketInteractor>();
             socketL.selectEntered.AddListener(EnteredL);
             socketL.selectExited.AddListener(ExitedL);
             socketR.selectEntered.AddListener(EnteredR);
@@ -33,66 +31,48 @@ namespace Controllers
 
         private void EnteredL(SelectEnterEventArgs args)
         {
-            hasObjectL = true;
+            _hasObjectL = true;
             ToggleGrab();
         }
         
         private void ExitedL(SelectExitEventArgs args)
         {
-            hasObjectL = false;
+            _hasObjectL = false;
             ToggleGrab();
         }
         private void EnteredR(SelectEnterEventArgs args)
         {
-            hasObjectR = true;
+            _hasObjectR = true;
             ToggleGrab();
         }
         
         private void ExitedR(SelectExitEventArgs args)
         {
-            hasObjectR = false;
+            _hasObjectR = false;
             ToggleGrab();
         }
         private void EnteredC(SelectEnterEventArgs args)
         {
-            hasObjectC = true;
+            _hasObjectC = true;
             ToggleGrab();
         }
         
         private void ExitedC(SelectExitEventArgs args)
         {
-            hasObjectC = false;
+            _hasObjectC = false;
             ToggleGrab();
         }
 
         private void ToggleGrab()
         {
-            if (hasObjectL || hasObjectR || hasObjectC)
+            if (_hasObjectL || _hasObjectR || _hasObjectC)
             {
-                //grabber.selectEntered.AddListener(Stop);
-                gameObject.layer = 3;
-                gameObject.layer = ~gameObject.layer;
+                //Changing the layer to "Socket" only, so the player can't pick up the room
+                _grabber.interactionLayerMask = (1 << 6);
+                return;
             }
-            gameObject.layer = 0;
-        }
-
-        private void Stop(SelectEnterEventArgs args)
-        {
-            // XRBaseInteractable obj = args.interactable;
-            // GameObject box = obj.transform.GetChild(0).gameObject;
-            // GameObject left = box.transform.GetChild(1).gameObject;
-            // GameObject right = box.transform.GetChild(2).gameObject;
-            // GameObject ceiling = box.transform.GetChild(3).gameObject;
-            // XRSocketInteractor socketLChild = left.GetComponent<XRSocketInteractor>();
-            // XRSocketInteractor socketRChild = right.GetComponent<XRSocketInteractor>();
-            // XRSocketInteractor socketCChild = ceiling.GetComponent<XRSocketInteractor>();
-            // bool socketLChild_isActive = this.socketL.socketActive;
-            // bool socketRChild_isActive = this.socketL.socketActive;
-            // bool socketCChild_isActive = this.socketL.socketActive;
-            // grabber.interactionManager.CancelInteractableSelection(obj);
-            // socketLChild.socketActive = socketLChild_isActive;
-            // socketRChild.socketActive = socketRChild_isActive;
-            // socketCChild.socketActive = socketCChild_isActive;
+            //Changing the layer back to "Socket" and "Player"
+            _grabber.interactionLayerMask = (1<<6) | (1<<7);
         }
     }
 }

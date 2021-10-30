@@ -13,7 +13,7 @@ namespace Controllers
             return boxWall.GetComponent<XRSocketInteractor>();
         }
         
-        public void ToggleSocketLeft(XRBaseInteractable obj)
+        public void TurnOnSocketLeft(XRBaseInteractable obj)
         {
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,1);
@@ -21,7 +21,7 @@ namespace Controllers
             socket.socketActive = true;
         }
         
-        public void ToggleSocketRight(XRBaseInteractable obj)
+        public void TurnOnSocketRight(XRBaseInteractable obj)
         {
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,2);
@@ -29,7 +29,7 @@ namespace Controllers
             socket.socketActive = true;
         }
         
-        public void ToggleSocketCeiling(XRBaseInteractable obj)
+        public void TurnOnSocketCeiling(XRBaseInteractable obj)
         {
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,3);
@@ -37,7 +37,7 @@ namespace Controllers
             socket.socketActive = true;
         }
 
-        public void ResetSocketLeft(XRBaseInteractable obj)
+        public void TurnOffSocketLeft(XRBaseInteractable obj)
         {
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,1);
@@ -45,7 +45,7 @@ namespace Controllers
             socket.socketActive = false;
         }
         
-        public void ResetSocketRight(XRBaseInteractable obj)
+        public void TurnOffSocketRight(XRBaseInteractable obj)
         {
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,2);
@@ -53,7 +53,7 @@ namespace Controllers
             socket.socketActive = false;
         }
         
-        public void ResetSocketCeiling(XRBaseInteractable obj)
+        public void TurnOffSocketCeiling(XRBaseInteractable obj)
         {
             GameObject childObj = obj.transform.GetChild(0).gameObject;
             XRSocketInteractor socket = GetSocket(childObj,3);

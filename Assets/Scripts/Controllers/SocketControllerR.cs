@@ -5,8 +5,10 @@ namespace Controllers
 {
     public class SocketControllerR : MonoBehaviour
     {
+        private SocketController _controller;
         void Awake()
         {
+            _controller = new SocketController();
             XRSocketInteractor socket = gameObject.GetComponent<XRSocketInteractor>();
             socket.selectEntered.AddListener(Entered);
             socket.selectExited.AddListener(Exited);
@@ -15,23 +17,15 @@ namespace Controllers
         private void Entered(SelectEnterEventArgs args)
         {
             XRBaseInteractable obj = args.interactable;
-            SocketController socket = new SocketController();
-            socket.ToggleSocketRight(obj);
-            socket.ToggleSocketCeiling(obj);
+            _controller.TurnOnSocketRight(obj);
+            _controller.TurnOnSocketCeiling(obj);
         }
     
         private void Exited(SelectExitEventArgs args)
         {
             XRBaseInteractable obj = args.interactable;
-            SocketController socket = new SocketController();
-            socket.ResetSocketRight(obj);
-            socket.ResetSocketCeiling(obj);
-        }
-    
-        private void ToggleSocket(XRBaseInteractable obj)
-        {
-            SocketController socket = new SocketController();
-            socket.ToggleSocketRight(obj);
+            _controller.TurnOffSocketRight(obj);
+            _controller.TurnOffSocketCeiling(obj);
         }
     }
 }
