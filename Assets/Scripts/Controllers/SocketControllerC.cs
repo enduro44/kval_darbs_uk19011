@@ -17,12 +17,16 @@ namespace Controllers
         private void Entered(SelectEnterEventArgs args)
         {
             XRBaseInteractable obj = args.interactable;
+            Vector3 scaleChange = new Vector3(1, 1, 1);
+            obj.transform.localScale = scaleChange;
             _controller.TurnOnSocketCeiling(obj);
         }
         
         private void Exited(SelectExitEventArgs args)
         {
             XRBaseInteractable obj = args.interactable;
+            Vector3 scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
+            obj.transform.localScale = scaleChange;
             _controller.TurnOffSocketCeiling(obj);
         }
     }
