@@ -15,9 +15,12 @@ namespace Controllers
         {
             _grabber = gameObject.GetComponent<XRGrabInteractable>();
             GameObject box = gameObject.transform.GetChild(0).gameObject;
-            GameObject left = box.transform.GetChild(1).gameObject;
-            GameObject right = box.transform.GetChild(2).gameObject;
-            GameObject ceiling = box.transform.GetChild(3).gameObject;
+            GameObject grandChildObjL = box.transform.GetChild(1).gameObject;
+            GameObject grandChildObjR = box.transform.GetChild(2).gameObject;
+            GameObject grandChildObjC = box.transform.GetChild(3).gameObject;
+            GameObject left = grandChildObjL.transform.GetChild(0).gameObject;
+            GameObject right = grandChildObjR.transform.GetChild(0).gameObject;
+            GameObject ceiling = grandChildObjC.transform.GetChild(0).gameObject;
             XRSocketInteractor socketL = left.GetComponent<XRSocketInteractor>();
             XRSocketInteractor socketR = right.GetComponent<XRSocketInteractor>();
             XRSocketInteractor socketC = ceiling.GetComponent<XRSocketInteractor>();

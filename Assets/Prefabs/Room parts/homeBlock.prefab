@@ -327,8 +327,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9718885, y: 1.6319528, z: 0.087137975}
-  m_Center: {x: -0.9859443, y: 0.8159764, z: 0.037114214}
+  m_Size: {x: 1.9395796, y: 1.6319529, z: 0.087137975}
+  m_Center: {x: -0.9771432, y: 0.8159764, z: 0.037114218}
 --- !u!33 &3003602777559235448
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -428,10 +428,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 6632dd19604991c47a6ae1244be2b886, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
-  m_InteractableHoverScale: 1
+  m_InteractableHoverScale: 5
   m_RecycleDelayTime: 1
 --- !u!114 &1332519855969512955
 MonoBehaviour:
