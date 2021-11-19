@@ -6,9 +6,12 @@ public class WristMenu : MonoBehaviour
 {
     public GameObject wristUI;
     public XRSocketInteractor inventorySocket;
-    //Should be reworked
-    public GameObject largeRoom;
     private GameObject _objInInventory;
+    
+    [Header("Prefabs")]
+    public GameObject largeRoomPrefab;
+    public GameObject homeControllerPrefab;
+    
 
     public bool activeWristUI = true;
 
@@ -54,7 +57,27 @@ public class WristMenu : MonoBehaviour
         {
             Destroy(_objInInventory);
         }
-        GameObject newRoom = Instantiate(largeRoom, transform.position, Quaternion.identity);
+        GameObject newRoom = Instantiate(largeRoomPrefab, transform.position, Quaternion.identity);
+    }
+    
+    public void AddBase()
+    {
+        if (inventorySocket.selectTarget != null)
+        {
+            Destroy(_objInInventory);
+        }
+        //TODO: change size in socket (also allow adding to socket + WHY THEY MOVING)
+        GameObject newBase = Instantiate(homeControllerPrefab, transform.position, Quaternion.identity);
+    }
+    
+    public void AddItems()
+    {
+        if (inventorySocket.selectTarget != null)
+        {
+            Destroy(_objInInventory);
+        }
+        //TODO: change size in socket + change code to provide furniture
+        GameObject newBase = Instantiate(homeControllerPrefab, transform.position, Quaternion.identity);
     }
 
     // public void SaveGame()

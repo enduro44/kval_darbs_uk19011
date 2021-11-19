@@ -8,7 +8,8 @@ namespace Controllers
     {
         private SocketController _socketController;
         private XRSocketInteractor _homeSocket;
-        private GameObject _socketVisual;
+        private GameObject _socketVisualOnEmpty;
+        private GameObject _socketVisualNotEmpty;
 
         void Awake()
         {
@@ -17,7 +18,8 @@ namespace Controllers
             _homeSocket.selectEntered.AddListener(Entered);
             _homeSocket.selectExited.AddListener(Exited);
             
-            _socketVisual = _homeSocket.transform.GetChild(0).gameObject;
+            _socketVisualOnEmpty = _homeSocket.transform.GetChild(0).gameObject;
+            _socketVisualNotEmpty = _homeSocket.transform.GetChild(1).gameObject;
         }
         
         private void Entered(SelectEnterEventArgs args)
@@ -26,7 +28,8 @@ namespace Controllers
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
             ToggleSockets(obj);
-            _socketVisual.SetActive(false);
+            _socketVisualOnEmpty.SetActive(false);
+            _socketVisualNotEmpty.SetActive(true);
         }
     
         private void Exited(SelectExitEventArgs args)
@@ -35,7 +38,8 @@ namespace Controllers
             Vector3 scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
             obj.transform.localScale = scaleChange;
             ResetSockets(obj);
-            _socketVisual.SetActive(true);
+            _socketVisualOnEmpty.SetActive(true);
+            _socketVisualNotEmpty.SetActive(false);
         }
         
         private void ToggleSockets(XRBaseInteractable obj)
