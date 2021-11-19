@@ -6,11 +6,18 @@ namespace Controllers
     public class SocketController
     {
         public XRSocketInteractor Socket;
+        private GameObject _socketVisual;
 
         private XRSocketInteractor GetSocket(GameObject obj, int index)
         {
             GameObject boxWall = obj.transform.GetChild(index).gameObject;
             return boxWall.GetComponent<XRSocketInteractor>();
+        }
+
+        private GameObject GetSocketVisual(XRSocketInteractor obj)
+        {
+            GameObject visual = obj.transform.GetChild(0).gameObject;
+            return visual;
         }
         
         public void TurnOnSocketLeft(XRBaseInteractable obj)
@@ -20,8 +27,9 @@ namespace Controllers
             XRSocketInteractor socket = GetSocket(grandChildObj,0);
 
             socket.socketActive = true;
-            GameObject socketObject = socket.gameObject;
-            socketObject.SetActive(true);
+
+            _socketVisual = GetSocketVisual(socket);
+            _socketVisual.SetActive(true);
         }
         
         public void TurnOnSocketRight(XRBaseInteractable obj)
@@ -31,8 +39,9 @@ namespace Controllers
             XRSocketInteractor socket = GetSocket(grandChildObj,0);
 
             socket.socketActive = true;
-            GameObject socketObject = socket.gameObject;
-            socketObject.SetActive(true);
+            
+            _socketVisual = GetSocketVisual(socket);
+            _socketVisual.SetActive(true);
         }
         
         public void TurnOnSocketCeiling(XRBaseInteractable obj)
@@ -42,8 +51,9 @@ namespace Controllers
             XRSocketInteractor socket = GetSocket(grandChildObj,0);
 
             socket.socketActive = true;
-            GameObject socketObject = socket.gameObject;
-            socketObject.SetActive(true);
+            
+            _socketVisual = GetSocketVisual(socket);
+            _socketVisual.SetActive(true);
         }
 
         public void TurnOffSocketLeft(XRBaseInteractable obj)
@@ -53,8 +63,9 @@ namespace Controllers
             XRSocketInteractor socket = GetSocket(grandChildObj,0);
 
             socket.socketActive = false;
-            GameObject socketObject = socket.gameObject;
-            socketObject.SetActive(false);
+            
+            _socketVisual = GetSocketVisual(socket);
+            _socketVisual.SetActive(false);
         }
         
         public void TurnOffSocketRight(XRBaseInteractable obj)
@@ -64,8 +75,9 @@ namespace Controllers
             XRSocketInteractor socket = GetSocket(grandChildObj,0);
 
             socket.socketActive = false;
-            GameObject socketObject = socket.gameObject;
-            socketObject.SetActive(false);
+            
+            _socketVisual = GetSocketVisual(socket);
+            _socketVisual.SetActive(false);
         }
         
         public void TurnOffSocketCeiling(XRBaseInteractable obj)
@@ -75,8 +87,9 @@ namespace Controllers
             XRSocketInteractor socket = GetSocket(grandChildObj,0);
 
             socket.socketActive = false;
-            GameObject socketObject = socket.gameObject;
-            socketObject.SetActive(false);
+            
+            _socketVisual = GetSocketVisual(socket);
+            _socketVisual.SetActive(false);
         }
     }
 }
