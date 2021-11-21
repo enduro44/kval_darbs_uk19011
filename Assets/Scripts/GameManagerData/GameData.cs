@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using GameManagerData.objClasses;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace GameManagerData
     {
         public static List<Room> Rooms = new List<Room>();
         public static List<Furniture> Furniture = new List<Furniture>();
-        public static List<Doll> Dolls = new List<Doll>();
+        public static List<Playable> Playables = new List<Playable>();
         public static List<HomeControllerObject> HomeControllers = new List<HomeControllerObject>();
 
         public void AddRoom(Room room)
@@ -33,14 +34,14 @@ namespace GameManagerData
             Furniture.Remove(furniture);
         }
     
-        public void AddDoll(Doll doll)
+        public void AddDoll(Playable playable)
         {
-            Dolls.Add(doll);
+            Playables.Add(playable);
         }
     
-        public void RemoveDoll(Doll doll)
+        public void RemoveDoll(Playable playable)
         {
-            Dolls.Remove(doll);
+            Playables.Remove(playable);
         }
         
         public void AddHomeController(HomeControllerObject obj)

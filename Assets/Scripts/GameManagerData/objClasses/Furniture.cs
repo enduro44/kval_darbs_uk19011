@@ -4,16 +4,14 @@ namespace GameManagerData.objClasses
 {
     public class Furniture : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-        
+            GameData.Furniture.Add(this);
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnDestroy()
         {
-        
+            GameData.Furniture.Remove(this);
         }
     }
 }

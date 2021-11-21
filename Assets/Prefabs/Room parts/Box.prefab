@@ -124,8 +124,8 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 6632dd19604991c47a6ae1244be2b886, type: 2}
+  m_ShowInteractableHoverMeshes: 0
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8c23b263ca749d446a32c900dc61dedf, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 0
   m_InteractableHoverScale: 5
@@ -153,8 +153,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8236806, y: 1, z: 1}
-  m_Center: {x: -0.41183993, y: 0, z: 0}
+  m_Size: {x: 1.0472803, y: 1, z: 1}
+  m_Center: {x: -0.8000419, y: 0, z: 0}
 --- !u!1 &1928722276811254248
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928722276811254248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4478425738712184400}
@@ -360,8 +360,8 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 6632dd19604991c47a6ae1244be2b886, type: 2}
+  m_ShowInteractableHoverMeshes: 0
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8c23b263ca749d446a32c900dc61dedf, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 0
   m_InteractableHoverScale: 5
@@ -389,8 +389,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6857448, y: 1, z: 1}
-  m_Center: {x: 0.34287435, y: 0, z: 0}
+  m_Size: {x: 1.0148088, y: 1, z: 1}
+  m_Center: {x: 0.6783422, y: 0, z: 0}
 --- !u!1 &3776710658787230385
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4839816444471497225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.517, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6385186242491639120}
@@ -1064,8 +1064,8 @@ MonoBehaviour:
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 6632dd19604991c47a6ae1244be2b886, type: 2}
+  m_ShowInteractableHoverMeshes: 0
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 8c23b263ca749d446a32c900dc61dedf, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 0
   m_InteractableHoverScale: 5
@@ -1093,8 +1093,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.7806479, z: 1}
-  m_Center: {x: 0, y: -0.39032477, z: 0}
+  m_Size: {x: 1, y: 1.1017673, z: 1}
+  m_Center: {x: 0, y: -0.729763, z: 0}
 --- !u!1 &8788205978580585551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8788205978580585551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461477426979652739}

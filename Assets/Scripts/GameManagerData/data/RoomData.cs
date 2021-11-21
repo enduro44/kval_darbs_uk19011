@@ -7,14 +7,16 @@ namespace GameManagerData.data
     [Serializable]
     public class RoomData
     {
+        public string type;
         public float[] position;
         public float[] size;
         public float[] rotation;
 
         public RoomData(Room room)
         {
-            Transform transform = room.transform; 
+            type = room.name;
             
+            Transform transform = room.transform;
             Vector3 roomPos = transform.position;
 
             position = new float[]

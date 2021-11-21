@@ -91,5 +91,11 @@ namespace Controllers
             _socketVisual = GetSocketVisual(socket);
             _socketVisual.SetActive(false);
         }
+
+        public string GetType(XRBaseInteractable obj)
+        {
+            GameObject objInSocket = obj.transform.root.gameObject;
+            return objInSocket.name;
+        }
     }
 }
