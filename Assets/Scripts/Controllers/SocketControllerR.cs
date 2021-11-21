@@ -12,6 +12,8 @@ namespace Controllers
         private MeshFilter _mesh;
         private Color _meshColor;
         private Color _meshColorAllowed;
+        private Color _meshColorDanger;
+        private bool _canBePlaced = true;
 
         private GameObject _socketTransform;
         void Awake()
@@ -27,6 +29,7 @@ namespace Controllers
             _mesh = _socketVisual.GetComponent<MeshFilter>();
             _meshColor = _mesh.GetComponent<MeshRenderer>().material.color;
             _meshColorAllowed = new Color(0, 204, 102, 0.3f);
+            _meshColorDanger = new Color(255, 0, 0, 0.3f);
 
             _socketTransform = _socketR.transform.parent.gameObject.transform.GetChild(1).gameObject;
         }
@@ -34,6 +37,14 @@ namespace Controllers
         private void Entered(SelectEnterEventArgs args)
         {
             XRBaseInteractable obj = args.interactable;
+            GameObject rootObj = obj.transform.root.gameObject;
+            if (!_canBePlaced)
+            {
+                Destroy(_socketR.selectTarget.gameObject.transform.root.gameObject);
+                Debug.Log("Can't place this here");
+                return;
+            }
+            
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
             
@@ -50,7 +61,8 @@ namespace Controllers
             {
                 _socketTransform.transform.localPosition = new Vector3(7.01f, -0.466f, 0.001f);
             }
-
+            
+            _controller.ToogleConnectedTag(obj);
             _socketVisual.SetActive(false);
         }
     
@@ -61,17 +73,35 @@ namespace Controllers
             obj.transform.localScale = scaleChange;
             _controller.TurnOffSocketRight(obj);
             _controller.TurnOffSocketCeiling(obj);
+            _controller.ToogleConnectedTag(obj);
             _socketVisual.SetActive(true);
         }
         
         private void HoverEntered(HoverEnterEventArgs args)
         {
-            _mesh.GetComponent<Renderer>().material.color = _meshColorAllowed;
+            XRBaseInteractable obj = args.interactable;
+            GameObject rootObj = obj.transform.root.gameObject;
+            if (rootObj.CompareTag("Connected") || !_canBePlaced)
+            {
+                _mesh.GetComponent<MeshRenderer>().material.color = _meshColorDanger;
+                _canBePlaced = false;
+            }
+            else if((rootObj.CompareTag("Disconnected") || rootObj.CompareTag("Untagged")) && _canBePlaced)
+            {
+                _mesh.GetComponent<Renderer>().material.color = _meshColorAllowed;
+            }
         }
         
         private void HoverExited(HoverExitEventArgs args)
         {
-            _mesh.GetComponent<MeshRenderer>().material.color = _meshColor;
+            XRBaseInteractable obj = args.interactable;
+            GameObject rootObj = obj.transform.root.gameObject;
+                       
+            if (rootObj.CompareTag("Disconnected"))
+            {
+                _canBePlaced = true;
+                _mesh.GetComponent<Renderer>().material.color = _meshColor;
+            }
         }
     }
 }

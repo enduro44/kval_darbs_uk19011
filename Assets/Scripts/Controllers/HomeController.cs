@@ -28,6 +28,7 @@ namespace Controllers
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
             ToggleSockets(obj);
+            _socketController.ToogleConnectedTag(obj);
             _socketVisualOnEmpty.SetActive(false);
             _socketVisualNotEmpty.SetActive(true);
         }
@@ -38,6 +39,7 @@ namespace Controllers
             Vector3 scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
             obj.transform.localScale = scaleChange;
             ResetSockets(obj);
+            _socketController.ToogleConnectedTag(obj);
             _socketVisualOnEmpty.SetActive(true);
             _socketVisualNotEmpty.SetActive(false);
         }

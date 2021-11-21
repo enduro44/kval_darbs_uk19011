@@ -5,13 +5,26 @@ namespace Controllers
 {
     public class SocketController
     {
-        public XRSocketInteractor Socket;
         private GameObject _socketVisual;
+        private GameObject _root;
 
         private XRSocketInteractor GetSocket(GameObject obj, int index)
         {
             GameObject boxWall = obj.transform.GetChild(index).gameObject;
             return boxWall.GetComponent<XRSocketInteractor>();
+        }
+        
+        public void ToogleConnectedTag(XRBaseInteractable obj)
+        {
+            GameObject rootObj = obj.transform.root.gameObject;
+            if (rootObj.CompareTag("Connected"))
+            {
+                rootObj.tag = "Disconnected";
+            }
+            else
+            {
+                rootObj.tag = "Connected";
+            }
         }
 
         private GameObject GetSocketVisual(XRSocketInteractor obj)

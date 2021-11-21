@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -81,9 +82,10 @@ namespace Controllers
             XRBaseInteractable obj = args.interactable;
 
             string typeOfObjectInSocket = _controller.GetType(obj);
+            GameObject objInSocket = obj.transform.root.gameObject;
             string typeOfRootObject = _root.name;
 
-            if (typeOfRootObject != typeOfObjectInSocket)
+            if (typeOfRootObject != typeOfObjectInSocket && !objInSocket.CompareTag("Connected"))
             {
                 _mesh.GetComponent<Renderer>().material.color = _meshColorDanger;
             }
