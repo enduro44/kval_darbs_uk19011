@@ -1,25 +1,22 @@
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using GameManagerData.data;
 using GameManagerData.objClasses;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
 namespace GameManagerData
 {
     public class GameManager : MonoBehaviour
     {
-        public PrefabData prefabData;
-        [Header("Prefabs")]
-        [SerializeField] private LargeRoom largeRoomPrefab;
-        [SerializeField] private HomeControllerObject homeControllerPrefab;
-
-        [Header("Constants")] 
-        private const string SAVE_FOLDER = "/SavedGames";
-        private const string FOLDER = "/My First Game";
+        private static GameManager _instance;
+        public InstantiateSaveData instantiateSaveData;
         
+        [Header("Constants")]
+        private static readonly string FOLDER = PlayerData.GameID;
+
         private const string ROOMS_SUB = "/rooms";
         private const string ROOMS_COUNT_SUB = "/rooms.count";
 
@@ -28,20 +25,20 @@ namespace GameManagerData
         
         private const string FURNITURE_SUB = "/furniture";
         private const string FURNITURE_COUNT_SUB = "/furniture.count";
+
         private void Awake()
         {
-            LoadGame();
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
 
-        private void OnApplicationQuit()
-        {
-            SaveGame();
+        public static GameManager Instance() {
+            return _instance;
         }
 
-        void SaveGame()
+        public void SaveGame()
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            Directory.CreateDirectory(Application.persistentDataPath + SAVE_FOLDER + FOLDER);
             //Saving Home controllers
             SaveControllerData(formatter);
 
@@ -52,10 +49,10 @@ namespace GameManagerData
             SaveFurnitureData(formatter);
         }
 
-        private static void SaveControllerData(BinaryFormatter formatter)
+        private void SaveControllerData(BinaryFormatter formatter)
         {
-            string path = Application.persistentDataPath + SAVE_FOLDER + FOLDER +  HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + SAVE_FOLDER + FOLDER + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + FOLDER +  HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
+            string countPath = Application.persistentDataPath + FOLDER + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.HomeControllers.Count);
@@ -70,10 +67,10 @@ namespace GameManagerData
             }
         }
         
-        private static void SaveRoomData(BinaryFormatter formatter)
+        private void SaveRoomData(BinaryFormatter formatter)
         {
-            string path = Application.persistentDataPath + SAVE_FOLDER + FOLDER + ROOMS_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + SAVE_FOLDER + FOLDER + ROOMS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + FOLDER + ROOMS_SUB + SceneManager.GetActiveScene().buildIndex;
+            string countPath = Application.persistentDataPath + FOLDER + ROOMS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Rooms.Count);
@@ -88,10 +85,10 @@ namespace GameManagerData
             }
         }
         
-        private static void SaveFurnitureData(BinaryFormatter formatter)
+        private void SaveFurnitureData(BinaryFormatter formatter)
         {
-            string path = Application.persistentDataPath + SAVE_FOLDER + FOLDER + FURNITURE_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + SAVE_FOLDER + FOLDER + FURNITURE_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + FOLDER + FURNITURE_SUB + SceneManager.GetActiveScene().buildIndex;
+            string countPath = Application.persistentDataPath + FOLDER + FURNITURE_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Furniture.Count);
@@ -108,27 +105,28 @@ namespace GameManagerData
 
 
 
-        void LoadGame()
+        public void LoadGame(string saveName)
         {
-            if (!Directory.Exists(Application.persistentDataPath + SAVE_FOLDER + FOLDER))
+            if (!Directory.Exists(Application.persistentDataPath + "/" + saveName))
             {
-                Debug.Log("Game not saved yet");
+                Debug.Log("Game not saved yet, path: " + Application.persistentDataPath + "/" + saveName);
                 return;
             }
             
             BinaryFormatter formatter = new BinaryFormatter();
+            SceneManager.LoadScene("Testing");
             
             //Loading Home controllers
-            LoadControllers(formatter);
+            LoadControllers(formatter, saveName);
 
             //Loading Rooms
-            LoadRooms(formatter);
+            LoadRooms(formatter, saveName);
         }
         
-        private void LoadControllers(BinaryFormatter formatter)
+        private void LoadControllers(BinaryFormatter formatter, string saveName)
         {
-            string controllersPath = Application.persistentDataPath + SAVE_FOLDER + FOLDER + HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
-            string controllersCountPath = Application.persistentDataPath + SAVE_FOLDER + FOLDER + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string controllersPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
+            string controllersCountPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
 
             int controllerCount = 0;
             if (File.Exists(controllersCountPath))
@@ -152,10 +150,7 @@ namespace GameManagerData
 
                     stream.Close();
 
-                    Vector3 homePos = new Vector3(data.position[0], data.position[1], data.position[2]);
-                    Vector3 homeRot = new Vector3(data.rotation[0], data.rotation[1], data.rotation[2]);
-                    HomeControllerObject home = Instantiate(homeControllerPrefab, homePos, Quaternion.identity);
-                    home.transform.eulerAngles = homeRot;
+                    instantiateSaveData.LoadSavedControllers(data);
                 }
                 else
                 {
@@ -165,11 +160,11 @@ namespace GameManagerData
             }
         }
 
-        private void LoadRooms(BinaryFormatter formatter)
+        private void LoadRooms(BinaryFormatter formatter, string saveName)
         {
-            string roomsPath = Application.persistentDataPath + SAVE_FOLDER + FOLDER + ROOMS_SUB +
+            string roomsPath = Application.persistentDataPath + "/" + saveName + ROOMS_SUB +
                                SceneManager.GetActiveScene().buildIndex;
-            string roomsCountPath = Application.persistentDataPath + SAVE_FOLDER + FOLDER + ROOMS_COUNT_SUB +
+            string roomsCountPath = Application.persistentDataPath + "/" + saveName + ROOMS_COUNT_SUB +
                                     SceneManager.GetActiveScene().buildIndex;
 
             int roomCount = 0;
@@ -194,17 +189,7 @@ namespace GameManagerData
 
                     stream.Close();
                     
-                    Vector3 roomPos = new Vector3(data.position[0], data.position[1], data.position[2]);
-                    Vector3 roomSize = new Vector3(data.size[0], data.size[1], data.size[2]);
-                    Vector3 roomRot = new Vector3(data.rotation[0], data.rotation[1], data.rotation[2]);
-                    
-                    string type = data.type;
-                    Room prefab = prefabData.GetRoomPrefab(type);
-                    Room room = Instantiate(prefab, roomPos, Quaternion.identity);
-
-                    Transform roomTransform = room.transform;
-                    roomTransform.localScale = roomSize;
-                    roomTransform.eulerAngles = roomRot;
+                    instantiateSaveData.LoadSavedRooms(data);
                 }
                 else
                 {

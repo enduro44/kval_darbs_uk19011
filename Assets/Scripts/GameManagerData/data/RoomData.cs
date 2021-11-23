@@ -8,6 +8,7 @@ namespace GameManagerData.data
     public class RoomData
     {
         public string type;
+        public int controllerID;
         public float[] position;
         public float[] size;
         public float[] rotation;

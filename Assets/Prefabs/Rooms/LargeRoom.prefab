@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3053927603812338385}
   - component: {fileID: 1607836560574299091}
   - component: {fileID: 4479203119528309392}
+  - component: {fileID: 7764848361682065370}
   m_Layer: 0
   m_Name: LargeRoom
   m_TagString: Untagged
@@ -170,6 +171,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c62aae22199eb44db48311c5f489007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7764848361682065370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4922358623976139598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ede302c46be5cc4abb6205701e1ca7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socketL: {fileID: 0}
+  socketR: {fileID: 0}
+  socketC: {fileID: 0}
 --- !u!1001 &3739017535993895368
 PrefabInstance:
   m_ObjectHideFlags: 0

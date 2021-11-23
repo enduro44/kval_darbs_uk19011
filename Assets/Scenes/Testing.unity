@@ -223,70 +223,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e66b28ceb792b6347bbd20dd90899543, type: 3}
---- !u!1 &677138661
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 677138663}
-  - component: {fileID: 677138662}
-  - component: {fileID: 677138664}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &677138662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677138661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00359e383cf2d3c46bd81828d0c4717d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabData: {fileID: 677138664}
-  largeRoomPrefab: {fileID: 1522621438781570126, guid: 11ca6f3363080404183fc2c9cc185039, type: 3}
-  homeControllerPrefab: {fileID: 7447035656022488400, guid: 9489f64835153cb4898fb1b2d1521b3f, type: 3}
---- !u!4 &677138663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677138661}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6506471, y: -2.4446266, z: -3.3438842}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &677138664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677138661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d86b45ccddc422a955db84fe9b50786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  homeControllerPrefab: {fileID: 7931075676383624972, guid: 9489f64835153cb4898fb1b2d1521b3f, type: 3}
-  largeRoomPrefab: {fileID: 1522621438781570126, guid: 11ca6f3363080404183fc2c9cc185039, type: 3}
-  smallRoomPrefab: {fileID: 5577822589471464988, guid: 2c7a3259beead5445b78b0d25875a54d, type: 3}
-  cornerRoomPrefab: {fileID: 1779507100649275534, guid: 56a2b50ea2c170f4e8ddb85931cd05cb, type: 3}
-  eggStoolPrefab: {fileID: 0}
 --- !u!1001 &678879357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,6 +303,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'XR Rig no hands '
       objectReference: {fileID: 0}
+    - target: {fileID: 933301374522535197, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_PositionAction.m_Id
+      value: e3ab876c-57ca-49c9-ba91-f4a68d0c0cd5
+      objectReference: {fileID: 0}
+    - target: {fileID: 933301374522535197, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_RotationAction.m_Id
+      value: 6da186d2-721d-4b13-bd31-0a75cd28c624
+      objectReference: {fileID: 0}
+    - target: {fileID: 933301374522535197, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_PositionAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ffe5252e-1b56-4f0c-b839-60d0c501e3bc
+      objectReference: {fileID: 0}
+    - target: {fileID: 933301374522535197, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_RotationAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 0e11f956-b2aa-42b5-af22-6e3f39d7064a
+      objectReference: {fileID: 0}
     - target: {fileID: 5253142948505166394, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -419,7 +371,8 @@ PrefabInstance:
       propertyPath: inventoryVisual
       value: 
       objectReference: {fileID: 98643252}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3560964688115914795, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
 --- !u!1001 &779824845
 PrefabInstance:

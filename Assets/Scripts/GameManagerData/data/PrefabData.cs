@@ -7,8 +7,10 @@ namespace GameManagerData.data
     [Serializable]
     public class PrefabData : MonoBehaviour
     {
+        private static PrefabData _instance;
         [Header("Controller")]
-        public GameObject homeControllerPrefab;
+        public const string CONTROLLER = "HomeController(Clone)";
+        [SerializeField] private HomeControllerObject homeControllerPrefab;
         [Header("Rooms")]
         public const string LARGE_ROOM = "LargeRoom(Clone)";
         [SerializeField] private Room largeRoomPrefab;
@@ -19,6 +21,18 @@ namespace GameManagerData.data
         [Header("Furniture")]
         public GameObject eggStoolPrefab;
 
+        void Awake() {
+            _instance = this;
+        }
+        
+        public static PrefabData Instance() {
+            return _instance;
+        }
+        
+        public HomeControllerObject GetControllerPrefab()
+        {
+            return homeControllerPrefab;
+        }
         public Room GetRoomPrefab(string type)
         {
             Debug.Log("Here");
