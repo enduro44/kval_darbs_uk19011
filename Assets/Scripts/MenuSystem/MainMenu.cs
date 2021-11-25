@@ -38,7 +38,7 @@ namespace MenuSystem
         public void NewButton()
         {
             PlayerData.GameID = Guid.NewGuid().ToString();
-            Directory.CreateDirectory(Application.persistentDataPath + PlayerData.GameID);
+            Directory.CreateDirectory(Application.persistentDataPath + "/" + PlayerData.GameID);
             SceneManager.LoadScene("Testing");
         }
         public void LoadButton()

@@ -1,3 +1,4 @@
+using GameManagerData;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -54,13 +55,7 @@ namespace WristMenuSystem
             inventorySocket.gameObject.SetActive(true);
             activeWristUI = true;
         }
-
-        private void GetObject(SelectEnterEventArgs args)
-        {
-            XRBaseInteractable interactable = args.interactable;
-            _objInInventory = interactable.gameObject;
-        }
-
+        
         public void PlayMode()
         {
         
@@ -75,7 +70,13 @@ namespace WristMenuSystem
         {
         
         }
-    
+
+        private void GetObject(SelectEnterEventArgs args)
+        {
+            XRBaseInteractable interactable = args.interactable;
+            _objInInventory = interactable.gameObject;
+        }
+
         public void AddRoom(string type)
         {
             if (inventorySocket.selectTarget != null)
@@ -124,9 +125,22 @@ namespace WristMenuSystem
             newItem.transform.rotation = inventoryObject.transform.rotation;
         }
 
-        // public void SaveGame()
-        // {
-        //     _gameManager.SaveJsonData(_gameData);
-        // }
+        public void SaveGame()
+        {
+            Debug.Log("Saving game button pressed");
+            GameManager gameManager = GameManager.Instance();
+            gameManager.SaveGame();
+        }
+
+        public void ExitGame()
+        {
+            #if UNITY_EDITOR
+                // Application.Quit() does not work in the editor so
+                // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+        }
     }
 }

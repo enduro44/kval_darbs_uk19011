@@ -13,10 +13,8 @@ namespace GameManagerData
     {
         private static GameManager _instance;
         public InstantiateSaveData instantiateSaveData;
-        
-        [Header("Constants")]
-        private static readonly string FOLDER = PlayerData.GameID;
 
+        [Header("Constants")] public string compile;
         private const string ROOMS_SUB = "/rooms";
         private const string ROOMS_COUNT_SUB = "/rooms.count";
 
@@ -38,21 +36,24 @@ namespace GameManagerData
 
         public void SaveGame()
         {
+            string folder = PlayerData.GameID;
+            Debug.Log("Saving game");
             BinaryFormatter formatter = new BinaryFormatter();
             //Saving Home controllers
-            SaveControllerData(formatter);
+            SaveControllerData(formatter, folder);
 
             //Saving Rooms
-            SaveRoomData(formatter);
+            SaveRoomData(formatter, folder);
             
             //Saving Furniture
-            SaveFurnitureData(formatter);
+            SaveFurnitureData(formatter, folder);
         }
 
-        private void SaveControllerData(BinaryFormatter formatter)
+        private void SaveControllerData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + FOLDER +  HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + FOLDER + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + "/" + folder +  HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
+            Debug.Log(path);
+            string countPath = Application.persistentDataPath + "/" + folder + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.HomeControllers.Count);
@@ -67,10 +68,10 @@ namespace GameManagerData
             }
         }
         
-        private void SaveRoomData(BinaryFormatter formatter)
+        private void SaveRoomData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + FOLDER + ROOMS_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + FOLDER + ROOMS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + "/" + folder + ROOMS_SUB + SceneManager.GetActiveScene().buildIndex;
+            string countPath = Application.persistentDataPath + "/" + folder + ROOMS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Rooms.Count);
@@ -85,10 +86,10 @@ namespace GameManagerData
             }
         }
         
-        private void SaveFurnitureData(BinaryFormatter formatter)
+        private void SaveFurnitureData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + FOLDER + FURNITURE_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + FOLDER + FURNITURE_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + "/" + folder + FURNITURE_SUB + SceneManager.GetActiveScene().buildIndex;
+            string countPath = Application.persistentDataPath + "/" + folder + FURNITURE_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Furniture.Count);
@@ -125,8 +126,9 @@ namespace GameManagerData
         
         private void LoadControllers(BinaryFormatter formatter, string saveName)
         {
-            string controllersPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
-            string controllersCountPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string controllersPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+            Debug.Log(controllersPath);
+            string controllersCountPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
 
             int controllerCount = 0;
             if (File.Exists(controllersCountPath))
@@ -163,9 +165,9 @@ namespace GameManagerData
         private void LoadRooms(BinaryFormatter formatter, string saveName)
         {
             string roomsPath = Application.persistentDataPath + "/" + saveName + ROOMS_SUB +
-                               SceneManager.GetActiveScene().buildIndex;
+                               SceneManager.GetSceneByName("Testing").buildIndex;
             string roomsCountPath = Application.persistentDataPath + "/" + saveName + ROOMS_COUNT_SUB +
-                                    SceneManager.GetActiveScene().buildIndex;
+                                    SceneManager.GetSceneByName("Testing").buildIndex;
 
             int roomCount = 0;
             if (File.Exists(roomsCountPath))
