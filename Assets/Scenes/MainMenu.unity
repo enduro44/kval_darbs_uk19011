@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 218028213}
   - component: {fileID: 218028212}
   - component: {fileID: 218028211}
+  - component: {fileID: 218028214}
   m_Layer: 5
   m_Name: LoadGame
   m_TagString: Untagged
@@ -220,6 +221,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &218028214
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218028209}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &218845041
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +652,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 323193987}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 725548114}
+        m_TargetAssemblyTypeName: MenuSystem.MainMenu, Assembly-CSharp
+        m_MethodName: LoadBackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &323193987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,7 +1219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &464425593
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1227,7 +1252,7 @@ CanvasGroup:
   m_GameObject: {fileID: 464425592}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
+  m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &464425595
@@ -1606,7 +1631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &645426396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1638,7 +1663,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645426395}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1792,8 +1817,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainUI: {fileID: 379000190}
+  fadeController: {fileID: 725548120}
   saveButtonPrefab: {fileID: 4303012802043828910, guid: c440db701a931e342ae9440c21a6faef, type: 3}
   contentParent: {fileID: 2041234049}
+--- !u!114 &725548120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725548113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca450eee002a44e5b9a1da566f382505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &726208922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3507,6 +3545,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1601283220351138336, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
+      propertyPath: instantiateLoadedData
+      value: 
+      objectReference: {fileID: 1729310167}
     - target: {fileID: 1601283220351138348, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -3557,6 +3599,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
+--- !u!114 &1729310167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1601283220351138351, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
+  m_PrefabInstance: {fileID: 1694133819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78852cd619d796468e6e6c8bb226743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1734112245
 GameObject:
   m_ObjectHideFlags: 0
@@ -4627,5 +4680,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainUI: {fileID: 379000190}
+  fadeController: {fileID: 0}
   saveButtonPrefab: {fileID: 4303012802043828910, guid: c440db701a931e342ae9440c21a6faef, type: 3}
   contentParent: {fileID: 2041234049}

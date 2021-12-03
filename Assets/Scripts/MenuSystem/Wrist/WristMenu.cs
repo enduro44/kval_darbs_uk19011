@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace WristMenuSystem
+namespace MenuSystem.Wrist
 {
     public class WristMenu : MonoBehaviour
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameManagerData
 {
-    public class InstantiateSaveData : MonoBehaviour
+    public class InstantiateLoadedData : MonoBehaviour
     {
         public PrefabData prefabData;
         

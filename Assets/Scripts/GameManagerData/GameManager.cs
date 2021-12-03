@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using GameManagerData.data;
 using GameManagerData.objClasses;
+using MenuSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Application = UnityEngine.Application;
@@ -12,9 +13,11 @@ namespace GameManagerData
     public class GameManager : MonoBehaviour
     {
         private static GameManager _instance;
-        public InstantiateSaveData instantiateSaveData;
+        public InstantiateLoadedData instantiateLoadedData;
+        private string saveNameData;
+        private bool loadGame = false;
 
-        [Header("Constants")] public string compile;
+        [Header("Constants")] 
         private const string ROOMS_SUB = "/rooms";
         private const string ROOMS_COUNT_SUB = "/rooms.count";
 
@@ -37,6 +40,7 @@ namespace GameManagerData
         public void SaveGame()
         {
             string folder = PlayerData.GameID;
+            Debug.Log(folder);
             Debug.Log("Saving game");
             BinaryFormatter formatter = new BinaryFormatter();
             //Saving Home controllers
@@ -75,7 +79,8 @@ namespace GameManagerData
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Rooms.Count);
-
+            //TODO: aizstāt ar datu struktūru, tad nebūs jāserializē skaits, ļoti zema prioritāte
+            //Tad būtu while() 
             for (int i = 0; i < GameData.Rooms.Count; i++)
             {
                 FileStream stream = new FileStream(path + i, FileMode.Create);
@@ -106,22 +111,33 @@ namespace GameManagerData
 
 
 
-        public void LoadGame(string saveName)
+        public void LoadGame(string saveName, bool isNewGame)
         {
             if (!Directory.Exists(Application.persistentDataPath + "/" + saveName))
             {
                 Debug.Log("Game not saved yet, path: " + Application.persistentDataPath + "/" + saveName);
                 return;
             }
-            
-            BinaryFormatter formatter = new BinaryFormatter();
+
             SceneManager.LoadScene("Testing");
+            saveNameData = saveName;
+            loadGame = true;
+
+        }
+
+        public void LoadGameData()
+        {
+            if (!loadGame)
+            {
+                return;
+            }
+            BinaryFormatter formatter = new BinaryFormatter();
             
             //Loading Home controllers
-            LoadControllers(formatter, saveName);
+            LoadControllers(formatter, saveNameData);
 
             //Loading Rooms
-            LoadRooms(formatter, saveName);
+            LoadRooms(formatter, saveNameData);
         }
         
         private void LoadControllers(BinaryFormatter formatter, string saveName)
@@ -152,7 +168,7 @@ namespace GameManagerData
 
                     stream.Close();
 
-                    instantiateSaveData.LoadSavedControllers(data);
+                    instantiateLoadedData.LoadSavedControllers(data);
                 }
                 else
                 {
@@ -191,7 +207,7 @@ namespace GameManagerData
 
                     stream.Close();
                     
-                    instantiateSaveData.LoadSavedRooms(data);
+                    instantiateLoadedData.LoadSavedRooms(data);
                 }
                 else
                 {

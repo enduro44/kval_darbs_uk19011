@@ -2,7 +2,7 @@ using Controllers;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace WristMenuSystem
+namespace MenuSystem.Wrist
 {
     public class InventoryController : MonoBehaviour
     {

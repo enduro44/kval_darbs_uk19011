@@ -183,9 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ede302c46be5cc4abb6205701e1ca7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  socketL: {fileID: 0}
-  socketR: {fileID: 0}
-  socketC: {fileID: 0}
+  controllerID: 0
 --- !u!1001 &3739017535993895368
 PrefabInstance:
   m_ObjectHideFlags: 0
