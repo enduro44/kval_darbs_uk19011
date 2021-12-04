@@ -1,4 +1,5 @@
 using System.Linq;
+using GameManagerData.objClasses;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -51,6 +52,19 @@ namespace Controllers
                 return;
             }
 
+            TransformPosition(typeOfObjectInSocket);
+
+            Vector3 scaleChange = new Vector3(1, 1, 1);
+            obj.transform.localScale = scaleChange;
+            
+            _controller.TurnOnSocketCeiling(obj);
+            _socketVisual.SetActive(false);
+            
+            obj.GetComponent<Room>().controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+        }
+
+        private void TransformPosition(string typeOfObjectInSocket)
+        {
             if (typeOfObjectInSocket == "CornerRoom(Clone)" || typeOfObjectInSocket == "LargeRoom(Clone)")
             {
                 _socketTransform.transform.localPosition = new Vector3(0f, 1f, 0f);
@@ -60,12 +74,6 @@ namespace Controllers
             {
                 _socketTransform.transform.localPosition = new Vector3(-0.528f, 0.032f, 0.486f);
             }
-
-            Vector3 scaleChange = new Vector3(1, 1, 1);
-            obj.transform.localScale = scaleChange;
-            _controller.TurnOnSocketCeiling(obj);
-            
-            _socketVisual.SetActive(false);
         }
 
         private void Exited(SelectExitEventArgs args)
@@ -75,6 +83,7 @@ namespace Controllers
             obj.transform.localScale = scaleChange;
             _controller.TurnOffSocketCeiling(obj);
             _socketVisual.SetActive(true);
+            obj.GetComponent<Room>().controllerID = "";
         }
 
         private void HoverEntered(HoverEnterEventArgs args)

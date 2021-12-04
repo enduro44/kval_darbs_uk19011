@@ -7,11 +7,14 @@ namespace GameManagerData.data
     [Serializable]
     public class HomeControllerData
     {
+        public string controlledID;
         public float[] position;
         public float[] rotation;
 
         public HomeControllerData(HomeControllerObject homeController)
         {
+            controlledID = homeController.controllerID;
+            
             Transform transform = homeController.transform; 
             
             Vector3 homePos = transform.position;

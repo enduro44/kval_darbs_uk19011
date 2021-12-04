@@ -1,3 +1,4 @@
+using GameManagerData.objClasses;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -37,25 +38,36 @@ namespace Controllers
         {
             XRBaseInteractable obj = args.interactable;
             GameObject rootObj = obj.transform.root.gameObject;
+            
             if (!_canBePlaced)
             {
                 Destroy(_socketL.selectTarget.gameObject.transform.root.gameObject);
                 Debug.Log("Can't place this here");
                 return;
             }
+
+            TransformPosition(obj);
             
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
             
             _controller.TurnOnSocketLeft(obj);
             _controller.TurnOnSocketCeiling(obj);
+
+            _controller.ToogleConnectedTag(obj);
+            _socketVisual.SetActive(false);
             
+            obj.GetComponent<Room>().controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+        }
+
+        private void TransformPosition(XRBaseInteractable obj)
+        {
             string type = _controller.GetType(obj);
             if (type == "LargeRoom(Clone)")
             {
                 _socketTransform.transform.localPosition = new Vector3(-12.19f, -0.466f, 0.0100003f);
             }
-            
+
             if (type == "CornerRoom(Clone)")
             {
                 _socketTransform.transform.localPosition = new Vector3(-17.41f, -0.466f, -0.489f);
@@ -66,11 +78,8 @@ namespace Controllers
             {
                 _socketTransform.transform.localPosition = new Vector3(-7.01f, -0.466f, 0.001f);
             }
-            
-            _controller.ToogleConnectedTag(obj);
-            _socketVisual.SetActive(false);
         }
-    
+
         private void Exited(SelectExitEventArgs args)
         {
             XRBaseInteractable obj = args.interactable;
@@ -80,6 +89,7 @@ namespace Controllers
             _controller.TurnOffSocketCeiling(obj);
             _controller.ToogleConnectedTag(obj);
             _socketVisual.SetActive(true);
+            obj.GetComponent<Room>().controllerID = "";
         }
         
         private void HoverEntered(HoverEnterEventArgs args)

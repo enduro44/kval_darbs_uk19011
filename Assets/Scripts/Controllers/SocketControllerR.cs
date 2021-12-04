@@ -1,3 +1,4 @@
+using GameManagerData.objClasses;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -45,12 +46,22 @@ namespace Controllers
                 return;
             }
             
+            TransformPosition(obj);
+            
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
             
             _controller.TurnOnSocketRight(obj);
             _controller.TurnOnSocketCeiling(obj);
 
+            _controller.ToogleConnectedTag(obj);
+            _socketVisual.SetActive(false);
+            
+            obj.GetComponent<Room>().controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+        }
+
+        private void TransformPosition(XRBaseInteractable obj)
+        {
             string type = _controller.GetType(obj);
             if (type == "CornerRoom(Clone)" || type == "LargeRoom(Clone)")
             {
@@ -61,11 +72,8 @@ namespace Controllers
             {
                 _socketTransform.transform.localPosition = new Vector3(7.01f, -0.466f, 0.001f);
             }
-            
-            _controller.ToogleConnectedTag(obj);
-            _socketVisual.SetActive(false);
         }
-    
+
         private void Exited(SelectExitEventArgs args)
         {
             XRBaseInteractable obj = args.interactable;
@@ -75,6 +83,7 @@ namespace Controllers
             _controller.TurnOffSocketCeiling(obj);
             _controller.ToogleConnectedTag(obj);
             _socketVisual.SetActive(true);
+            obj.GetComponent<Room>().controllerID = "";
         }
         
         private void HoverEntered(HoverEnterEventArgs args)

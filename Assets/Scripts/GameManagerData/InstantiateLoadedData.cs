@@ -1,15 +1,17 @@
-using System;
 using GameManagerData.data;
 using GameManagerData.objClasses;
 using UnityEngine;
 
+/*
+ * Class takes data from file and creates saved game controllers in the scene
+ */
 namespace GameManagerData
 {
     public class InstantiateLoadedData : MonoBehaviour
     {
         public PrefabData prefabData;
         
-        public void LoadSavedControllers(HomeControllerData data)
+        public void LoadSavedController(HomeControllerData data)
         {
             prefabData = PrefabData.Instance();
             Vector3 homePos = new Vector3(data.position[0], data.position[1], data.position[2]);
@@ -17,9 +19,10 @@ namespace GameManagerData
             HomeControllerObject prefab = prefabData.GetControllerPrefab();
             HomeControllerObject home = Instantiate(prefab, homePos, Quaternion.identity);
             home.transform.eulerAngles = homeRot;
+            home.controllerID = data.controlledID;
         }
         
-        public void LoadSavedRooms(RoomData data)
+        public void LoadSavedRoom(RoomData data)
         {
             prefabData = PrefabData.Instance();
             Vector3 roomPos = new Vector3(data.position[0], data.position[1], data.position[2]);
@@ -33,6 +36,8 @@ namespace GameManagerData
             Transform roomTransform = room.transform;
             roomTransform.localScale = roomSize;
             roomTransform.eulerAngles = roomRot;
+
+            room.controllerID = data.controllerID;
         }
     }
 }

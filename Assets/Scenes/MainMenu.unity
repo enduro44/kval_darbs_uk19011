@@ -655,7 +655,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 725548114}
         m_TargetAssemblyTypeName: MenuSystem.MainMenu, Assembly-CSharp
-        m_MethodName: LoadBackButton
+        m_MethodName: BackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1817,21 +1817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainUI: {fileID: 379000190}
-  fadeController: {fileID: 725548120}
   saveButtonPrefab: {fileID: 4303012802043828910, guid: c440db701a931e342ae9440c21a6faef, type: 3}
   contentParent: {fileID: 2041234049}
---- !u!114 &725548120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725548113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca450eee002a44e5b9a1da566f382505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &726208922
 GameObject:
   m_ObjectHideFlags: 0
@@ -4680,6 +4667,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainUI: {fileID: 379000190}
-  fadeController: {fileID: 0}
   saveButtonPrefab: {fileID: 4303012802043828910, guid: c440db701a931e342ae9440c21a6faef, type: 3}
   contentParent: {fileID: 2041234049}

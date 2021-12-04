@@ -14,8 +14,8 @@ namespace GameManagerData
     {
         private static GameManager _instance;
         public InstantiateLoadedData instantiateLoadedData;
-        private string saveNameData;
-        private bool loadGame = false;
+        private string _saveNameData;
+        private bool _loadGame = false;
 
         [Header("Constants")] 
         private const string ROOMS_SUB = "/rooms";
@@ -40,9 +40,8 @@ namespace GameManagerData
         public void SaveGame()
         {
             string folder = PlayerData.GameID;
-            Debug.Log(folder);
-            Debug.Log("Saving game");
             BinaryFormatter formatter = new BinaryFormatter();
+            
             //Saving Home controllers
             SaveControllerData(formatter, folder);
 
@@ -109,35 +108,36 @@ namespace GameManagerData
             }
         }
 
-
-
         public void LoadGame(string saveName, bool isNewGame)
         {
             if (!Directory.Exists(Application.persistentDataPath + "/" + saveName))
             {
-                Debug.Log("Game not saved yet, path: " + Application.persistentDataPath + "/" + saveName);
+                Debug.Log("Game does not exist, path: " + Application.persistentDataPath + "/" + saveName);
                 return;
             }
 
             SceneManager.LoadScene("Testing");
-            saveNameData = saveName;
-            loadGame = true;
+            _saveNameData = saveName;
+            _loadGame = true;
 
         }
 
         public void LoadGameData()
         {
-            if (!loadGame)
+            if (!_loadGame)
             {
                 return;
             }
             BinaryFormatter formatter = new BinaryFormatter();
             
             //Loading Home controllers
-            LoadControllers(formatter, saveNameData);
+            LoadControllers(formatter, _saveNameData);
 
             //Loading Rooms
-            LoadRooms(formatter, saveNameData);
+            LoadRooms(formatter, _saveNameData);
+
+            //Setting back the variable to false
+            _loadGame = false;
         }
         
         private void LoadControllers(BinaryFormatter formatter, string saveName)
@@ -168,7 +168,7 @@ namespace GameManagerData
 
                     stream.Close();
 
-                    instantiateLoadedData.LoadSavedControllers(data);
+                    instantiateLoadedData.LoadSavedController(data);
                 }
                 else
                 {
@@ -207,7 +207,7 @@ namespace GameManagerData
 
                     stream.Close();
                     
-                    instantiateLoadedData.LoadSavedRooms(data);
+                    instantiateLoadedData.LoadSavedRoom(data);
                 }
                 else
                 {

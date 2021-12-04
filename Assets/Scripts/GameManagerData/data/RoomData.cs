@@ -8,7 +8,7 @@ namespace GameManagerData.data
     public class RoomData
     {
         public string type;
-        public int controllerID;
+        public string controllerID;
         public float[] position;
         public float[] size;
         public float[] rotation;
@@ -16,6 +16,8 @@ namespace GameManagerData.data
         public RoomData(Room room)
         {
             type = room.name;
+
+            controllerID = room.controllerID;
             
             Transform transform = room.transform;
             Vector3 roomPos = transform.position;

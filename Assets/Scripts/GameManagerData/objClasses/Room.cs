@@ -23,7 +23,8 @@ namespace GameManagerData.objClasses
         // public XRSocketInteractor socketC;
         // private bool _isActiveC;
         // private bool _hasTargetC;
-        public int controllerID;
+        
+        public string controllerID;
         
         void Awake()
         {

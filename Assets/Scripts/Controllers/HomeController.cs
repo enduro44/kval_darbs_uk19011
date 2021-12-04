@@ -1,4 +1,5 @@
 using System;
+using GameManagerData.objClasses;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -27,6 +28,9 @@ namespace Controllers
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
+            
+            obj.GetComponent<Room>().controllerID = gameObject.transform.root.gameObject.GetComponent<HomeControllerObject>().controllerID;
+            
             ToggleSockets(obj);
             _socketController.ToogleConnectedTag(obj);
             _socketVisualOnEmpty.SetActive(false);
@@ -38,6 +42,9 @@ namespace Controllers
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
             obj.transform.localScale = scaleChange;
+
+            obj.GetComponent<Room>().controllerID = "";
+            
             ResetSockets(obj);
             _socketController.ToogleConnectedTag(obj);
             _socketVisualOnEmpty.SetActive(true);
