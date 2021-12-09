@@ -1,9 +1,8 @@
-using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using GameManagerData.data;
 using GameManagerData.objClasses;
-using MenuSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Application = UnityEngine.Application;
@@ -13,9 +12,12 @@ namespace GameManagerData
     public class GameManager : MonoBehaviour
     {
         private static GameManager _instance;
-        public InstantiateLoadedData instantiateLoadedData;
+        
+        [Header("Load data")]
         private string _saveNameData;
         private bool _loadGame = false;
+        private List<LoadData> _loadData = new List<LoadData>();
+        public InstantiateLoadedData instantiateLoadedData;
 
         [Header("Constants")] 
         private const string ROOMS_SUB = "/rooms";
@@ -78,8 +80,7 @@ namespace GameManagerData
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Rooms.Count);
-            //TODO: aizstāt ar datu struktūru, tad nebūs jāserializē skaits, ļoti zema prioritāte
-            //Tad būtu while() 
+
             for (int i = 0; i < GameData.Rooms.Count; i++)
             {
                 FileStream stream = new FileStream(path + i, FileMode.Create);
@@ -119,7 +120,6 @@ namespace GameManagerData
             SceneManager.LoadScene("Testing");
             _saveNameData = saveName;
             _loadGame = true;
-
         }
 
         public void LoadGameData()
@@ -135,6 +135,9 @@ namespace GameManagerData
 
             //Loading Rooms
             LoadRooms(formatter, _saveNameData);
+
+            //Creating loaded data in the scene
+            InstantiateLoadedData();
 
             //Setting back the variable to false
             _loadGame = false;
@@ -167,8 +170,15 @@ namespace GameManagerData
                     HomeControllerData data = formatter.Deserialize(stream) as HomeControllerData;
 
                     stream.Close();
+                    
+                    if (data == null)
+                    {
+                        return;
+                    }
 
-                    instantiateLoadedData.LoadSavedController(data);
+                    LoadData newControllerStruct = new LoadData();
+                    newControllerStruct.AddControllerData(data);
+                    _loadData.Add(newControllerStruct);
                 }
                 else
                 {
@@ -180,10 +190,8 @@ namespace GameManagerData
 
         private void LoadRooms(BinaryFormatter formatter, string saveName)
         {
-            string roomsPath = Application.persistentDataPath + "/" + saveName + ROOMS_SUB +
-                               SceneManager.GetSceneByName("Testing").buildIndex;
-            string roomsCountPath = Application.persistentDataPath + "/" + saveName + ROOMS_COUNT_SUB +
-                                    SceneManager.GetSceneByName("Testing").buildIndex;
+            string roomsPath = Application.persistentDataPath + "/" + saveName + ROOMS_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+            string roomsCountPath = Application.persistentDataPath + "/" + saveName + ROOMS_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
 
             int roomCount = 0;
             if (File.Exists(roomsCountPath))
@@ -206,14 +214,57 @@ namespace GameManagerData
                     RoomData data = formatter.Deserialize(stream) as RoomData;
 
                     stream.Close();
+
+                    if (data == null)
+                    {
+                        return;
+                    }
                     
-                    instantiateLoadedData.LoadSavedRoom(data);
+                    foreach (var controller in _loadData)
+                    {
+                        if (controller.ControllerID == data.controllerID)
+                        {
+                            Debug.Log(data.controllerID);
+                            controller.AddRoomData(data);
+                            data = null;
+                            break;
+                        }
+                    }
+                    
+                    HandleParentlessRoom(data);
                 }
                 else
                 {
                     Debug.LogError("Path not found " + roomsPath + i);
                     return;
                 }
+            }
+        }
+
+        private void HandleParentlessRoom(RoomData data)
+        {
+            //If room has not been attached to a specific controller we can load it already
+            if (data != null)
+            {
+                instantiateLoadedData.LoadSavedRoom(data);
+            }
+        }
+
+        private void InstantiateLoadedData()
+        {
+            List<HomeControllerObject> homes = new List<HomeControllerObject>();
+            
+            //Creating each controller and its rooms first
+            foreach (var controller in _loadData)
+            {
+                HomeControllerObject home = instantiateLoadedData.LoadSavedController(controller.HomeControllerData);
+                homes.Add(home);
+
+                foreach (var room in controller.ControllersRooms)
+                {
+                    instantiateLoadedData.LoadSavedRoom(room);
+                }
+                
             }
         }
     }

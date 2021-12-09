@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instantiateLoadedData: {fileID: 1601283220351138351}
-  compile: 
 --- !u!114 &1601283220351138337
 MonoBehaviour:
   m_ObjectHideFlags: 0

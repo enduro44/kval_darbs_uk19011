@@ -12,14 +12,14 @@ namespace Controllers
         
         private GameObject _socketVisual;
         private MeshFilter _mesh;
-        private Color _meshColor;
-        private Color _meshColorAllowed;
-        private Color _meshColorDanger;
-        
+        private SocketAccessibilityController _socketAccessibilityController;
         private GameObject _socketTransform;
+        
         private GameObject _root;
+        
         void Awake()
         {
+            _socketAccessibilityController  = new SocketAccessibilityController();
             _controller = new SocketController();
             _socketC = gameObject.GetComponent<XRSocketInteractor>();
             _socketC.selectEntered.AddListener(Entered);
@@ -29,10 +29,7 @@ namespace Controllers
             
             _socketVisual = _socketC.transform.GetChild(0).gameObject;
             _mesh = _socketVisual.GetComponent<MeshFilter>();
-            _meshColor = _mesh.GetComponent<MeshRenderer>().material.color;
-            _meshColorAllowed = new Color(0, 204, 102, 0.3f);
-            _meshColorDanger = new Color(255, 0, 0, 0.3f);
-            
+
             _socketTransform = _socketC.transform.parent.gameObject.transform.GetChild(1).gameObject;
 
             _root = _socketC.transform.root.gameObject;
@@ -88,25 +85,14 @@ namespace Controllers
 
         private void HoverEntered(HoverEnterEventArgs args)
         {
-            XRBaseInteractable obj = args.interactable;
-
-            string typeOfObjectInSocket = _controller.GetType(obj);
-            GameObject objInSocket = obj.transform.root.gameObject;
-            string typeOfRootObject = _root.name;
-
-            if (typeOfRootObject != typeOfObjectInSocket && !objInSocket.CompareTag("Connected"))
-            {
-                _mesh.GetComponent<Renderer>().material.color = _meshColorDanger;
-            }
-            else
-            {
-                _mesh.GetComponent<Renderer>().material.color = _meshColorAllowed;
-            }
+            _socketAccessibilityController.ProcessEnterC(args, _controller, _root, _mesh);
         }
-        
+
+
+
         private void HoverExited(HoverExitEventArgs args)
         {
-            _mesh.GetComponent<MeshRenderer>().material.color = _meshColor;
+            _socketAccessibilityController.ProcessExitC(_mesh);
         }
     }
 }

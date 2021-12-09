@@ -11,7 +11,7 @@ namespace GameManagerData
     {
         public PrefabData prefabData;
         
-        public void LoadSavedController(HomeControllerData data)
+        public HomeControllerObject LoadSavedController(HomeControllerData data)
         {
             prefabData = PrefabData.Instance();
             Vector3 homePos = new Vector3(data.position[0], data.position[1], data.position[2]);
@@ -20,6 +20,7 @@ namespace GameManagerData
             HomeControllerObject home = Instantiate(prefab, homePos, Quaternion.identity);
             home.transform.eulerAngles = homeRot;
             home.controllerID = data.controlledID;
+            return home;
         }
         
         public void LoadSavedRoom(RoomData data)

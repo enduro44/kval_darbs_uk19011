@@ -11,6 +11,7 @@ namespace GameManagerData.data
         [Header("Controller")]
         public const string CONTROLLER = "HomeController(Clone)";
         [SerializeField] private HomeControllerObject homeControllerPrefab;
+        
         [Header("Rooms")]
         public const string LARGE_ROOM = "LargeRoom(Clone)";
         [SerializeField] private Room largeRoomPrefab;
@@ -18,6 +19,7 @@ namespace GameManagerData.data
         [SerializeField] private Room smallRoomPrefab;
         public const string CORNER_ROOM = "CornerRoom(Clone)";
         [SerializeField] private Room cornerRoomPrefab;
+        
         [Header("Furniture")]
         public GameObject eggStoolPrefab;
 
@@ -35,17 +37,13 @@ namespace GameManagerData.data
         }
         public Room GetRoomPrefab(string type)
         {
-            Debug.Log("Here");
             switch (type)
             {
                 case LARGE_ROOM:
-                    Debug.Log("Large");
                     return largeRoomPrefab;
                 case SMALL_ROOM:
-                    Debug.Log("Small");
                     return smallRoomPrefab;
                 case CORNER_ROOM:
-                    Debug.Log("Corner");
                     return cornerRoomPrefab;
                 default:
                     Debug.Log("Type doesn't match, default room provided");
