@@ -8,7 +8,6 @@ namespace Controllers
     public class SocketController
     {
         private GameObject _socketVisual;
-        private EmptyActiveSocketController _emptyActiveSocketController = EmptyActiveSocketController.Instance();
 
         private XRSocketInteractor GetSocket(GameObject obj, int index)
         {
@@ -126,14 +125,28 @@ namespace Controllers
         {
             GameObject root = GetRoot(obj);
             Room room = root.GetComponent<Room>();
-            _emptyActiveSocketController.AddSocket(room.controllerID, socket);
+            EmptyActiveSocketController.AddSocket(room.controllerID, socket);
         }
 
         public void RemoveSocketFromList(XRBaseInteractable obj, XRSocketInteractor socket)
         {
             GameObject root = GetRoot(obj);
             Room room = root.GetComponent<Room>();
-            _emptyActiveSocketController.RemoveSocket(room.controllerID, socket);
+            EmptyActiveSocketController.RemoveSocket(room.controllerID, socket);
+        }
+
+        public void TurnOnControllerSocket(XRSocketInteractor socket)
+        {
+            GameObject visual = socket.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+            socket.socketActive = true;
+            visual.SetActive(true);
+        }
+        
+        public void TurnOffControllerSocket(XRSocketInteractor socket)
+        {
+            GameObject visual = socket.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+            socket.socketActive = false;
+            visual.SetActive(false);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Linq;
 using GameManagerData.objClasses;
 using UnityEngine;
+using UnityEngine.InputSystem.Switch;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
@@ -37,6 +38,9 @@ namespace Controllers
 
         private void Entered(SelectEnterEventArgs args)
         {
+            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+            EmptyActiveSocketController.RemoveSocket(controllerID, _socketC);
+            
             XRBaseInteractable obj = args.interactable;
 
             string typeOfObjectInSocket = _controller.GetType(obj);
@@ -54,10 +58,9 @@ namespace Controllers
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
             
+            obj.GetComponent<Room>().controllerID = controllerID;
             _controller.TurnOnSocketCeiling(obj);
             _socketVisual.SetActive(false);
-            
-            obj.GetComponent<Room>().controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
         }
 
         private void TransformPosition(string typeOfObjectInSocket)
@@ -75,6 +78,9 @@ namespace Controllers
 
         private void Exited(SelectExitEventArgs args)
         {
+            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+            EmptyActiveSocketController.AddSocket(controllerID, _socketC);
+            
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
             obj.transform.localScale = scaleChange;

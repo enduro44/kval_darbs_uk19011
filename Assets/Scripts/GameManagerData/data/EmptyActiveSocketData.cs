@@ -8,11 +8,14 @@ namespace GameManagerData.data
     public class EmptyActiveSocketData
     {
         public string controllerID;
+        public XRSocketInteractor controllerSocket;
+        public bool isControllerEmpty;
         public List<XRSocketInteractor> emptyActiveSockets;
 
-        public EmptyActiveSocketData(string controllerID)
+        public EmptyActiveSocketData(string controllerID, XRSocketInteractor controllerSocket)
         {
             this.controllerID = controllerID;
+            this.controllerSocket = controllerSocket;
             emptyActiveSockets = new List<XRSocketInteractor>();
         }
         

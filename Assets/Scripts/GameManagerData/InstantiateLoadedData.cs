@@ -19,7 +19,6 @@ namespace GameManagerData
             HomeControllerObject prefab = prefabData.GetControllerPrefab();
             HomeControllerObject home = Instantiate(prefab, homePos, Quaternion.identity);
             home.transform.eulerAngles = homeRot;
-            home.controllerID = data.controlledID;
             return home;
         }
         
@@ -37,8 +36,6 @@ namespace GameManagerData
             Transform roomTransform = room.transform;
             roomTransform.localScale = roomSize;
             roomTransform.eulerAngles = roomRot;
-
-            room.controllerID = data.controllerID;
         }
     }
 }

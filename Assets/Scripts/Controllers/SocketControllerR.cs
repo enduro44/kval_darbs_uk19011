@@ -33,6 +33,9 @@ namespace Controllers
 
         private void Entered(SelectEnterEventArgs args)
         {
+            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+            EmptyActiveSocketController.RemoveSocket(controllerID, _socketR);
+            
             XRBaseInteractable obj = args.interactable;
             GameObject rootObj = obj.transform.root.gameObject;
             if (!_canBePlaced)
@@ -50,10 +53,10 @@ namespace Controllers
             _controller.ToogleConnectedTag(obj);
             _socketVisual.SetActive(false);
             
+            obj.GetComponent<Room>().controllerID = controllerID;
+            
             _controller.TurnOnSocketRight(obj);
             _controller.TurnOnSocketCeiling(obj);
-            
-            obj.GetComponent<Room>().controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
         }
 
         private void TransformPosition(XRBaseInteractable obj)
@@ -72,6 +75,9 @@ namespace Controllers
 
         private void Exited(SelectExitEventArgs args)
         {
+            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+            EmptyActiveSocketController.AddSocket(controllerID, _socketR);
+            
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
             obj.transform.localScale = scaleChange;

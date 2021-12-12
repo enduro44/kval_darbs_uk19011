@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using GameManagerData.data;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -8,43 +9,36 @@ namespace Controllers
 {
     public class EmptyActiveSocketController : MonoBehaviour
     {
-        private static EmptyActiveSocketController _instance;
-        public List<EmptyActiveSocketData> emptyActiveSocketData = new List<EmptyActiveSocketData>();
-        private SocketController _controller = new SocketController();
-        
-        private void Awake()
+        public static List<EmptyActiveSocketData> EmptyActiveSocketData = new List<EmptyActiveSocketData>();
+        private static SocketController _controller = new SocketController();
+
+        public static void AddData(EmptyActiveSocketData data)
         {
-            _instance = this;
+            EmptyActiveSocketData.Add(data);
+            Debug.Log("New controller data created " + data.controllerID);
         }
         
-        public static EmptyActiveSocketController Instance() {
-            return _instance;
+        public static void RemoveData(EmptyActiveSocketData data)
+        {
+            EmptyActiveSocketData.Remove(data);
         }
 
-        public void AddSocket(string controllerID, XRSocketInteractor socket)
+        public static void AddSocket(string controllerID, XRSocketInteractor socket)
         {
-            foreach (var data in emptyActiveSocketData)
+            foreach (var data in EmptyActiveSocketData)
             {
-                Debug.Log("Controller IDs:");
-                Debug.Log(controllerID);
-                Debug.Log(data.controllerID);
+                Debug.Log("Adding socket");
                 if (controllerID == data.controllerID)
                 {
                     data.emptyActiveSockets.Add(socket);
-                    Debug.Log("Controller found, room added");
                     return;
                 }
             }
-
-            EmptyActiveSocketData newData = new EmptyActiveSocketData(controllerID);
-            newData.AddSocket(socket);
-            emptyActiveSocketData.Add(newData);
-            Debug.Log("Controller not found. New data created");
         }
         
-        public void RemoveSocket(string controllerID, XRSocketInteractor socket)
+        public static void RemoveSocket(string controllerID, XRSocketInteractor socket)
         {
-            foreach (var data in emptyActiveSocketData)
+            foreach (var data in EmptyActiveSocketData)
             {
                 if (controllerID == data.controllerID)
                 {
@@ -53,10 +47,15 @@ namespace Controllers
             }
         }
 
-        public void TurnOnAllSockets()
+        public static void TurnOnAllSockets()
         {
-            foreach (var data in emptyActiveSocketData)
+            foreach (var data in EmptyActiveSocketData)
             {
+                if (data.isControllerEmpty)
+                {
+                    _controller.TurnOnControllerSocket(data.controllerSocket);
+                    break;
+                }
                 foreach (var socket in data.emptyActiveSockets)
                 {
                     _controller.TurnOnSocket(socket);
@@ -64,10 +63,15 @@ namespace Controllers
             }
         }
         
-        public void TurnOffAllSockets()
+        public static void TurnOffAllSockets()
         {
-            foreach (var data in emptyActiveSocketData)
+            foreach (var data in EmptyActiveSocketData)
             {
+                if (data.isControllerEmpty)
+                {
+                    _controller.TurnOffControllerSocket(data.controllerSocket);
+                    break;
+                }
                 foreach (var socket in data.emptyActiveSockets)
                 {
                     _controller.TurnOffSocket(socket);
@@ -75,10 +79,15 @@ namespace Controllers
             }
         }
 
-        public void TurnOnAllForSpecificHome(string controllerID)
+        public static void TurnOnAllForSpecificHome(string controllerID)
         {
-            foreach (var data in emptyActiveSocketData)
+            foreach (var data in EmptyActiveSocketData)
             {
+                if (data.isControllerEmpty)
+                {
+                    _controller.TurnOnControllerSocket(data.controllerSocket);
+                    break;
+                }
                 if (controllerID == data.controllerID)
                 {
                     foreach (var socket in data.emptyActiveSockets)
@@ -89,14 +98,22 @@ namespace Controllers
             }
         }
         
-        public void TurnOffAllForSpecificHome(string controllerID)
+        public static void TurnOffAllForSpecificHome(string controllerID)
         {
-            foreach (var data in emptyActiveSocketData)
+            foreach (var data in EmptyActiveSocketData)
             {
+                // if (data.isControllerEmpty)
+                // {
+                //     _controller.TurnOffControllerSocket(data.controllerSocket);
+                //     break;
+                // }
+                
+                Debug.Log("Turning off this: " + data.controllerID);
                 if (controllerID == data.controllerID)
                 {
                     foreach (var socket in data.emptyActiveSockets)
                     {
+                        Debug.Log("Turning off this: " + socket);
                         _controller.TurnOffSocket(socket);
                     }
                 }

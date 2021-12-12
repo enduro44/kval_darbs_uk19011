@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using Controllers;
 using GameManagerData.data;
 using GameManagerData.objClasses;
@@ -13,7 +15,6 @@ namespace GameManagerData
     public class GameManager : MonoBehaviour
     {
         private static GameManager _instance;
-        private EmptyActiveSocketController _emptyActiveSocketController = EmptyActiveSocketController.Instance();
         
         [Header("Load data")]
         private string _saveNameData;
@@ -59,7 +60,6 @@ namespace GameManagerData
         private void SaveControllerData(BinaryFormatter formatter, string folder)
         {
             string path = Application.persistentDataPath + "/" + folder +  HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
-            Debug.Log(path);
             string countPath = Application.persistentDataPath + "/" + folder + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
@@ -148,7 +148,6 @@ namespace GameManagerData
         private void LoadControllers(BinaryFormatter formatter, string saveName)
         {
             string controllersPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
-            Debug.Log(controllersPath);
             string controllersCountPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
 
             int controllerCount = 0;
@@ -226,7 +225,6 @@ namespace GameManagerData
                     {
                         if (controller.ControllerID == data.controllerID)
                         {
-                            Debug.Log(data.controllerID);
                             controller.AddRoomData(data);
                             data = null;
                             break;
@@ -254,20 +252,25 @@ namespace GameManagerData
 
         private void InstantiateLoadedData()
         {
+            StartCoroutine(LoadControllerAndRooms());
+
+            //EmptyActiveSocketController.TurnOnAllSockets();
+        }
+
+        IEnumerator LoadControllerAndRooms()
+        {
             //Creating each controller and its rooms first
             foreach (var controller in _loadData)
             {
                 HomeControllerObject home = instantiateLoadedData.LoadSavedController(controller.HomeControllerData);
-
                 foreach (var room in controller.ControllersRooms)
                 {
                     instantiateLoadedData.LoadSavedRoom(room);
                 }
-                
-                _emptyActiveSocketController.TurnOffAllForSpecificHome(home.controllerID);
+                yield return new WaitForSeconds(2f);
+                EmptyActiveSocketController.TurnOffAllForSpecificHome(home.controllerID);
+                yield return new WaitForSeconds(2f);
             }
-            
-            _emptyActiveSocketController.TurnOnAllSockets();
         }
     }
 }
