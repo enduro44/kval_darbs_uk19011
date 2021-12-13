@@ -1,18 +1,38 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Xml.Linq;
+using Controllers;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace GameManagerData
 {
-    public class SceneController 
+    public class SceneController : MonoBehaviour
     {
-        public void LoadGameScene()
+        public void StartSceneLoad(string sceneName)
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync("Testing");
-            while (!operation.isDone)
+            StartCoroutine(LoadGameSceneAsync(sceneName));
+        }
+
+        public void SetSceneReady()
+        {
+            PlayerController.SetPlayerPos();
+        }
+        
+        IEnumerator LoadGameSceneAsync(string sceneName)
+        {
+            yield return null;
+            
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+            asyncOperation.allowSceneActivation = false;
+            Debug.Log("Pro :" + asyncOperation.progress);
+            while (!asyncOperation.isDone)
             {
-                Debug.Log("Scene is loading");
+                if (asyncOperation.progress >= 0.9f)
+                {
+                    asyncOperation.allowSceneActivation = true;
+                }
+                yield return null;
             }
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Testing"));
         }
     }
 }

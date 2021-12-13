@@ -22,7 +22,7 @@ namespace MenuSystem.Main
         {
             GameManager gameManager = GameManager.Instance();
             PlayerData.GameID = saveName;
-            gameManager.LoadGame(saveName, false);
+            gameManager.LoadGame(saveName);
         }
     }
 }

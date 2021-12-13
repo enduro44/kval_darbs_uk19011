@@ -154,6 +154,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.DefaultCompany.Test_LU_2
     Standalone: com.DefaultCompany.TestLU2
   buildNumber:
     Standalone: 0

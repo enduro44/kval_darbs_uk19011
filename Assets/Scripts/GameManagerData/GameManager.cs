@@ -15,6 +15,7 @@ namespace GameManagerData
     public class GameManager : MonoBehaviour
     {
         private static GameManager _instance;
+        public SceneController sceneController;
         
         [Header("Load data")]
         private string _saveNameData;
@@ -111,15 +112,15 @@ namespace GameManagerData
             }
         }
 
-        public void LoadGame(string saveName, bool isNewGame)
+        public void LoadGame(string saveName)
         {
             if (!Directory.Exists(Application.persistentDataPath + "/" + saveName))
             {
                 Debug.Log("Game does not exist, path: " + Application.persistentDataPath + "/" + saveName);
                 return;
             }
-
-            SceneManager.LoadScene("Testing");
+            
+            sceneController.StartSceneLoad("Testing");
             _saveNameData = saveName;
             _loadGame = true;
         }
@@ -267,10 +268,11 @@ namespace GameManagerData
                 {
                     instantiateLoadedData.LoadSavedRoom(room);
                 }
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 EmptyActiveSocketController.TurnOffAllForSpecificHome(home.controllerID);
-                yield return new WaitForSeconds(2f);
             }
+            yield return new WaitForSeconds(2f);
+            sceneController.SetSceneReady();
         }
     }
 }
