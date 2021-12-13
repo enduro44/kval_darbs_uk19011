@@ -9,7 +9,7 @@ namespace GameManagerData.data
     {
         public string controllerID;
         public XRSocketInteractor controllerSocket;
-        public bool isControllerEmpty;
+        public bool isControllerEmpty = true;
         public List<XRSocketInteractor> emptyActiveSockets;
 
         public EmptyActiveSocketData(string controllerID, XRSocketInteractor controllerSocket)

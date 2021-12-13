@@ -1,4 +1,6 @@
+using Controllers;
 using GameManagerData;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -8,32 +10,37 @@ namespace MenuSystem.Wrist
     public class WristMenu : MonoBehaviour
     {
         public GameObject wristUI;
+        
+        public GameObject mainMenuUI;
+        public GameObject buildMenuUI;
+        public GameObject furnishMenuUI;
+        public GameObject playablesUI;
+        public GameObject exitToMainUI;
+        public GameObject exitUI;
+        public GameObject backButton;
+        
+        //dont know if I need it yet
+        private FadeController _fadeController;
+        
+        public bool activeWristUI = true;
+        
+        //This is for build/furnish/playables modes
         public GameObject inventoryObject;
         public XRSocketInteractor inventorySocket;
         public Transform spawnPoint;
-        private GameObject _objInInventory;
         private GameObject _newRoom;
-    
-        [Header("Prefabs")]
-        [Header("Controller")]
-        public GameObject homeControllerPrefab;
-        [Header("Rooms")]
-        public GameObject largeRoomPrefab;
-        public GameObject smallRoomPrefab;
-        public GameObject cornerRoomPrefab;
-        [Header("Furniture")]
-        public GameObject eggStoolPrefab;
-    
-
-        public bool activeWristUI = true;
-
-        void Start()
+        
+        private void Awake()
+        {
+            _fadeController = wristUI.AddComponent<FadeController>();
+        }
+        
+        private void Start()
         {
             DisplayWristUI();
             inventorySocket = inventoryObject.GetComponent<XRSocketInteractor>();
-            inventorySocket.selectEntered.AddListener(GetObject);
         }
-
+        
         public void MenuPressed(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -41,7 +48,7 @@ namespace MenuSystem.Wrist
                 DisplayWristUI();
             }
         }
-
+        
         private void DisplayWristUI()
         {
             if (activeWristUI)
@@ -54,85 +61,79 @@ namespace MenuSystem.Wrist
             wristUI.SetActive(true);
             inventorySocket.gameObject.SetActive(true);
             activeWristUI = true;
+            
+            mainMenuUI.SetActive(true);
+            //_fadeController.FadeIn(mainMenuUI);
+            buildMenuUI.SetActive(false);
+            furnishMenuUI.SetActive(false);
+            playablesUI.SetActive(false);
+            exitToMainUI.SetActive(false);
+            exitUI.SetActive(false);
+            backButton.SetActive(false);
+        }
+
+        public void PlayButton()
+        {
+            EmptyActiveSocketController.TurnOffAllSockets();
+            //Also need to make rooms not grabby
+            //Same for furniture
         }
         
-        public void PlayMode()
+        public void SaveButton()
         {
-        
-        }
-
-        public void BuildMode()
-        {
-        
-        }
-    
-        public void Furnish()
-        {
-        
-        }
-
-        private void GetObject(SelectEnterEventArgs args)
-        {
-            XRBaseInteractable interactable = args.interactable;
-            _objInInventory = interactable.gameObject;
-        }
-
-        public void AddRoom(string type)
-        {
-            if (inventorySocket.selectTarget != null)
-            {
-                Destroy(_objInInventory);
-            }
-
-            var position = spawnPoint.position;
-            _newRoom = type switch
-            {
-                "SmallRoom" => Instantiate(smallRoomPrefab, position, Quaternion.identity),
-                "LargeRoom" => Instantiate(largeRoomPrefab, position, Quaternion.identity),
-                "CornerRoom" => Instantiate(cornerRoomPrefab, position, Quaternion.identity),
-                _ => _newRoom
-            };
-
-            Vector3 scaleChange = new Vector3(0.0001f, 0.0001f, 0.0001f);
-            _newRoom.transform.localScale = scaleChange;
-        
-            _newRoom.transform.position = inventoryObject.transform.position;
-            _newRoom.transform.rotation = inventoryObject.transform.rotation;
-        }
-    
-        public void AddBase()
-        {
-            if (inventorySocket.selectTarget != null)
-            {
-                Destroy(_objInInventory);
-            }
-    
-            GameObject newBase = Instantiate(homeControllerPrefab, spawnPoint.position, Quaternion.identity);
-            newBase.SetActive(false);
-            newBase.transform.position = inventoryObject.transform.position;
-            newBase.transform.rotation = inventoryObject.transform.rotation;
-            newBase.SetActive(true);
-        }
-    
-        public void AddItems()
-        {
-            if (inventorySocket.selectTarget != null)
-            {
-                Destroy(_objInInventory);
-            }
-            GameObject newItem = Instantiate(eggStoolPrefab, transform.position, Quaternion.identity);
-            newItem.transform.position = inventoryObject.transform.position;
-            newItem.transform.rotation = inventoryObject.transform.rotation;
-        }
-
-        public void SaveGame()
-        {
+            //Need to make button unpressable and show that game is saved
             Debug.Log("Saving game button pressed");
             GameManager gameManager = GameManager.Instance();
-            gameManager.SaveGame();
+            gameManager.SaveGame();   
         }
-
-        public void ExitGame()
+        
+        public void BuildButton()
+        {
+            EmptyActiveSocketController.TurnOnAllSockets();
+           // _fadeController.FadeOut(mainMenuUI);
+            mainMenuUI.SetActive(false);
+           // _fadeController.FadeIn(buildMenuUI);
+            buildMenuUI.SetActive(true);
+            backButton.SetActive(true);
+        }
+        
+        public void FurnishButton()
+        {
+            EmptyActiveSocketController.TurnOffAllSockets();
+            //_fadeController.FadeOut(mainMenuUI);
+            mainMenuUI.SetActive(false);
+            //_fadeController.FadeIn(furnishMenuUI);
+            furnishMenuUI.SetActive(true);
+            backButton.SetActive(true);
+        }
+        
+        public void PlayablesButton()
+        {
+            EmptyActiveSocketController.TurnOffAllSockets();
+           // _fadeController.FadeOut(mainMenuUI);
+            mainMenuUI.SetActive(false);
+            //_fadeController.FadeIn(playablesUI);
+            playablesUI.SetActive(true);
+            backButton.SetActive(true);
+        }
+        
+        public void BackToMenuButton()
+        {
+            buildMenuUI.SetActive(false);
+            furnishMenuUI.SetActive(false);
+            playablesUI.SetActive(false); 
+            mainMenuUI.SetActive(true);
+            backButton.SetActive(false);
+            //_fadeController.FadeIn(mainMenuUI);
+        }
+        
+        public void ExitToMainButton()
+        {
+            GameManager gameManager = GameManager.Instance();
+            gameManager.LoadNewScene("MainMenu");
+        }
+        
+        public void ExitButton()
         {
             #if UNITY_EDITOR
                 // Application.Quit() does not work in the editor so

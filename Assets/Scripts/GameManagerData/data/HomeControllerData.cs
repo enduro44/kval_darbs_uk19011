@@ -7,6 +7,7 @@ namespace GameManagerData.data
     [Serializable]
     public class HomeControllerData
     {
+        public string type = "HomeController(Clone)";
         public string controlledID;
         public float[] position;
         public float[] rotation;

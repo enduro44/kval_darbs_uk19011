@@ -61,11 +61,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d86b45ccddc422a955db84fe9b50786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeControllerPrefab: {fileID: 7447035656022488400, guid: 9489f64835153cb4898fb1b2d1521b3f, type: 3}
-  largeRoomPrefab: {fileID: 7764848361682065370, guid: 11ca6f3363080404183fc2c9cc185039, type: 3}
-  smallRoomPrefab: {fileID: 5577822589471464988, guid: 2c7a3259beead5445b78b0d25875a54d, type: 3}
-  cornerRoomPrefab: {fileID: 1779507100649275534, guid: 56a2b50ea2c170f4e8ddb85931cd05cb, type: 3}
-  eggStoolPrefab: {fileID: 0}
+  homeControllerPrefab: {fileID: 7931075676383624972, guid: 9489f64835153cb4898fb1b2d1521b3f, type: 3}
+  largeRoomPrefab: {fileID: 4922358623976139598, guid: 11ca6f3363080404183fc2c9cc185039, type: 3}
+  smallRoomPrefab: {fileID: 1235301399812593902, guid: 2c7a3259beead5445b78b0d25875a54d, type: 3}
+  cornerRoomPrefab: {fileID: 4937979682333933710, guid: 56a2b50ea2c170f4e8ddb85931cd05cb, type: 3}
+  eggStoolPrefab: {fileID: 8275172718231130557, guid: d610ae1193815354ba408c2dd5e9adb8, type: 3}
 --- !u!114 &1601283220351138351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,3 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fabd9ce3234954ab2ded0c0bc07161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 0}
+  playerPositionGameLoaded: {x: 0, y: 0, z: 0}
+  playerPositionGameLoading: {x: 0, y: 0, z: -500}

@@ -15,7 +15,6 @@ namespace Controllers
         public static void AddData(EmptyActiveSocketData data)
         {
             EmptyActiveSocketData.Add(data);
-            Debug.Log("New controller data created " + data.controllerID);
         }
         
         public static void RemoveData(EmptyActiveSocketData data)

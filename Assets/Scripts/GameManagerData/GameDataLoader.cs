@@ -12,7 +12,6 @@ namespace GameManagerData
             
             if (!GameManager.IsLoadGame())
             {
-                Debug.Log("Placing player to 0 0 0");
                 PlayerController playerController = PlayerController.Instance();
                 playerController.SetNewGamePlayerPos();
             }

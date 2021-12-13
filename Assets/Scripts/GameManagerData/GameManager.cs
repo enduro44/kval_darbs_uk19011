@@ -6,6 +6,7 @@ using System.Threading;
 using Controllers;
 using GameManagerData.data;
 using GameManagerData.objClasses;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
@@ -143,11 +144,16 @@ namespace GameManagerData
             
             LoadPlayer(formatter, saveName);
             
-            sceneController.StartSceneLoad("Testing");
+            LoadNewScene("Testing");
             _saveNameData = saveName;
             _loadGame = true;
         }
-        
+
+        public void LoadNewScene(string sceneName)
+        {
+            sceneController.StartSceneLoad(sceneName);
+        }
+
         private void LoadPlayer(BinaryFormatter formatter, string saveName)
         {
             string path = Application.persistentDataPath + "/" + saveName +  PLAYER;
@@ -304,13 +310,13 @@ namespace GameManagerData
             //Creating each controller and its rooms first
             foreach (var controller in _loadData)
             {
-                HomeControllerObject home = instantiateLoadedData.LoadSavedController(controller.HomeControllerData);
+                GameObject home = instantiateLoadedData.LoadSavedController(controller.HomeControllerData);
                 foreach (var room in controller.ControllersRooms)
                 {
                     instantiateLoadedData.LoadSavedRoom(room);
                 }
                 yield return new WaitForSeconds(0.5f);
-                EmptyActiveSocketController.TurnOffAllForSpecificHome(home.controllerID);
+                EmptyActiveSocketController.TurnOffAllForSpecificHome(controller.ControllerID);
             }
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();
