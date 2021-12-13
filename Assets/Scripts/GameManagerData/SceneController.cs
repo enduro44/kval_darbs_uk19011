@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Xml.Linq;
 using Controllers;
+using GameManagerData.data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,11 +12,6 @@ namespace GameManagerData
         public void StartSceneLoad(string sceneName)
         {
             StartCoroutine(LoadGameSceneAsync(sceneName));
-        }
-
-        public void SetSceneReady()
-        {
-            PlayerController.SetPlayerPos();
         }
         
         IEnumerator LoadGameSceneAsync(string sceneName)

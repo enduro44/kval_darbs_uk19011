@@ -7,6 +7,7 @@ using Controllers;
 using GameManagerData.data;
 using GameManagerData.objClasses;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using Application = UnityEngine.Application;
 
@@ -19,11 +20,14 @@ namespace GameManagerData
         
         [Header("Load data")]
         private string _saveNameData;
-        private bool _loadGame = false;
+        private static bool _loadGame = false;
+        private PlayerTransformData _data;
         private List<LoadData> _loadData = new List<LoadData>();
         public InstantiateLoadedData instantiateLoadedData;
 
         [Header("Constants")] 
+        private const string PLAYER = "/player";
+        
         private const string ROOMS_SUB = "/rooms";
         private const string ROOMS_COUNT_SUB = "/rooms.count";
 
@@ -48,6 +52,9 @@ namespace GameManagerData
             string folder = PlayerData.GameID;
             BinaryFormatter formatter = new BinaryFormatter();
             
+            //Saving Player 
+            SavePlayer(formatter, folder);
+            
             //Saving Home controllers
             SaveControllerData(formatter, folder);
 
@@ -56,6 +63,18 @@ namespace GameManagerData
             
             //Saving Furniture
             SaveFurnitureData(formatter, folder);
+        }
+
+        private void SavePlayer(BinaryFormatter formatter, string folder)
+        {
+            string path = Application.persistentDataPath + "/" + folder +  PLAYER;
+            
+            FileStream stream = new FileStream(path, FileMode.Create);
+            PlayerController playerController = PlayerController.Instance();
+            PlayerTransformData data = playerController.SetPlayerData();
+
+            formatter.Serialize(stream, data);
+            stream.Close();
         }
 
         private void SaveControllerData(BinaryFormatter formatter, string folder)
@@ -120,9 +139,36 @@ namespace GameManagerData
                 return;
             }
             
+            BinaryFormatter formatter = new BinaryFormatter();
+            
+            LoadPlayer(formatter, saveName);
+            
             sceneController.StartSceneLoad("Testing");
             _saveNameData = saveName;
             _loadGame = true;
+        }
+        
+        private void LoadPlayer(BinaryFormatter formatter, string saveName)
+        {
+            string path = Application.persistentDataPath + "/" + saveName +  PLAYER;
+            
+            if (File.Exists(path))
+            {
+                FileStream stream = new FileStream(path, FileMode.Open);
+                _data = formatter.Deserialize(stream) as PlayerTransformData;
+
+                stream.Close();
+                    
+                if (_data == null)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                Debug.LogError("Path not found " + path);
+                return;
+            }
         }
 
         public void LoadGameData()
@@ -141,11 +187,8 @@ namespace GameManagerData
 
             //Creating loaded data in the scene
             InstantiateLoadedData();
-
-            //Setting back the variable to false
-            _loadGame = false;
         }
-        
+
         private void LoadControllers(BinaryFormatter formatter, string saveName)
         {
             string controllersPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
@@ -254,8 +297,6 @@ namespace GameManagerData
         private void InstantiateLoadedData()
         {
             StartCoroutine(LoadControllerAndRooms());
-
-            //EmptyActiveSocketController.TurnOnAllSockets();
         }
 
         IEnumerator LoadControllerAndRooms()
@@ -272,7 +313,15 @@ namespace GameManagerData
                 EmptyActiveSocketController.TurnOffAllForSpecificHome(home.controllerID);
             }
             yield return new WaitForSeconds(2f);
-            sceneController.SetSceneReady();
+            PlayerController playerController = PlayerController.Instance();
+            playerController.SetPlayerPos(_data);
+            //Setting back the variable to false
+            _loadGame = false;
+        }
+
+        public static bool IsLoadGame()
+        {
+            return _loadGame;
         }
     }
 }

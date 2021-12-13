@@ -1,3 +1,4 @@
+using Controllers;
 using UnityEngine;
 
 namespace GameManagerData
@@ -8,6 +9,13 @@ namespace GameManagerData
         {
             GameManager gameManager = GameManager.Instance();
             gameManager.LoadGameData();
+            
+            if (!GameManager.IsLoadGame())
+            {
+                Debug.Log("Placing player to 0 0 0");
+                PlayerController playerController = PlayerController.Instance();
+                playerController.SetNewGamePlayerPos();
+            }
         }
     }
 }

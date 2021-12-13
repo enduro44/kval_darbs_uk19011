@@ -27,7 +27,6 @@ namespace Controllers
         {
             foreach (var data in EmptyActiveSocketData)
             {
-                Debug.Log("Adding socket");
                 if (controllerID == data.controllerID)
                 {
                     data.emptyActiveSockets.Add(socket);
@@ -102,18 +101,16 @@ namespace Controllers
         {
             foreach (var data in EmptyActiveSocketData)
             {
-                // if (data.isControllerEmpty)
-                // {
-                //     _controller.TurnOffControllerSocket(data.controllerSocket);
-                //     break;
-                // }
+                if (data.isControllerEmpty)
+                {
+                    _controller.TurnOffControllerSocket(data.controllerSocket);
+                    break;
+                }
                 
-                Debug.Log("Turning off this: " + data.controllerID);
                 if (controllerID == data.controllerID)
                 {
                     foreach (var socket in data.emptyActiveSockets)
                     {
-                        Debug.Log("Turning off this: " + socket);
                         _controller.TurnOffSocket(socket);
                     }
                 }
