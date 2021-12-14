@@ -14,6 +14,8 @@ namespace GameManagerData.data
 
         public FurnitureData(Furniture furniture)
         {
+            type = furniture.name;
+            
             Transform transform = furniture.transform;
             Vector3 furniturePos = transform.position;
 
@@ -21,14 +23,13 @@ namespace GameManagerData.data
             {
                 furniturePos.x, furniturePos.y, furniturePos.z
             };
-
-            //TODO: Decide if size is needed?
-            // Vector3 furnitureSize = transform.lossyScale;
-            //
-            // size = new float[]
-            // {
-            //     furnitureSize.x, furnitureSize.y, furnitureSize.z
-            // };
+            
+            Vector3 furnitureSize = transform.lossyScale;
+            
+            size = new float[]
+            {
+                furnitureSize.x, furnitureSize.y, furnitureSize.z
+            };
             
             Vector3 furnitureRot = transform.eulerAngles;
             

@@ -50,14 +50,31 @@ namespace MenuSystem.Wrist
             // obj.transform.localScale = scaleChange;
         }
 
-        public void InstantiateNewObject(string type)
+        public void InstantiateNewObject(string objectType, string objectCategory)
         {
             if (_socketI.selectTarget != null)
             {
                 Destroy(_objInInventory);
             }
             PrefabData prefabData = PrefabData.Instance();
-            GameObject prefab = prefabData.GetPrefab(type);
+            
+            GameObject prefab = new GameObject();
+            switch (objectCategory)
+            {
+                case "home":
+                    prefab = prefabData.GetPrefab(objectType);
+                    break;
+                case "furniture":
+                    prefab = prefabData.GetFurniturePrefab(objectType);
+                    break;
+                case "playable":
+                    prefab = prefabData.GetPlayablePrefab(objectType);
+                    break;
+                default:
+                    Debug.Log("Category does not exist");
+                    return;
+            }
+            
             GameObject newBase = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
             newBase.SetActive(false);
             newBase.transform.position = inventoryObject.transform.position;

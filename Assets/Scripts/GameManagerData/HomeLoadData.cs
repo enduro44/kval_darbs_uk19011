@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace GameManagerData
 {
-    public class LoadData
+    public class HomeLoadData
     {
         public string ControllerID;
         public HomeControllerData HomeControllerData;

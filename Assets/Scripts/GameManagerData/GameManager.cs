@@ -23,7 +23,8 @@ namespace GameManagerData
         private string _saveNameData;
         private static bool _loadGame = false;
         private PlayerTransformData _data;
-        private List<LoadData> _loadData = new List<LoadData>();
+        private List<HomeLoadData> _homeLoadData = new List<HomeLoadData>();
+        private FurnitureLoadData _furnitureLoadData = new FurnitureLoadData();
         public InstantiateLoadedData instantiateLoadedData;
 
         [Header("Constants")] 
@@ -144,6 +145,7 @@ namespace GameManagerData
             
             LoadPlayer(formatter, saveName);
             
+            //Here could add logic to choose the specific scene player has chosen
             LoadNewScene("Testing");
             _saveNameData = saveName;
             _loadGame = true;
@@ -190,6 +192,9 @@ namespace GameManagerData
 
             //Loading Rooms
             LoadRooms(formatter, _saveNameData);
+            
+            //Loading Furniture
+            LoadFurniture(formatter, _saveNameData);
 
             //Creating loaded data in the scene
             InstantiateLoadedData();
@@ -227,9 +232,9 @@ namespace GameManagerData
                         return;
                     }
 
-                    LoadData newControllerStruct = new LoadData();
+                    HomeLoadData newControllerStruct = new HomeLoadData();
                     newControllerStruct.AddControllerData(data);
-                    _loadData.Add(newControllerStruct);
+                    _homeLoadData.Add(newControllerStruct);
                 }
                 else
                 {
@@ -271,7 +276,7 @@ namespace GameManagerData
                         return;
                     }
                     
-                    foreach (var controller in _loadData)
+                    foreach (var controller in _homeLoadData)
                     {
                         if (controller.ControllerID == data.controllerID)
                         {
@@ -290,6 +295,48 @@ namespace GameManagerData
                 }
             }
         }
+        
+        private void LoadFurniture(BinaryFormatter formatter, string saveName)
+        {
+            string path = Application.persistentDataPath + "/" + saveName + FURNITURE_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+            string countPath = Application.persistentDataPath + "/" + saveName + FURNITURE_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+
+            int furnitureCount = 0;
+            if (File.Exists(countPath))
+            {
+                FileStream countStream = new FileStream(countPath, FileMode.Open);
+                furnitureCount = (int) formatter.Deserialize(countStream);
+                countStream.Close();
+            }
+            else
+            {
+                Debug.LogError("Path not found " + countPath);
+                return;
+            }
+
+            for (int i = 0; i < furnitureCount; i++)
+            {
+                if (File.Exists(path + i))
+                {
+                    FileStream stream = new FileStream(path + i, FileMode.Open);
+                    FurnitureData data = formatter.Deserialize(stream) as FurnitureData;
+
+                    stream.Close();
+
+                    if (data == null)
+                    {
+                        return;
+                    }
+                    
+                    _furnitureLoadData.AddFurnitureData(data);
+                }
+                else
+                {
+                    Debug.LogError("Path not found " + path + i);
+                    return;
+                }
+            }
+        }
 
         private void HandleParentlessRoom(RoomData data)
         {
@@ -302,13 +349,13 @@ namespace GameManagerData
 
         private void InstantiateLoadedData()
         {
-            StartCoroutine(LoadControllerAndRooms());
+            StartCoroutine(ProcessLoadedData());
         }
 
-        IEnumerator LoadControllerAndRooms()
+        IEnumerator ProcessLoadedData()
         {
             //Creating each controller and its rooms first
-            foreach (var controller in _loadData)
+            foreach (var controller in _homeLoadData)
             {
                 GameObject home = instantiateLoadedData.LoadSavedController(controller.HomeControllerData);
                 foreach (var room in controller.ControllersRooms)
@@ -316,8 +363,15 @@ namespace GameManagerData
                     instantiateLoadedData.LoadSavedRoom(room);
                 }
                 yield return new WaitForSeconds(0.5f);
-                EmptyActiveSocketController.TurnOffAllForSpecificHome(controller.ControllerID);
+                EmptyActiveSocketController.TurnOffAllForSpecificHome(home.GetComponent<HomeControllerObject>().controllerID);
             }
+            Debug.Log("Adding furniture");
+            //Adding furniture
+            foreach (var furniture in _furnitureLoadData.Furniture)
+            {
+                instantiateLoadedData.LoadSavedFurniture(furniture);
+            }
+            
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();
             playerController.SetPlayerPos(_data);

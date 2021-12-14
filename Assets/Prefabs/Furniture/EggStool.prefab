@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2614907248295113706}
   - component: {fileID: 2614907248295113707}
   - component: {fileID: 2536482336030256460}
+  - component: {fileID: -6520032838455179692}
   m_Layer: 0
   m_Name: EggStool
   m_TagString: Untagged
@@ -219,3 +220,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.26286438, y: 0.3184148, z: 0.28651258}
   m_Center: {x: -0.008125612, y: 0.15842378, z: -0.0005225486}
+--- !u!114 &-6520032838455179692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275172718231130557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099ace4368b47864a9285ff918cd3e7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

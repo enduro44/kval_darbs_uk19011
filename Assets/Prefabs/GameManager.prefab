@@ -65,7 +65,20 @@ MonoBehaviour:
   largeRoomPrefab: {fileID: 4922358623976139598, guid: 11ca6f3363080404183fc2c9cc185039, type: 3}
   smallRoomPrefab: {fileID: 1235301399812593902, guid: 2c7a3259beead5445b78b0d25875a54d, type: 3}
   cornerRoomPrefab: {fileID: 4937979682333933710, guid: 56a2b50ea2c170f4e8ddb85931cd05cb, type: 3}
+  bedPrefab: {fileID: 4937209086730978460, guid: 8799e2ed5a5f0b347a31d9e6b3f428e2, type: 3}
+  cabinetPrefab: {fileID: 290892237285451516, guid: 1f0e89628173ba94b8402139cdbec85f, type: 3}
+  carpetPrefab: {fileID: 3935092761946603694, guid: 6e17582eda06bd845b550e79fab90035, type: 3}
+  chairPrefab: {fileID: 2155284438831481846, guid: 4079c0f866904a445850a9e8baf3b654, type: 3}
+  cushionPrefab: {fileID: 6482390083030497719, guid: 55a1b2d74dfe10c46889f2a44696659c, type: 3}
   eggStoolPrefab: {fileID: 8275172718231130557, guid: d610ae1193815354ba408c2dd5e9adb8, type: 3}
+  eggTablePrefab: {fileID: 9078201446532042385, guid: 11a9428f22ceff949adc9297321f00bc, type: 3}
+  fridgePrefab: {fileID: 1911223095679575680, guid: bcc0f4a19cb6fb548b9f00a9adf770fc, type: 3}
+  ovenPrefab: {fileID: 1798041982626222137, guid: 08a6c9e2fa59c8c438c5255478187595, type: 3}
+  sideTablePrefab: {fileID: 8269674534605417559, guid: 969b7880a597c684193c3c2deea7091d, type: 3}
+  sofaPrefab: {fileID: 272270236953894599, guid: 67a72aa1e58efd342b3146d28dc0341d, type: 3}
+  tablePrefab: {fileID: 916457976635652632, guid: a4aa6493027efe54d85f0f3438a5426d, type: 3}
+  tvPrefab: {fileID: 8361838263604601741, guid: 1a7358f3f3881674bbf601aca3921611, type: 3}
+  vasePrefab: {fileID: 1549216932452399049, guid: 834bf9bfb550f2e408de3649780b169a, type: 3}
 --- !u!114 &1601283220351138351
 MonoBehaviour:
   m_ObjectHideFlags: 0
