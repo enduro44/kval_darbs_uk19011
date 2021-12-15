@@ -365,12 +365,13 @@ namespace GameManagerData
                 yield return new WaitForSeconds(0.5f);
                 EmptyActiveSocketController.TurnOffAllForSpecificHome(home.GetComponent<HomeControllerObject>().controllerID);
             }
-            Debug.Log("Adding furniture");
             //Adding furniture
             foreach (var furniture in _furnitureLoadData.Furniture)
             {
                 instantiateLoadedData.LoadSavedFurniture(furniture);
             }
+            
+            RoomController.ToggleGrabOffForGrabbableRooms();
             
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();

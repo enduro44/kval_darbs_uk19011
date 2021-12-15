@@ -1,0 +1,151 @@
+﻿// using System.Collections.Generic;
+// using System.Runtime.CompilerServices;
+// using GameManagerData.objClasses;
+// using UnityEngine;
+// using UnityEngine.XR.Interaction.Toolkit;
+//
+// namespace Controllers
+// {
+//     //Class controls if the room can be picked up by the player or not
+//     public class RoomController : MonoBehaviour
+//     {
+//         public static List<GameObject> GrabbableRooms = new List<GameObject>();
+//         private static XRGrabInteractable _grabber;
+//         private bool _hasObjectL;
+//         private bool _hasObjectR;
+//         private bool _hasObjectC;
+//
+//         void Awake()
+//         {
+//             _grabber = gameObject.GetComponent<XRGrabInteractable>();
+//             GameObject box = gameObject.transform.GetChild(0).gameObject;
+//             GameObject grandChildObjL = box.transform.GetChild(1).gameObject;
+//             GameObject grandChildObjR = box.transform.GetChild(2).gameObject;
+//             GameObject grandChildObjC = box.transform.GetChild(3).gameObject;
+//             GameObject left = grandChildObjL.transform.GetChild(0).gameObject;
+//             GameObject right = grandChildObjR.transform.GetChild(0).gameObject;
+//             GameObject ceiling = grandChildObjC.transform.GetChild(0).gameObject;
+//             XRSocketInteractor socketL = left.GetComponent<XRSocketInteractor>();
+//             XRSocketInteractor socketR = right.GetComponent<XRSocketInteractor>();
+//             XRSocketInteractor socketC = ceiling.GetComponent<XRSocketInteractor>();
+//             socketL.selectEntered.AddListener(EnteredL);
+//             socketL.selectExited.AddListener(ExitedL);
+//             socketR.selectEntered.AddListener(EnteredR);
+//             socketR.selectExited.AddListener(ExitedR);
+//             socketC.selectEntered.AddListener(EnteredC);
+//             socketC.selectExited.AddListener(ExitedC);
+//         }
+//
+//         private void EnteredL(SelectEnterEventArgs args)
+//         {
+//             _hasObjectL = true;
+//             ToggleGrab();
+//             
+//             GameObject obj = GetObject(args.interactable);
+//             Debug.Log("Room added to list" + obj.name);
+//             GrabbableRooms.Add(obj);
+//             GrabbableRooms.Remove(gameObject);
+//         }
+//         
+//         private void ExitedL(SelectExitEventArgs args)
+//         {
+//             _hasObjectL = false;
+//             ToggleGrab();
+//             
+//             GameObject obj = GetObject(args.interactable);
+//             Debug.Log("Room removed from list" + obj.name);
+//             GrabbableRooms.Remove(obj);
+//             ProcessBaseRoom(gameObject);
+//         }
+//         private void EnteredR(SelectEnterEventArgs args)
+//         {
+//             _hasObjectR = true;
+//             ToggleGrab();
+//             
+//             GameObject obj = GetObject(args.interactable);
+//             Debug.Log("Room added to list" + obj.name);
+//             GrabbableRooms.Add(obj);
+//             GrabbableRooms.Remove(gameObject);
+//         }
+//         
+//         private void ExitedR(SelectExitEventArgs args)
+//         {
+//             _hasObjectR = false;
+//             ToggleGrab();
+//             
+//             GameObject obj = GetObject(args.interactable);
+//             Debug.Log("Room removed from list" + obj.name);
+//             GrabbableRooms.Remove(obj);
+//             ProcessBaseRoom(gameObject);
+//         }
+//         private void EnteredC(SelectEnterEventArgs args)
+//         {
+//             _hasObjectC = true;
+//             ToggleGrab();
+//             
+//             GameObject obj = GetObject(args.interactable);
+//             Debug.Log("Room added to list" + obj.name);
+//             GrabbableRooms.Add(obj);
+//             GrabbableRooms.Remove(gameObject);
+//         }
+//         
+//         private void ExitedC(SelectExitEventArgs args)
+//         {
+//             _hasObjectC = false;
+//             ToggleGrab();
+//             
+//             GameObject obj = GetObject(args.interactable);
+//             Debug.Log("Room removed from list" + obj.name);
+//             GrabbableRooms.Remove(obj);
+//             ProcessBaseRoom(gameObject);
+//         }
+//         
+//         private GameObject GetObject(XRBaseInteractable args)
+//         {
+//             return args.gameObject;
+//         }
+//
+//         private void ToggleGrab()
+//         {
+//             if (_hasObjectL || _hasObjectR || _hasObjectC)
+//             {
+//                 //Changing the layer to "Socket" only, so the player can't pick up the room
+//                 _grabber.interactionLayerMask = (1 << 6);
+//                 return;
+//             }
+//             //Changing the layer back to "Socket" and "Player"
+//             _grabber.interactionLayerMask = (1<<6) | (1<<7);
+//         }
+//
+//         private void ProcessBaseRoom(GameObject obj)
+//         {
+//             if (_hasObjectL || _hasObjectR || _hasObjectC)
+//             {
+//                 Debug.Log("BASE room has object in socket, not adding to list" + obj.name);
+//                 return;
+//             }
+//             Debug.Log("BASE room added to list" + obj.name);
+//             GrabbableRooms.Add(gameObject);
+//         }
+//
+//         
+//         public static void ToggleGrabOffForGrabbableRooms()
+//         {
+//             foreach (var room in GrabbableRooms)
+//             {
+//                 Debug.Log("Toggling OFF for room in the list");
+//                 _grabber.interactionLayerMask = (1 << 6);
+//             }
+//         }
+//         
+//         public static void ToggleGrabOnForGrabbableRooms()
+//         {
+//             foreach (var room in GrabbableRooms)
+//             {
+//                 Debug.Log("Toggling ON for room in the list");
+//                 _grabber.interactionLayerMask = (1<<6) | (1<<7);
+//             }
+//         }
+//     }
+// }
+//

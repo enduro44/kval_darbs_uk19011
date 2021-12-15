@@ -20,7 +20,6 @@ namespace GameManagerData
             
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
             asyncOperation.allowSceneActivation = false;
-            Debug.Log("Pro :" + asyncOperation.progress);
             while (!asyncOperation.isDone)
             {
                 if (asyncOperation.progress >= 0.9f)

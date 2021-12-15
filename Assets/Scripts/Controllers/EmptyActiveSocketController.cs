@@ -47,7 +47,6 @@ namespace Controllers
 
         public static void TurnOnAllSockets()
         {
-            Debug.Log("Turning all on");
             foreach (var data in EmptyActiveSocketData)
             {
                 if (data.isControllerEmpty)
@@ -64,7 +63,6 @@ namespace Controllers
         
         public static void TurnOffAllSockets()
         {
-            Debug.Log("Turning all off");
             foreach (var data in EmptyActiveSocketData)
             {
                 if (data.isControllerEmpty)
@@ -100,7 +98,6 @@ namespace Controllers
         
         public static void TurnOffAllForSpecificHome(string controllerID)
         {
-            Debug.Log("Turning off for specific");
             foreach (var data in EmptyActiveSocketData)
             {
                 if (data.isControllerEmpty)
@@ -114,7 +111,6 @@ namespace Controllers
                 {
                     foreach (var socket in data.emptyActiveSockets)
                     {
-                        Debug.Log("Turning off socket");
                         _controller.TurnOffSocket(socket);
                     }
                 }

@@ -75,6 +75,7 @@ namespace MenuSystem.Wrist
         public void PlayButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
+            //RoomController.ToggleGrabOffForGrabbableRooms();
             //Also need to make rooms not grabby
             //Same for furniture
         }
@@ -82,7 +83,6 @@ namespace MenuSystem.Wrist
         public void SaveButton()
         {
             //Need to make button unpressable and show that game is saved
-            Debug.Log("Saving game button pressed");
             GameManager gameManager = GameManager.Instance();
             gameManager.SaveGame();   
         }
@@ -90,6 +90,7 @@ namespace MenuSystem.Wrist
         public void BuildButton()
         {
             EmptyActiveSocketController.TurnOnAllSockets();
+            RoomController.ToggleGrabOnForGrabbableRooms();
            // _fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
            // _fadeController.FadeIn(buildMenuUI);
@@ -100,6 +101,7 @@ namespace MenuSystem.Wrist
         public void FurnishButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
+            RoomController.ToggleGrabOffForGrabbableRooms();
             //_fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
             //_fadeController.FadeIn(furnishMenuUI);
@@ -110,6 +112,7 @@ namespace MenuSystem.Wrist
         public void PlayablesButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
+            RoomController.ToggleGrabOffForGrabbableRooms();
            // _fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
             //_fadeController.FadeIn(playablesUI);

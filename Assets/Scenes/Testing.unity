@@ -163,6 +163,7 @@ Transform:
   - {fileID: 1609159820}
   - {fileID: 1124501798}
   - {fileID: 1993722408}
+  - {fileID: 899584721}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -300,6 +301,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 18448130450562824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 18448130450562824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -367,6 +372,30 @@ PrefabInstance:
       propertyPath: m_RotationAction.m_SingletonActionBindings.Array.data[0].m_Id
       value: 0e11f956-b2aa-42b5-af22-6e3f39d7064a
       objectReference: {fileID: 0}
+    - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.008369406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0049043447
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.008369406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.52087
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.018782
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.145
+      objectReference: {fileID: 0}
     - target: {fileID: 1967462451341613339, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -407,9 +436,265 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3150652272538045331, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.9914093
+      objectReference: {fileID: 0}
     - target: {fileID: 5033376231007139887, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.size
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[1].type
+      value: BedBlue(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[2].type
+      value: BedBrown(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[3].type
+      value: BedGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[4].type
+      value: BedPink(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[5].type
+      value: BedWhite(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[6].type
+      value: SideTable(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[7].type
+      value: SideTableGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[8].type
+      value: Carpet(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[9].type
+      value: CarpetBeige(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[2].type
+      value: Oven2(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[3].type
+      value: Sink(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[4].type
+      value: Stand(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[5].type
+      value: Stand2(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[6].type
+      value: Stand3(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[7].type
+      value: Microwave(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[8].type
+      value: EggTable(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[9].type
+      value: EggTableDark(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[10].type
+      value: CarpetBrown(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[11].type
+      value: CarpetDark(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBedroomFurniture.Array.data[12].type
+      value: CarpetPink(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[10].type
+      value: EggTableLight(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[11].type
+      value: EggStool(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[12].type
+      value: EggStoolDark(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[13].type
+      value: EggStoolLight(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[14].type
+      value: Table(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[15].type
+      value: TableGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[16].type
+      value: TableRed(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[17].type
+      value: TableWhite(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[18].type
+      value: SmallTable(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[19].type
+      value: SmallTableGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[20].type
+      value: SmallTableRed(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[21].type
+      value: SmallTableWhite(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[22].type
+      value: Chair(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[23].type
+      value: ChairDark(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[24].type
+      value: ChairGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[25].type
+      value: ChairLight(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[26].type
+      value: ChairWhite(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[27].type
+      value: ChairSmall(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[28].type
+      value: ChairSmallDark(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[29].type
+      value: ChairSmallGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[30].type
+      value: ChairSmallLight(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[31].type
+      value: ChairSmallRed(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[32].type
+      value: ChairSmallWhite(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[33].type
+      value: BinGreene(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[34].type
+      value: BinWhite(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllKitchenFurniture.Array.data[35].type
+      value: BinYellow(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[1].type
+      value: SofaBeige(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[2].type
+      value: SofaGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[3].type
+      value: Couch(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[4].type
+      value: CouchBeige(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[5].type
+      value: CouchGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[6].type
+      value: TV(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[7].type
+      value: SideTable(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[8].type
+      value: SideTableGreen(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[9].type
+      value: Carpet(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[10].type
+      value: CarpetBeige(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[11].type
+      value: CarpetBrown(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[12].type
+      value: CarpetDark(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[13].type
+      value: CarpetPink(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllLivingroomFurniture.Array.data[14].type
+      value: CarpetPink(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 5137597531923281123, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_AnchorMax.y
@@ -639,6 +924,101 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60d046484d1cb204ca87b9d8bdacc380, type: 3}
+--- !u!1 &899584720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899584721}
+  - component: {fileID: 899584724}
+  - component: {fileID: 899584723}
+  - component: {fileID: 899584722}
+  m_Layer: 0
+  m_Name: PlaneCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899584721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899584720}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.18827772, y: -5.32, z: 10.678436}
+  m_LocalScale: {x: 25.634909, y: 2.5750597, z: 25.764923}
+  m_Children: []
+  m_Father: {fileID: 217641535}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &899584722
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899584720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &899584723
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899584720}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &899584724
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899584720}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1066019973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8189908515701687848, guid: 60d046484d1cb204ca87b9d8bdacc380, type: 3}

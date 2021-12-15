@@ -41,6 +41,7 @@ namespace Controllers
         private void Entered(SelectEnterEventArgs args)
         {
             _emptyActiveSocketData.isControllerEmpty = false;
+            //gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask = (1 << 6);
             
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(1, 1, 1);
@@ -52,11 +53,16 @@ namespace Controllers
             _socketController.ToogleConnectedTag(obj);
             _socketVisualOnEmpty.SetActive(false);
             _socketVisualNotEmpty.SetActive(true);
+            
+            GameObject room = args.interactable.gameObject;
+            Debug.Log("Room added to list" + room.name);
+            RoomController.GrabbableRooms.Add(room);
         }
     
         private void Exited(SelectExitEventArgs args)
         {
             _emptyActiveSocketData.isControllerEmpty = true;
+            //gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask = (1<<6) | (1<<7);
             
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
@@ -68,6 +74,10 @@ namespace Controllers
             _socketController.ToogleConnectedTag(obj);
             _socketVisualOnEmpty.SetActive(true);
             _socketVisualNotEmpty.SetActive(false);
+            
+            GameObject room = args.interactable.gameObject;
+            Debug.Log("Room removed from list" + room.name);
+            RoomController.GrabbableRooms.Remove(room);
         }
         
         private void ToggleSockets(XRBaseInteractable obj)

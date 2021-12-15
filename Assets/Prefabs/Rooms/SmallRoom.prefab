@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 192
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ede302c46be5cc4abb6205701e1ca7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controllerID: 
 --- !u!1001 &1744742851273865969
 PrefabInstance:
   m_ObjectHideFlags: 0
