@@ -75,7 +75,8 @@ namespace MenuSystem.Wrist
         public void PlayButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
-            //RoomController.ToggleGrabOffForGrabbableRooms();
+            RoomController.ToggleGrabOffForGrabbableRooms();
+            FurnitureController.SetAllFurnitureStatic();
             //Also need to make rooms not grabby
             //Same for furniture
         }
@@ -91,6 +92,7 @@ namespace MenuSystem.Wrist
         {
             EmptyActiveSocketController.TurnOnAllSockets();
             RoomController.ToggleGrabOnForGrabbableRooms();
+            FurnitureController.SetAllFurnitureStatic();
            // _fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
            // _fadeController.FadeIn(buildMenuUI);
@@ -102,6 +104,7 @@ namespace MenuSystem.Wrist
         {
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
+            FurnitureController.SetAllFurnitureNonStatic();
             //_fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
             //_fadeController.FadeIn(furnishMenuUI);
@@ -113,6 +116,7 @@ namespace MenuSystem.Wrist
         {
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
+            FurnitureController.SetAllFurnitureStatic();
            // _fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
             //_fadeController.FadeIn(playablesUI);

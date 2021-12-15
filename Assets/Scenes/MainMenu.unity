@@ -510,6 +510,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 18448130450562824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -171.87
+      objectReference: {fileID: 0}
     - target: {fileID: 113555804437578079, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Name
       value: XR Rig no hands

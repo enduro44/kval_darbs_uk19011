@@ -10,15 +10,15 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ControllerNotInteractable
   - Water
   - UI
   - Socket
   - Player
   - Controller
   - Ground
-  - 
-  - 
+  - FurnitureNonInteractable
+  - Inventory
   - 
   - 
   - 

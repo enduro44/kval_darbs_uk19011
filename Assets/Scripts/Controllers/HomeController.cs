@@ -17,9 +17,13 @@ namespace Controllers
         private GameObject _socketVisualNotEmpty;
         private EmptyActiveSocketData _emptyActiveSocketData;
 
+        private static GameObject _root;
+
 
         private void Awake()
         {
+            _root = gameObject.transform.root.gameObject;
+            
             _socketController = new SocketController();
             _homeSocket = gameObject.GetComponent<XRSocketInteractor>();
             _homeSocket.selectEntered.AddListener(Entered);
@@ -41,7 +45,7 @@ namespace Controllers
         private void Entered(SelectEnterEventArgs args)
         {
             _emptyActiveSocketData.isControllerEmpty = false;
-            //gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask = (1 << 6);
+            SetControllerNotGrabbable();
             
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(1, 1, 1);
@@ -62,7 +66,7 @@ namespace Controllers
         private void Exited(SelectExitEventArgs args)
         {
             _emptyActiveSocketData.isControllerEmpty = true;
-            //gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask = (1<<6) | (1<<7);
+            SetControllerGrabbable();
             
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
@@ -92,6 +96,16 @@ namespace Controllers
             _socketController.TurnOffSocketLeft(obj);
             _socketController.TurnOffSocketRight(obj);
             _socketController.TurnOffSocketCeiling(obj);
+        }
+
+        public static void SetControllerGrabbable()
+        {
+            _root.transform.root.GetComponent<XRGrabInteractable>().interactionLayerMask = 1<<8;
+        }
+        
+        public static void SetControllerNotGrabbable()
+        {
+            _root.transform.root.GetComponent<XRGrabInteractable>().interactionLayerMask = 1<<3;
         }
     }
 }

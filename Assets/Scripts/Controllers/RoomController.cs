@@ -42,8 +42,6 @@ namespace Controllers
             GameObject obj = args.interactable.gameObject;
             GrabbableRooms.Add(obj);
             GrabbableRooms.Remove(gameObject);
-            
-            Debug.Log(GrabbableRooms.Count);
         }
         
         private void ExitedL(SelectExitEventArgs args)
@@ -54,8 +52,6 @@ namespace Controllers
             GameObject room = args.interactable.gameObject;
             GrabbableRooms.Remove(room);
             ProcessBaseRoom(gameObject);
-            
-            Debug.Log(GrabbableRooms.Count);
         }
         private void EnteredR(SelectEnterEventArgs args)
         {
@@ -65,8 +61,6 @@ namespace Controllers
             GameObject obj = args.interactable.gameObject;
             GrabbableRooms.Add(obj);
             GrabbableRooms.Remove(gameObject);
-            
-            Debug.Log(GrabbableRooms.Count);
         }
         
         private void ExitedR(SelectExitEventArgs args)
@@ -77,8 +71,6 @@ namespace Controllers
             GameObject room = args.interactable.gameObject;
             GrabbableRooms.Remove(room);
             ProcessBaseRoom(gameObject);
-            
-            Debug.Log(GrabbableRooms.Count);
         }
         private void EnteredC(SelectEnterEventArgs args)
         {
@@ -88,8 +80,6 @@ namespace Controllers
             GameObject obj = args.interactable.gameObject;
             GrabbableRooms.Add(obj);
             GrabbableRooms.Remove(gameObject);
-            
-            Debug.Log(GrabbableRooms.Count);
         }
         
         private void ExitedC(SelectExitEventArgs args)
@@ -100,8 +90,6 @@ namespace Controllers
             GameObject room = args.interactable.gameObject;
             GrabbableRooms.Remove(room);
             ProcessBaseRoom(gameObject);
-            
-            Debug.Log(GrabbableRooms.Count);
         }
 
         private void ToggleGrab()

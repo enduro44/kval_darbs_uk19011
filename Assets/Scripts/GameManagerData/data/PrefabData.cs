@@ -62,7 +62,7 @@ namespace GameManagerData.data
         public GameObject chairDarkPrefab;
         public const string CHAIR_GREEN = "ChairGreen(Clone)";
         public GameObject chairGreenPrefab;
-        public const string CHAIR_LIGHT = "ChairLigh(Clone)";
+        public const string CHAIR_LIGHT = "ChairLight(Clone)";
         public GameObject chairLightPrefab;
         public const string CHAIR_WHITE = "ChairWhite(Clone)";
         public GameObject chairWhitePrefab;
@@ -73,7 +73,7 @@ namespace GameManagerData.data
         public GameObject chairSmallDarkPrefab;
         public const string CHAIR_SMALL_GREEN = "ChairSmallGreen(Clone)";
         public GameObject chairSmallGreenPrefab;
-        public const string CHAIR_SMALL_LIGHT = "ChairSmallLigh(Clone)";
+        public const string CHAIR_SMALL_LIGHT = "ChairSmallLight(Clone)";
         public GameObject chairSmallLightPrefab;
         public const string CHAIR_SMALL_RED = "ChairSmallRed(Clone)";
         public GameObject chairSmallRedPrefab;
@@ -309,7 +309,7 @@ namespace GameManagerData.data
                 case VASE:
                     return vasePrefab;
                 default:
-                    Debug.Log("Type doesn't match, default furniture provided");
+                    Debug.Log("Type doesn't match, default furniture provided: " + type);
                     return bedPrefab;
             }
         }

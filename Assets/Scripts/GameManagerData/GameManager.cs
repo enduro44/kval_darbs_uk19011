@@ -372,6 +372,7 @@ namespace GameManagerData
             }
             
             RoomController.ToggleGrabOffForGrabbableRooms();
+            FurnitureController.SetAllFurnitureStatic();
             
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();

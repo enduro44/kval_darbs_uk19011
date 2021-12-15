@@ -68,6 +68,7 @@ namespace Controllers
                 if (data.isControllerEmpty)
                 {
                     _controller.TurnOffControllerSocket(data.controllerSocket);
+                    
                     break;
                 }
                 foreach (var socket in data.emptyActiveSockets)
