@@ -25,6 +25,7 @@ namespace GameManagerData
         private PlayerTransformData _data;
         private List<HomeLoadData> _homeLoadData = new List<HomeLoadData>();
         private FurnitureLoadData _furnitureLoadData = new FurnitureLoadData();
+        private List<PlayableData> _playableLoadData = new List<PlayableData>();
         public InstantiateLoadedData instantiateLoadedData;
 
         [Header("Constants")] 
@@ -38,6 +39,9 @@ namespace GameManagerData
         
         private const string FURNITURE_SUB = "/furniture";
         private const string FURNITURE_COUNT_SUB = "/furniture.count";
+        
+        private const string PLAYABLE_SUB = "/playable";
+        private const string PLAYABLE_COUNT_SUB = "/playable.count";
 
         private void Awake()
         {
@@ -65,6 +69,9 @@ namespace GameManagerData
             
             //Saving Furniture
             SaveFurnitureData(formatter, folder);
+            
+            //Saving Playables
+            SavePlayableData(formatter, folder);
         }
 
         private void SavePlayer(BinaryFormatter formatter, string folder)
@@ -127,6 +134,24 @@ namespace GameManagerData
             {
                 FileStream stream = new FileStream(path + i, FileMode.Create);
                 FurnitureData data = new FurnitureData(GameData.Furniture[i]);
+
+                formatter.Serialize(stream, data);
+                stream.Close();
+            }
+        }
+        
+        private void SavePlayableData(BinaryFormatter formatter, string folder)
+        {
+            string path = Application.persistentDataPath + "/" + folder + PLAYABLE_SUB + SceneManager.GetActiveScene().buildIndex;
+            string countPath = Application.persistentDataPath + "/" + folder + PLAYABLE_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+
+            FileStream countStream = new FileStream(countPath, FileMode.Create);
+            formatter.Serialize(countStream, GameData.Playables.Count);
+
+            for (int i = 0; i < GameData.Playables.Count; i++)
+            {
+                FileStream stream = new FileStream(path + i, FileMode.Create);
+                PlayableData data = new PlayableData(GameData.Playables[i]);
 
                 formatter.Serialize(stream, data);
                 stream.Close();
@@ -195,6 +220,9 @@ namespace GameManagerData
             
             //Loading Furniture
             LoadFurniture(formatter, _saveNameData);
+            
+            //Loading Playables
+            LoadPlayables(formatter, _saveNameData);
 
             //Creating loaded data in the scene
             InstantiateLoadedData();
@@ -337,6 +365,48 @@ namespace GameManagerData
                 }
             }
         }
+        
+        private void LoadPlayables(BinaryFormatter formatter, string saveName)
+        {
+            string path = Application.persistentDataPath + "/" + saveName + PLAYABLE_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+            string countPath = Application.persistentDataPath + "/" + saveName + PLAYABLE_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+
+            int playableCount = 0;
+            if (File.Exists(countPath))
+            {
+                FileStream countStream = new FileStream(countPath, FileMode.Open);
+                playableCount = (int) formatter.Deserialize(countStream);
+                countStream.Close();
+            }
+            else
+            {
+                Debug.LogError("Path not found " + countPath);
+                return;
+            }
+
+            for (int i = 0; i < playableCount; i++)
+            {
+                if (File.Exists(path + i))
+                {
+                    FileStream stream = new FileStream(path + i, FileMode.Open);
+                    PlayableData data = formatter.Deserialize(stream) as PlayableData;
+
+                    stream.Close();
+
+                    if (data == null)
+                    {
+                        return;
+                    }
+                    
+                    _playableLoadData.Add(data);
+                }
+                else
+                {
+                    Debug.LogError("Path not found " + path + i);
+                    return;
+                }
+            }
+        }
 
         private void HandleParentlessRoom(RoomData data)
         {
@@ -371,12 +441,19 @@ namespace GameManagerData
                 instantiateLoadedData.LoadSavedFurniture(furniture);
             }
             
+            //Adding playables
+            foreach (var playable in _playableLoadData)
+            {
+                instantiateLoadedData.LoadSavedPlayable(playable);
+            }
+            
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureStatic();
             
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();
             playerController.SetPlayerPos(_data);
+            
             //Setting back the variable to false
             _loadGame = false;
         }

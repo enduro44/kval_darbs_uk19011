@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4373695266261099599}
   - component: {fileID: 2302564587983519726}
   - component: {fileID: 2438670129303656102}
+  - component: {fileID: 267187367891405921}
   - component: {fileID: 1067972424452498002}
   m_Layer: 0
   m_Name: EggTableLightWood
@@ -264,8 +265,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6222389, y: 0.014445565, z: 0.6194172}
-  m_Center: {x: -0.0009873377, y: 0.021892443, z: -0.007850963}
+  m_Size: {x: 0.57877016, y: 0.029119067, z: 0.029188452}
+  m_Center: {x: -0.0033611518, y: 0.014555691, z: -0.0009069563}
+--- !u!65 &267187367891405921
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312008590978091787}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.046464488, y: 0.029119067, z: 0.5749099}
+  m_Center: {x: -0.0017255244, y: 0.014555691, z: 0.010693624}
 --- !u!114 &1067972424452498002
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -55,5 +55,21 @@ namespace GameManagerData
             roomTransform.localScale = furnitureSize;
             roomTransform.eulerAngles = furnitureRot;
         }
+        
+        public void LoadSavedPlayable(PlayableData data)
+        {
+            prefabData = PrefabData.Instance();
+            Vector3 playablePos = new Vector3(data.position[0], data.position[1], data.position[2]);
+            Vector3 playableSize = new Vector3(data.size[0], data.size[1], data.size[2]);
+            Vector3 playableRot = new Vector3(data.rotation[0], data.rotation[1], data.rotation[2]);
+                    
+            string type = data.type;
+            GameObject prefab = prefabData.GetPlayablePrefab(type);
+            GameObject room = Instantiate(prefab, playablePos, Quaternion.identity);
+                    
+            Transform roomTransform = room.transform;
+            roomTransform.localScale = playableSize;
+            roomTransform.eulerAngles = playableRot;
+        }
     }
 }

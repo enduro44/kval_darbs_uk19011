@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4821517076363279345}
   - component: {fileID: 3327434476636812049}
   - component: {fileID: 5714050870553589938}
+  - component: {fileID: 6281825237063209545}
   m_Layer: 0
   m_Name: SmallTable
   m_TagString: Untagged
@@ -218,8 +219,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 17, z: 20}
-  m_Center: {x: 0, y: 8.5, z: 0}
+  m_Size: {x: 19.999998, y: 2.0906272, z: 19.999998}
+  m_Center: {x: 0, y: 15.954777, z: 0}
 --- !u!114 &5714050870553589938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +233,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099ace4368b47864a9285ff918cd3e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6281825237063209545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4822556120944527843}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.689901, y: 17.000296, z: 6.3414626}
+  m_Center: {x: 0.0691561, y: 8.500036, z: 0.3379315}

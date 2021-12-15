@@ -5489,41 +5489,131 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllKitchenFurniture:
   - type: Fridge(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: e212a303d03a4894ea6706fa6f0d934b, type: 3}
   - type: Oven(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 83b953dcd1cce184093df570f9349380, type: 3}
+  - type: Oven2(Clone)
+    icon: {fileID: 21300000, guid: 04e2e560f7a614a4d9aa7eede06c33b0, type: 3}
+  - type: Sink(Clone)
+    icon: {fileID: 21300000, guid: 5166ca03f51805840ae29020854f7ed0, type: 3}
+  - type: Stand(Clone)
+    icon: {fileID: 21300000, guid: 992f641036b96df43aaf8d5b7b31c3df, type: 3}
+  - type: Stand2(Clone)
+    icon: {fileID: 21300000, guid: c69aa4767c19ffb4882c2b92d39a4477, type: 3}
+  - type: Stand3(Clone)
+    icon: {fileID: 21300000, guid: 5496eb8ab9e10524582f69001401df93, type: 3}
+  - type: Microwave(Clone)
+    icon: {fileID: 21300000, guid: 13d8cacca2b347745b3dbfebd9ca5058, type: 3}
   - type: EggTable(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 0cc816bd938bbbd478f76027418be9b4, type: 3}
+  - type: EggTableDark(Clone)
+    icon: {fileID: 21300000, guid: b00de21c444add8439d23ec6997a990d, type: 3}
+  - type: EggTableLight(Clone)
+    icon: {fileID: 21300000, guid: 459cebba8a1dd774383403bf55256ef0, type: 3}
   - type: EggStool(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: cb2365d96deafdf489f07c396d58bd4b, type: 3}
+  - type: EggStoolDark(Clone)
+    icon: {fileID: 21300000, guid: d60293ff2249a5044829211a111dda0e, type: 3}
+  - type: EggStoolLight(Clone)
+    icon: {fileID: 21300000, guid: c2edf4b3ba26055428af2c8a35843bbf, type: 3}
   - type: Table(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 89c4cfa25356e7e41be9e571893d7257, type: 3}
+  - type: TableGreen(Clone)
+    icon: {fileID: 21300000, guid: 25b62013a06f80141a7086e2ba693904, type: 3}
+  - type: TableRed(Clone)
+    icon: {fileID: 21300000, guid: 592585ce88e36d64f9bf6e2353f2afcb, type: 3}
+  - type: TableWhite(Clone)
+    icon: {fileID: 21300000, guid: b8ffa874bdb5fa7408e841a24890ad88, type: 3}
+  - type: SmallTable(Clone)
+    icon: {fileID: 21300000, guid: ae282f9c55473dd47a694a37ff4a4721, type: 3}
+  - type: SmallTableGreen(Clone)
+    icon: {fileID: 21300000, guid: 32d845820e2a6f64bb88ee6d28464640, type: 3}
+  - type: SmallTableRed(Clone)
+    icon: {fileID: 21300000, guid: 9513d0653b09d8b43b762d13771cdaa8, type: 3}
+  - type: SmallTableWhite(Clone)
+    icon: {fileID: 21300000, guid: c3cdc33f230cdcc429f3e519b3dd2245, type: 3}
   - type: Chair(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 0593864c1021f9641b3f4842210e74c7, type: 3}
+  - type: ChairDark(Clone)
+    icon: {fileID: 21300000, guid: e2333d03b5704d14db5bdaba1a6c10e5, type: 3}
+  - type: ChairGreen(Clone)
+    icon: {fileID: 21300000, guid: 8cbf30443cc386043b7b60357e7d6021, type: 3}
+  - type: ChairLight(Clone)
+    icon: {fileID: 21300000, guid: 63735aaf6d2d80a468f32186a1f327e6, type: 3}
+  - type: ChairWhite(Clone)
+    icon: {fileID: 21300000, guid: 525304bd2732ea84d86727675cd6e9c9, type: 3}
+  - type: ChairSmall(Clone)
+    icon: {fileID: 21300000, guid: 928d9d029a9ce7f43a9e3ad04b03f5e1, type: 3}
+  - type: ChairSmallDark(Clone)
+    icon: {fileID: 21300000, guid: 5c1f3aa9597a5664db94de02f1adbce7, type: 3}
+  - type: ChairSmallGreen(Clone)
+    icon: {fileID: 21300000, guid: b3a49a4fef71e494297ea251b43169ec, type: 3}
+  - type: ChairSmallLight(Clone)
+    icon: {fileID: 21300000, guid: 3e7c3224d7ad1da4094de686c240a709, type: 3}
+  - type: ChairSmallRed(Clone)
+    icon: {fileID: 21300000, guid: f05519e6dcaa2544881e36373c66a099, type: 3}
+  - type: ChairSmallWhite(Clone)
+    icon: {fileID: 21300000, guid: 16a875c17fd218b46a710e6995599444, type: 3}
+  - type: BinGreen(Clone)
+    icon: {fileID: 21300000, guid: 1ccebf684d96eb34bab1f26275734134, type: 3}
+  - type: BinWhite(Clone)
+    icon: {fileID: 21300000, guid: 0398ca979a729e644bd7155911d5c327, type: 3}
+  - type: BinYellow(Clone)
+    icon: {fileID: 21300000, guid: bdf3bf0325b8f4c46abfb2d4051d5a91, type: 3}
   AllLivingroomFurniture:
   - type: Sofa(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: c725afb8e4879544c8ae0e5c1f9082d8, type: 3}
+  - type: SofaBeige(Clone)
+    icon: {fileID: 21300000, guid: c55091ca31fd9014d9c847395dc2744e, type: 3}
+  - type: SofaGreen(Clone)
+    icon: {fileID: 21300000, guid: d2440363203adee4d900bc4ddc5ecabe, type: 3}
+  - type: Couch(Clone)
+    icon: {fileID: 21300000, guid: 3cb70abec41dc1a42bbc3ac429e2c939, type: 3}
+  - type: CouchBeige(Clone)
+    icon: {fileID: 21300000, guid: fddb34c86ca9f864d831540397c65e73, type: 3}
+  - type: CouchGreen(Clone)
+    icon: {fileID: 21300000, guid: e9940c62863d4c64f809363cb55f102d, type: 3}
   - type: TV(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: c3a061199e3d7ba49a3da33960acb9d7, type: 3}
   - type: SideTable(Clone)
-    icon: {fileID: 0}
-  - type: Carpet(Clone)
-    icon: {fileID: 0}
-  - type: Cabinet(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 47ed5db498146e54a9aefdedb0237333, type: 3}
+  - type: SideTableGreen(Clone)
+    icon: {fileID: 21300000, guid: 5638d9e5e754c874bbfb64bf52c677a3, type: 3}
   AllBedroomFurniture:
   - type: Bed(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 0a0a30b151511e04c88f76fb67365761, type: 3}
+  - type: BedBlue(Clone)
+    icon: {fileID: 21300000, guid: aa6e270364cfbaa42adde7f58a2800f0, type: 3}
+  - type: BedBrown(Clone)
+    icon: {fileID: 21300000, guid: 6ba169c42c2f62441865d1762256b02e, type: 3}
+  - type: BedGreen(Clone)
+    icon: {fileID: 21300000, guid: fd30f1dc141dd9942894791f1a1c5ae8, type: 3}
+  - type: BedPink(Clone)
+    icon: {fileID: 21300000, guid: 0a928eee6bb59114aafbed56eaa6c6ea, type: 3}
+  - type: BedWhite(Clone)
+    icon: {fileID: 21300000, guid: 5ca7e83a8bcc7d746bbff54e1f2404f9, type: 3}
   - type: SideTable(Clone)
-    icon: {fileID: 0}
-  - type: Carpet(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 47ed5db498146e54a9aefdedb0237333, type: 3}
+  - type: SideTableGreen(Clone)
+    icon: {fileID: 21300000, guid: 5638d9e5e754c874bbfb64bf52c677a3, type: 3}
   AllBathroomFurniture: []
   AllAccessories:
   - type: Vase(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 8111f985a6e61464384853e77ea53be3, type: 3}
+  - type: VasePink(Clone)
+    icon: {fileID: 21300000, guid: ed7259fd85ca9c542ad5704f8875707f, type: 3}
   - type: Cushion(Clone)
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 887d73b18587a3645b6daa04cf1aeb3b, type: 3}
+  - type: Carpet(Clone)
+    icon: {fileID: 21300000, guid: 458fd09cfc5e1cd43820b8673df920ae, type: 3}
+  - type: CarpetBeige(Clone)
+    icon: {fileID: 21300000, guid: 6988208993d87f3498f2fd74af853638, type: 3}
+  - type: CarpetBrown(Clone)
+    icon: {fileID: 21300000, guid: 6fc79e70514f2c141afbd1b2bdb19a47, type: 3}
+  - type: CarpetDark(Clone)
+    icon: {fileID: 21300000, guid: 99791e2377134344cb188e3c5bce6dac, type: 3}
+  - type: CarpetPink(Clone)
+    icon: {fileID: 21300000, guid: 19fececcd0a1f554180ce653e93c8381, type: 3}
   controller: {fileID: 5508302717985309843}
 --- !u!1 &3531780864278866757
 GameObject:
@@ -7694,10 +7784,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6d3ebb83224eae9a863df71c2e8005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllDolls: []
-  AllMonsters: []
-  AllPets: []
-  AllCars: []
+  AllDolls:
+  - type: DollBarbie(Clone)
+    icon: {fileID: 21300000, guid: 4a6434692d7ef42498625bfd346bd5d0, type: 3}
+  - type: DollBoy(Clone)
+    icon: {fileID: 21300000, guid: 0c8921983a70cbe418e50a2014ad8a52, type: 3}
+  - type: DollFemale(Clone)
+    icon: {fileID: 21300000, guid: 6bb131fa128ea6e40b139635a041ad9e, type: 3}
+  - type: DollMale(Clone)
+    icon: {fileID: 21300000, guid: 2ed43a03d7d46a040b9e134beada7440, type: 3}
+  AllMonsters:
+  - type: MonsterBat(Clone)
+    icon: {fileID: 21300000, guid: 06f4a51d2ce47cc4d876aba9dbbfbbbf, type: 3}
+  AllPets:
+  - type: AnimalCat
+    icon: {fileID: 21300000, guid: 74c4a6c88d73be04eb53b729cbbaf49b, type: 3}
+  AllCars:
+  - type: CarAmbulance(Clone)
+    icon: {fileID: 21300000, guid: 97859bbea9d081548b5c4f4f0183b41e, type: 3}
+  - type: CarBlue(Clone)
+    icon: {fileID: 21300000, guid: 5f8e963dd9e52b747984e0e0f1a0d758, type: 3}
+  - type: CarHotdogTrack(Clone)
+    icon: {fileID: 21300000, guid: 536e00743dcb5554fb94f895de4396fe, type: 3}
   AllAdditionalPlayables: []
   controller: {fileID: 5508302717985309843}
 --- !u!1 &5514454692596555218
@@ -7826,12 +7934,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
+    m_Left: -30
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 10
+  m_Spacing: -65
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

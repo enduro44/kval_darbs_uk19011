@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 915278204093384714}
   - component: {fileID: 6951214317897973994}
   - component: {fileID: 78428641845021513}
+  - component: {fileID: 3595532402725662304}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2176
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -218,8 +219,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 17, z: 20}
-  m_Center: {x: 0, y: 8.5, z: 0}
+  m_Size: {x: 19.999998, y: 2.0265055, z: 20}
+  m_Center: {x: 0, y: 15.986841, z: 0}
 --- !u!114 &78428641845021513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +233,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099ace4368b47864a9285ff918cd3e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3595532402725662304
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916457976635652632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.689901, y: 17.000296, z: 6.3414626}
+  m_Center: {x: 0.0691561, y: 8.500036, z: 0.3379315}

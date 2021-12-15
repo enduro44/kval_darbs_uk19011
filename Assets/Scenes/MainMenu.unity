@@ -314,6 +314,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6829699074738534699, guid: 8c2de9ea808278d40bc6396dab1ab490, type: 3}
     - target: {fileID: 1601283220351138337, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
+      propertyPath: vasePinkPrefab
+      value: 
+      objectReference: {fileID: 4855774084726936690, guid: 1e8b859f0cb94fe478aa4e77d4602c68, type: 3}
+    - target: {fileID: 1601283220351138337, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
       propertyPath: binYellowPrefab
       value: 
       objectReference: {fileID: 3761089943387635691, guid: 6e5c243c51c96ca4482737483d372b73, type: 3}

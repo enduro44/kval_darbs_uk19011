@@ -33,7 +33,7 @@ namespace Controllers
             _socketVisualNotEmpty = _homeSocket.transform.GetChild(1).gameObject;
 
             //Each new controller gets a structure to save all active empty sockets that it has attached to it
-            _emptyActiveSocketData = new EmptyActiveSocketData(gameObject.transform.root.gameObject.GetComponent<HomeControllerObject>().controllerID, _homeSocket);
+            _emptyActiveSocketData = new EmptyActiveSocketData(_root.GetComponent<HomeControllerObject>().controllerID, _homeSocket);
             EmptyActiveSocketController.AddData(_emptyActiveSocketData);
         }
         
@@ -51,7 +51,7 @@ namespace Controllers
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
             
-            obj.GetComponent<Room>().controllerID = gameObject.transform.root.gameObject.GetComponent<HomeControllerObject>().controllerID;
+            obj.GetComponent<Room>().controllerID = _root.GetComponent<HomeControllerObject>().controllerID;
             
             ToggleSockets(obj);
             _socketController.ToogleConnectedTag(obj);
@@ -59,7 +59,6 @@ namespace Controllers
             _socketVisualNotEmpty.SetActive(true);
             
             GameObject room = args.interactable.gameObject;
-            Debug.Log("Room added to list" + room.name);
             RoomController.GrabbableRooms.Add(room);
         }
     
@@ -80,7 +79,6 @@ namespace Controllers
             _socketVisualNotEmpty.SetActive(false);
             
             GameObject room = args.interactable.gameObject;
-            Debug.Log("Room removed from list" + room.name);
             RoomController.GrabbableRooms.Remove(room);
         }
         

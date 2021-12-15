@@ -66,19 +66,75 @@ MonoBehaviour:
   smallRoomPrefab: {fileID: 1235301399812593902, guid: 2c7a3259beead5445b78b0d25875a54d, type: 3}
   cornerRoomPrefab: {fileID: 4937979682333933710, guid: 56a2b50ea2c170f4e8ddb85931cd05cb, type: 3}
   bedPrefab: {fileID: 4937209086730978460, guid: 8799e2ed5a5f0b347a31d9e6b3f428e2, type: 3}
+  bedBluePrefab: {fileID: 5549469597886621799, guid: 028c60ebdbbb572439ca3a4d0d547864, type: 3}
+  bedBrownPrefab: {fileID: 6809312217431128381, guid: 47eb501160af73e458d75127d6232171, type: 3}
+  bedGreenPrefab: {fileID: 7250328518568757932, guid: 7f96834071952344fa7b077268a27435, type: 3}
+  bedPinkPrefab: {fileID: 5269983961859383458, guid: f3ce1a10f01c72743860119c31322ff5, type: 3}
+  bedWhitePrefab: {fileID: 9205041194167217787, guid: 33f3a51be6335f7469b9fe76c87387eb, type: 3}
+  binGreenPrefab: {fileID: 7064842677356604339, guid: 3fab155bd1c242f469a27b22125f0254, type: 3}
+  binWhitePrefab: {fileID: 8409511049016684446, guid: d56053095ec673a418a6873f3f0e232d, type: 3}
+  binYellowPrefab: {fileID: 3761089943387635691, guid: 6e5c243c51c96ca4482737483d372b73, type: 3}
   cabinetPrefab: {fileID: 290892237285451516, guid: 1f0e89628173ba94b8402139cdbec85f, type: 3}
   carpetPrefab: {fileID: 3935092761946603694, guid: 6e17582eda06bd845b550e79fab90035, type: 3}
+  carpetBeigePrefab: {fileID: 3074872741208468874, guid: c01f849d6c89d2045a7b21a80ba0b0b6, type: 3}
+  carpetBrownPrefab: {fileID: 8691174089307883522, guid: dd830f606029d20468416dd53240cb1b, type: 3}
+  carpetDarkPrefab: {fileID: 4238311088072104429, guid: 567368b4f93d13f44913ec75a851bddc, type: 3}
+  carpetPinkPrefab: {fileID: 4599385880790701528, guid: 870c74eda53fc7a4684a2167861ae0b7, type: 3}
   chairPrefab: {fileID: 2155284438831481846, guid: 4079c0f866904a445850a9e8baf3b654, type: 3}
+  chairDarkPrefab: {fileID: 4700846786892955522, guid: 3f55d5ccaf6c3904ba5f6a9fac25a952, type: 3}
+  chairGreenPrefab: {fileID: 7131412674045925587, guid: d5e33425b32a5344d93f229cb680749d, type: 3}
+  chairLightPrefab: {fileID: 8406763748547348912, guid: 6582ec0c416012f4f9a4cfdf07df018f, type: 3}
+  chairWhitePrefab: {fileID: 7742134160124482538, guid: eaabf9d3261e7a144bc06798cb0e7e7e, type: 3}
+  chairSmallPrefab: {fileID: 4929874394535937587, guid: 221916aeef2fe924f89da1f20b3e386e, type: 3}
+  chairSmallDarkPrefab: {fileID: 2664270787105906386, guid: 1dd3923cd9c266140bb4472a089f42f9, type: 3}
+  chairSmallGreenPrefab: {fileID: 198332363645490195, guid: 87f5ccaa0c99ea14abf619e7a9d7941d, type: 3}
+  chairSmallLightPrefab: {fileID: 9182086471122152803, guid: f56ab14ee3b3f62468c3a1d5232ff275, type: 3}
+  chairSmallRedPrefab: {fileID: 4219707913220158107, guid: f51a772aaca9d1a449ce66a9a8b750c2, type: 3}
+  chairSmallWhitePrefab: {fileID: 7076313863443948588, guid: b6d2dc0205e32a54cad4feab944f3a64, type: 3}
+  couchPrefab: {fileID: 1674530804843546942, guid: e0fc4e950e6211142809ac0d4b4c1ab2, type: 3}
+  couchBeigePrefab: {fileID: 356901767646816201, guid: 628afcf84004b134c8b4a4bb2da5bef0, type: 3}
+  couchGreenPrefab: {fileID: 315227074436757935, guid: 40014593d0ddf2743919adb2f05d3d58, type: 3}
   cushionPrefab: {fileID: 6482390083030497719, guid: 55a1b2d74dfe10c46889f2a44696659c, type: 3}
   eggStoolPrefab: {fileID: 8275172718231130557, guid: d610ae1193815354ba408c2dd5e9adb8, type: 3}
+  eggStoolDarkPrefab: {fileID: 8973912431478110038, guid: 2f62558ef470bc5438162a0034a71026, type: 3}
+  eggStoolLightPrefab: {fileID: 3837715114518807643, guid: 7427c9b47424ae84fa9ffcd10ba169b1, type: 3}
   eggTablePrefab: {fileID: 9078201446532042385, guid: 11a9428f22ceff949adc9297321f00bc, type: 3}
+  eggTableDarkPrefab: {fileID: 2118963471270339794, guid: f719a6c321594874ab772f7199a06603, type: 3}
+  eggTableLightPrefab: {fileID: 4312008590978091787, guid: 96dc7f136c6d2a741a76589025b8d5e3, type: 3}
+  microwavePrefab: {fileID: 8385778416426642853, guid: e7fe47c6acfc38449967821eb6cfc249, type: 3}
   fridgePrefab: {fileID: 1911223095679575680, guid: bcc0f4a19cb6fb548b9f00a9adf770fc, type: 3}
   ovenPrefab: {fileID: 1798041982626222137, guid: 08a6c9e2fa59c8c438c5255478187595, type: 3}
+  oven2Prefab: {fileID: 1319664901409524637, guid: 522fca7aae3d05344b8f8a07db4b86cf, type: 3}
   sideTablePrefab: {fileID: 8269674534605417559, guid: 969b7880a597c684193c3c2deea7091d, type: 3}
+  sideTableGreenPrefab: {fileID: 6865738611529441678, guid: 95db755a6cc9cf548b8a711eacc6ecb9, type: 3}
+  sinkPrefab: {fileID: 5862011864605352162, guid: 177a5567ff9cc704ab4e57f6b76aa5d2, type: 3}
+  smallTablePrefab: {fileID: 4822556120944527843, guid: 7b4d1fea6d0edbb4c845a921febe3a7b, type: 3}
+  smallTableGreenPrefab: {fileID: 7334843473832054675, guid: a3cf15d08b68522449c1943d4a7cd37e, type: 3}
+  smallTableRedPrefab: {fileID: 7419631956667279583, guid: 61a12b411a3fef742b506f644342dc19, type: 3}
+  smallTableWhitePrefab: {fileID: 1600666571736320536, guid: 24f18bdc45af36d429df55a73d497469, type: 3}
   sofaPrefab: {fileID: 272270236953894599, guid: 67a72aa1e58efd342b3146d28dc0341d, type: 3}
+  sofaBeigePrefab: {fileID: 7780756429915846005, guid: 4ae8b8cdad760d7498a0221fbdf24158, type: 3}
+  sofaGreenPrefab: {fileID: 3425633847589253020, guid: b2eaf04ed7bb36d4d90b0af579e705eb, type: 3}
+  standPrefab: {fileID: 652904324529192996, guid: 2f6fc580b11b26a4d886d3ac076c8d0d, type: 3}
+  stand2Prefab: {fileID: 212324936143188356, guid: de62f8c43de29d045b611cf1ee5d0c7f, type: 3}
+  stand3Prefab: {fileID: 1552985508826173862, guid: 1c9ba2b17f1bf6844a4bb65a8f47eb49, type: 3}
   tablePrefab: {fileID: 916457976635652632, guid: a4aa6493027efe54d85f0f3438a5426d, type: 3}
+  tableGreenPrefab: {fileID: 3981575685127185464, guid: b4be4670d75e8474b89f6de3e8c2b457, type: 3}
+  tableRedPrefab: {fileID: 6829699074738534699, guid: 8c2de9ea808278d40bc6396dab1ab490, type: 3}
+  tableWhitePrefab: {fileID: 6959225611774956964, guid: 1eb33100762ed1d46b1fbfc1bd1e9452, type: 3}
   tvPrefab: {fileID: 8361838263604601741, guid: 1a7358f3f3881674bbf601aca3921611, type: 3}
   vasePrefab: {fileID: 1549216932452399049, guid: 834bf9bfb550f2e408de3649780b169a, type: 3}
+  vasePinkPrefab: {fileID: 4855774084726936690, guid: 1e8b859f0cb94fe478aa4e77d4602c68, type: 3}
+  animalCatPrefab: {fileID: 1363276578740230249, guid: 260f164dbb6702f488720d5dbbb0bd51, type: 3}
+  carAmbulancePrefab: {fileID: 8317328272320933739, guid: dc645dee2cbc7324bb740b273b645d90, type: 3}
+  carBluePrefab: {fileID: 7863996129437797904, guid: e63209f3b0bf07c40800ad6c77d040d3, type: 3}
+  carHotdogTrackPrefab: {fileID: 1427245066010357096, guid: 5cea87b95d83deb438ed5067cfc6752d, type: 3}
+  dollBarbiePrefab: {fileID: 2971530436293909716, guid: 482333c6027742c4aa9a71ca352993c7, type: 3}
+  dollBoyPrefab: {fileID: 4223806906011100545, guid: e9afc7c368652b44cb8a728fa4a0012e, type: 3}
+  dollFemalePrefab: {fileID: 3094321881555408835, guid: 9b26aa9bd36eb00498fc52fd20e74038, type: 3}
+  dollMalePrefab: {fileID: 2659081063989963369, guid: 9a9c8782d3920514fac860d1da3430b5, type: 3}
+  dollPolicePrefab: {fileID: 2218883769994284736, guid: d0cf9be61b5a64b47806d4bc87dc3d12, type: 3}
+  monsterBatPrefab: {fileID: 667334950646129871, guid: 87e984052eaaae648a49cbbedc605a0d, type: 3}
 --- !u!114 &1601283220351138351
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -159,6 +159,35 @@ namespace GameManagerData.data
         
         public const string VASE = "Vase(Clone)";
         public GameObject vasePrefab;
+        public const string VASE_PINK = "VasePink(Clone)";
+        public GameObject vasePinkPrefab;
+        
+        [Header("Playables")]
+        public const string ANIMAL_CAT = "AnimalCat(Clone)";
+        public GameObject animalCatPrefab;
+        
+        public const string CAR_AMBULANCE = "CarAmbulance(Clone)";
+        public GameObject carAmbulancePrefab;
+        public const string CAR_BLUE = "CarBlue(Clone)";
+        public GameObject carBluePrefab;
+        public const string CAR_HOTDOG_TRACK = "CarHotdogTrack(Clone)";
+        public GameObject carHotdogTrackPrefab;
+        
+        
+        public const string DOLL_BARBIE = "DollBarbie(Clone)";
+        public GameObject dollBarbiePrefab;
+        public const string DOLL_BOY = "DollBoy(Clone)";
+        public GameObject dollBoyPrefab;
+        public const string DOLL_FEMALE = "DollFemale(Clone)";
+        public GameObject dollFemalePrefab;
+        public const string DOLL_MALE = "DollMale(Clone)";
+        public GameObject dollMalePrefab;
+        public const string DOLL_POLICE = "DollPolice(Clone)";
+        public GameObject dollPolicePrefab;
+        
+        public const string MONSTER_BAT = "MonsterBat(Clone)";
+        public GameObject monsterBatPrefab;
+
 
         void Awake() {
             _instance = this;
@@ -181,7 +210,7 @@ namespace GameManagerData.data
                 case CONTROLLER:
                     return homeControllerPrefab;
                 default:
-                    Debug.Log("Type doesn't match, default room provided");
+                    Debug.Log("Type doesn't match, default room provided: "+ type);
                     return largeRoomPrefab;
             }
         }
@@ -308,6 +337,8 @@ namespace GameManagerData.data
                     return tvPrefab;
                 case VASE:
                     return vasePrefab;
+                case VASE_PINK:
+                    return vasePinkPrefab;
                 default:
                     Debug.Log("Type doesn't match, default furniture provided: " + type);
                     return bedPrefab;
@@ -318,9 +349,29 @@ namespace GameManagerData.data
         {
             switch (type)
             {
+                case ANIMAL_CAT:
+                    return animalCatPrefab;
+                case CAR_AMBULANCE:
+                    return carAmbulancePrefab;
+                case CAR_BLUE:
+                    return carBluePrefab;
+                case CAR_HOTDOG_TRACK:
+                    return carHotdogTrackPrefab;
+                case DOLL_BARBIE:
+                    return dollBarbiePrefab;
+                case DOLL_BOY:
+                    return dollBoyPrefab;
+                case DOLL_FEMALE:
+                    return dollFemalePrefab;
+                case DOLL_MALE:
+                    return dollMalePrefab;
+                case DOLL_POLICE:
+                    return dollPolicePrefab;
+                case MONSTER_BAT:
+                    return monsterBatPrefab;
                 default:
-                    Debug.Log("Type doesn't match, default furniture provided");
-                    return bedPrefab;
+                    Debug.Log("Type doesn't match, default playable provided: " + type);
+                    return animalCatPrefab;
             }
         }
     }

@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 8834206778135192021}
   - component: {fileID: 6475981250052160116}
   - component: {fileID: 7493129302369915708}
+  - component: {fileID: 3006221418189672063}
   - component: {fileID: -3965094380134258744}
   m_Layer: 0
   m_Name: EggTable
@@ -345,8 +346,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6222389, y: 0.014445565, z: 0.6194172}
-  m_Center: {x: -0.0009873377, y: 0.021892443, z: -0.007850963}
+  m_Size: {x: 0.57877016, y: 0.029119067, z: 0.029188452}
+  m_Center: {x: -0.0033611518, y: 0.014555691, z: -0.0009069563}
+--- !u!65 &3006221418189672063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9078201446532042385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.046464488, y: 0.029119067, z: 0.5749099}
+  m_Center: {x: -0.0017255244, y: 0.014555691, z: 0.010693624}
 --- !u!114 &-3965094380134258744
 MonoBehaviour:
   m_ObjectHideFlags: 0
