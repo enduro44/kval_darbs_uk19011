@@ -92,16 +92,16 @@ namespace GameManagerData.data
         
         public const string EGG_STOOL = "EggStool(Clone)";
         public GameObject eggStoolPrefab;
-        public const string EGG_STOOL_DARK = "EggStoolDark(Clone)";
+        public const string EGG_STOOL_DARK = "EggStoolDarkWood(Clone)";
         public GameObject eggStoolDarkPrefab;
-        public const string EGG_STOOL_LIGHT = "EggStoolLight(Clone)";
+        public const string EGG_STOOL_LIGHT = "EggStoolLightWood(Clone)";
         public GameObject eggStoolLightPrefab;
         
         public const string EGG_TABLE = "EggTable(Clone)";
         public GameObject eggTablePrefab;
-        public const string EGG_TABLE_DARK = "EggTableDark(Clone)";
+        public const string EGG_TABLE_DARK = "EggTableDarkWood(Clone)";
         public GameObject eggTableDarkPrefab;
-        public const string EGG_TABLE_LIGHT = "EggTableLight(Clone)";
+        public const string EGG_TABLE_LIGHT = "EggTableLightWood(Clone)";
         public GameObject eggTableLightPrefab;
         
         public const string MICROWAVE = "Microwave(Clone)";

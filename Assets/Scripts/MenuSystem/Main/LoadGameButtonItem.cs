@@ -1,3 +1,4 @@
+using System.IO;
 using System.Security.Cryptography;
 using GameManagerData;
 using TMPro;
@@ -29,7 +30,7 @@ namespace MenuSystem.Main
 
         public void OnDeleteButtonClick()
         {
-            FileUtil.DeleteFileOrDirectory(Application.persistentDataPath + "/" + saveName);
+            Directory.Delete(Application.persistentDataPath + "/" + saveName, true);
             Destroy(gameObject);
         }
     }

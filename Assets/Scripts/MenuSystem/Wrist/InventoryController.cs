@@ -11,9 +11,9 @@ namespace MenuSystem.Wrist
         private static InventoryController _instance;
         private XRSocketInteractor _socketI;
         private SocketController _controller;
-        private GameObject _objInInventory;
+        private static GameObject _objInInventory;
         
-        public GameObject inventoryObject;
+        public static GameObject inventoryObject;
         public Transform spawnPoint;
         private GameObject _newRoom;
         void Awake()
@@ -24,6 +24,8 @@ namespace MenuSystem.Wrist
             _socketI.selectEntered.AddListener(Entered);
             _socketI.selectEntered.AddListener(GetObject);
             _socketI.selectExited.AddListener(Exited);
+            
+            inventoryObject = gameObject;
         }
         
         public static InventoryController Instance() {
@@ -44,10 +46,7 @@ namespace MenuSystem.Wrist
 
         private void Exited(SelectExitEventArgs args)
         {
-            //TODO: Might not need exited listener at all? Depends on other objects I will have
-            // XRBaseInteractable obj = args.interactable;
-            // Vector3 scaleChange = new Vector3(1, 1, 1); 
-            // obj.transform.localScale = scaleChange;
+            _objInInventory = null;
         }
 
         public void InstantiateNewObject(string objectType, string objectCategory)
@@ -86,6 +85,20 @@ namespace MenuSystem.Wrist
         {
             XRBaseInteractable interactable = args.interactable;
             _objInInventory = interactable.gameObject;
+        }
+        
+        public static void HideInventory()
+        {
+            if (!_objInInventory)
+            {
+                Destroy(_objInInventory);
+            }
+            inventoryObject.SetActive(false);
+        }
+        
+        public static void ShowInventory()
+        {
+            inventoryObject.SetActive(true);
         }
     }
 }

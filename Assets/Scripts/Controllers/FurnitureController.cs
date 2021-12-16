@@ -1,4 +1,5 @@
 ﻿using GameManagerData;
+using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
@@ -19,7 +20,7 @@ namespace Controllers
             foreach (var furniture in GameData.Furniture)
             {
                 furniture.gameObject.isStatic = false;
-                furniture.gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask = (1 << 7) | (1 << 10);
+                furniture.gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask = (1 << 7);
             }
         }
     }

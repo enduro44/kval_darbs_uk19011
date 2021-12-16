@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using GameManagerData.data;
+using UnityEngine.InputSystem;
 
 namespace Controllers
 {
@@ -61,6 +62,36 @@ namespace Controllers
             };
 
             return playerData;
+        }
+
+        public void IncreasePlayerHeight(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                Transform playerTransform = playerObject.transform;
+                Vector3 playerPosition = playerObject.transform.position;
+                float playerHeight = playerTransform.position.y;
+                if (playerHeight <= 3)
+                {
+                    playerPosition.y = playerHeight + 0.2f;
+                    playerTransform.position = playerPosition;
+                }
+            }
+        }
+        
+        public void DecreasePlayerHeight(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                Transform playerTransform = playerObject.transform;
+                Vector3 playerPosition = playerObject.transform.position;
+                float playerHeight = playerTransform.position.y;
+                if (playerHeight >= -1)
+                {
+                    playerPosition.y = playerHeight - 0.2f;
+                    playerTransform.position = playerPosition;
+                }
+            }
         }
     }
 }

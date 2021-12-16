@@ -70,6 +70,8 @@ namespace MenuSystem.Wrist
             exitToMainUI.SetActive(false);
             exitUI.SetActive(false);
             backButton.SetActive(false);
+            ScrollViewController.HideScrollView();
+            InventoryController.HideInventory();
         }
 
         public void PlayButton()
@@ -77,8 +79,10 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureStatic();
-            //Also need to make rooms not grabby
-            //Same for furniture
+            PlayableController.SetAllPlayablesNonStatic();
+            ScrollViewController.DestroyPreviousData();
+            ScrollViewController.HideScrollView();
+            InventoryController.HideInventory();
         }
         
         public void SaveButton()
@@ -93,11 +97,15 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOnAllSockets();
             RoomController.ToggleGrabOnForGrabbableRooms();
             FurnitureController.SetAllFurnitureStatic();
+            PlayableController.SetAllPlayablesStatic();
+            ScrollViewController.DestroyPreviousData();
            // _fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
            // _fadeController.FadeIn(buildMenuUI);
             buildMenuUI.SetActive(true);
             backButton.SetActive(true);
+            ScrollViewController.ShowScrollView();
+            InventoryController.ShowInventory();
         }
         
         public void FurnishButton()
@@ -105,11 +113,15 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNonStatic();
+            PlayableController.SetAllPlayablesStatic();
+            ScrollViewController.DestroyPreviousData();
             //_fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
             //_fadeController.FadeIn(furnishMenuUI);
             furnishMenuUI.SetActive(true);
             backButton.SetActive(true);
+            ScrollViewController.ShowScrollView();
+            InventoryController.ShowInventory();
         }
         
         public void PlayablesButton()
@@ -117,11 +129,16 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureStatic();
+            PlayableController.SetAllPlayablesNonStatic();
+            
+            ScrollViewController.DestroyPreviousData();
            // _fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
             //_fadeController.FadeIn(playablesUI);
             playablesUI.SetActive(true);
             backButton.SetActive(true);
+            ScrollViewController.ShowScrollView();
+            InventoryController.ShowInventory();
         }
         
         public void BackToMenuButton()
@@ -131,17 +148,24 @@ namespace MenuSystem.Wrist
             playablesUI.SetActive(false); 
             mainMenuUI.SetActive(true);
             backButton.SetActive(false);
+            ScrollViewController.DestroyPreviousData();
+            ScrollViewController.HideScrollView();
+            InventoryController.HideInventory();
             //_fadeController.FadeIn(mainMenuUI);
         }
         
         public void ExitToMainButton()
         {
+            ScrollViewController.HideScrollView();
+            InventoryController.HideInventory();
             GameManager gameManager = GameManager.Instance();
             gameManager.LoadNewScene("MainMenu");
         }
         
         public void ExitButton()
         {
+            ScrollViewController.HideScrollView();
+            InventoryController.HideInventory();
             #if UNITY_EDITOR
                 // Application.Quit() does not work in the editor so
                 // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game

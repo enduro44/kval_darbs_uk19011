@@ -17,12 +17,12 @@ TagManager:
   - Player
   - Controller
   - Ground
-  - FurnitureNonInteractable
+  - ObjectNonInteractable
   - Inventory
   - Playable
   - Furniture
-  - 
-  - 
+  - Underground
+  - Rooms
   - 
   - 
   - 

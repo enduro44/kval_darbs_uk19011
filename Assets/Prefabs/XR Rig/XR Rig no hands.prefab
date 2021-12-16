@@ -111,6 +111,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f270ac81-275d-48de-ad61-d1569ed139f3
     m_ActionName: UI/Menu
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a232b20b-ece5-4daf-9370-d724b00adb9d
+    m_ActionName: HeightController/IncreaseHeight
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9886df7d-6060-4afb-a8ec-95169cd38c53
+    m_ActionName: HeightController/DecreaseHeight
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -7973,7 +7981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120d396939714f2891e778c557bfc5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contentParent: {fileID: 18448130450562824}
   objectButtonPrefab: {fileID: 6857189512943842489, guid: f681591c5880afc409dc23d0b6fe50d2, type: 3}
 --- !u!1 &5567609676597395664
 GameObject:
@@ -9188,7 +9195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d897ba513a273d41aa73d8f5572cb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryObject: {fileID: 6644659854285890642}
   spawnPoint: {fileID: 8292766285261290485}
 --- !u!1 &6688359794650937739
 GameObject:

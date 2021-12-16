@@ -1,7 +1,5 @@
-using System.Linq;
 using GameManagerData.objClasses;
 using UnityEngine;
-using UnityEngine.InputSystem.Switch;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MenuSystem.Wrist
@@ -12,7 +13,7 @@ namespace MenuSystem.Wrist
         public PrefabIcon[] AllAccessories;
         
         public ScrollViewController controller;
-        
+
         public void PopulateKitchenFurnitureData()
         {
             controller.PopulateData(AllKitchenFurniture, TYPE);

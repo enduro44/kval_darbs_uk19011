@@ -8,7 +8,7 @@
                 {
                     "name": "Menu",
                     "type": "Button",
-                    "id": "f270ac81-275d-48de-ad61-d1569ed139f3",
+                    "id": "fb99cdee-24b9-44c5-8699-4cfd8a3f57f6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -17,8 +17,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "873b938a-d6b8-4eb1-ac67-15002a3985f2",
-                    "path": "<XRSimulatedController>{LeftHand}/menuButton",
+                    "id": "2c6f1ecf-33e1-4d41-90b5-cd2f80ddf47a",
+                    "path": "<OculusTouchController>{LeftHand}/menu",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -28,12 +28,80 @@
                 },
                 {
                     "name": "",
-                    "id": "04d4a0e5-fdb0-4c29-809e-bed9b16bd1c5",
-                    "path": "<OculusTouchController>{LeftHand}/menu",
+                    "id": "d90e25ba-5266-4f9e-a10e-d47451ff8c7e",
+                    "path": "<XRSimulatedController>{LeftHand}/menuButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "HeightController",
+            "id": "84f0b1e9-24f4-407f-ae72-0dcf15387ef4",
+            "actions": [
+                {
+                    "name": "IncreaseHeight",
+                    "type": "Button",
+                    "id": "27ffec50-3606-402d-86b0-de30ef2652fc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DecreaseHeight",
+                    "type": "Button",
+                    "id": "db16ceca-d307-4fa6-9fe5-54534d0ba292",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "25daf586-6921-4087-ab5c-5864b3d5c4cc",
+                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseHeight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9baf398b-8bc7-4514-ab91-f98a6ed03a29",
+                    "path": "<XRSimulatedController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseHeight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "020b05b0-d978-4d10-8a20-7facf7886894",
+                    "path": "<OculusTouchController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseHeight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29120ad5-1e4d-4eeb-98e0-4fdad77d1f6a",
+                    "path": "<XRSimulatedController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseHeight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
