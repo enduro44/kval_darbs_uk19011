@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7822620749816956091}
   - component: {fileID: 5886789882043060006}
   - component: {fileID: 6508828323055403634}
+  - component: {fileID: 4759149698118182422}
   m_Layer: 12
   m_Name: DollBoy
   m_TagString: Untagged
@@ -221,6 +222,18 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &4759149698118182422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971530436293909716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e21c848db90455ca3573417d4365a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7816251691401143473
 PrefabInstance:
   m_ObjectHideFlags: 0

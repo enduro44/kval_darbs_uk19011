@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3094321881555408838}
   - component: {fileID: 3094321881555408837}
   - component: {fileID: 3094321881555408836}
+  - component: {fileID: -8765648362676024707}
   m_Layer: 12
   m_Name: DollFemale
   m_TagString: Untagged
@@ -221,6 +222,18 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &-8765648362676024707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3094321881555408835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e21c848db90455ca3573417d4365a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3094321880824953338
 PrefabInstance:
   m_ObjectHideFlags: 0

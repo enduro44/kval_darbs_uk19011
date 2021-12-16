@@ -30,7 +30,7 @@ namespace GameManagerData
             Vector3 roomPos = new Vector3(data.position[0], data.position[1], data.position[2]);
             Vector3 roomSize = new Vector3(data.size[0], data.size[1], data.size[2]);
             Vector3 roomRot = new Vector3(data.rotation[0], data.rotation[1], data.rotation[2]);
-                    
+            
             string type = data.type;
             GameObject prefab = prefabData.GetPrefab(type);
             GameObject room = Instantiate(prefab, roomPos, Quaternion.identity);
@@ -46,7 +46,7 @@ namespace GameManagerData
             Vector3 furniturePos = new Vector3(data.position[0], data.position[1], data.position[2]);
             Vector3 furnitureSize = new Vector3(data.size[0], data.size[1], data.size[2]);
             Vector3 furnitureRot = new Vector3(data.rotation[0], data.rotation[1], data.rotation[2]);
-                    
+            
             string type = data.type;
             GameObject prefab = prefabData.GetFurniturePrefab(type);
             GameObject room = Instantiate(prefab, furniturePos, Quaternion.identity);
@@ -62,7 +62,7 @@ namespace GameManagerData
             Vector3 playablePos = new Vector3(data.position[0], data.position[1], data.position[2]);
             Vector3 playableSize = new Vector3(data.size[0], data.size[1], data.size[2]);
             Vector3 playableRot = new Vector3(data.rotation[0], data.rotation[1], data.rotation[2]);
-                    
+            
             string type = data.type;
             GameObject prefab = prefabData.GetPlayablePrefab(type);
             GameObject room = Instantiate(prefab, playablePos, Quaternion.identity);

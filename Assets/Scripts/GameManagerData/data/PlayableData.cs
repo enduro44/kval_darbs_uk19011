@@ -1,8 +1,10 @@
-﻿using GameManagerData.objClasses;
+﻿using System;
+using GameManagerData.objClasses;
 using UnityEngine;
 
 namespace GameManagerData.data
 {
+    [Serializable]
     public class PlayableData
     {
         public string type;

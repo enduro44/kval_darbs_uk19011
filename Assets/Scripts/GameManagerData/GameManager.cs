@@ -56,6 +56,8 @@ namespace GameManagerData
         public void SaveGame()
         {
             string folder = PlayerData.GameID;
+            Directory.CreateDirectory(Application.persistentDataPath + "/" + folder);
+            
             BinaryFormatter formatter = new BinaryFormatter();
             
             //Saving Player 
@@ -134,6 +136,7 @@ namespace GameManagerData
             {
                 FileStream stream = new FileStream(path + i, FileMode.Create);
                 FurnitureData data = new FurnitureData(GameData.Furniture[i]);
+                Debug.Log(data.type);
 
                 formatter.Serialize(stream, data);
                 stream.Close();

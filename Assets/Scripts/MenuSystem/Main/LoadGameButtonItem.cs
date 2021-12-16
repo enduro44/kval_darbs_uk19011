@@ -1,5 +1,7 @@
+using System.Security.Cryptography;
 using GameManagerData;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 namespace MenuSystem.Main
@@ -7,7 +9,6 @@ namespace MenuSystem.Main
     public class LoadGameButtonItem : MonoBehaviour
     {
         [HideInInspector] public string saveName;
-        [HideInInspector] public MainMenu mainMenu;
 
         [SerializeField] public GameObject buttonText;
         private TextMeshProUGUI _textField;
@@ -16,6 +17,7 @@ namespace MenuSystem.Main
         {
             _textField = buttonText.GetComponent<TextMeshProUGUI>();
             _textField.text = saveName;
+            Debug.Log(saveName);
         }
 
         public void OnButtonClick()
@@ -23,6 +25,12 @@ namespace MenuSystem.Main
             GameManager gameManager = GameManager.Instance();
             PlayerData.GameID = saveName;
             gameManager.LoadGame(saveName);
+        }
+
+        public void OnDeleteButtonClick()
+        {
+            FileUtil.DeleteFileOrDirectory(Application.persistentDataPath + "/" + saveName);
+            Destroy(gameObject);
         }
     }
 }

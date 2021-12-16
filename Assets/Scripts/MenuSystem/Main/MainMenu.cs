@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using GameManagerData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,7 +40,6 @@ namespace MenuSystem.Main
         public void NewButton()
         {
             PlayerData.GameID = Guid.NewGuid().ToString();
-            Directory.CreateDirectory(Application.persistentDataPath + "/" + PlayerData.GameID);
             SceneManager.LoadScene("Testing");
         }
         public void LoadButton()
@@ -90,8 +90,6 @@ namespace MenuSystem.Main
             {
                 GameObject button = Instantiate(saveButtonPrefab, contentParent) as GameObject;
                 button.GetComponent<LoadGameButtonItem>().saveName = savedGames[i];
-                button.GetComponent<LoadGameButtonItem>().mainMenu = this;
-                Debug.Log(savedGames[i]);
             }
         }
     }

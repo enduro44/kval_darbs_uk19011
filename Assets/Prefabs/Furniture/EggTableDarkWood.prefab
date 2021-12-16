@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5430786416636735233}
   - component: {fileID: 3430194436791468900}
   - component: {fileID: 2113466780292469997}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TableLegs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 533856276958312831}
   - component: {fileID: 8852980894331819394}
   - component: {fileID: 2913113974458355083}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: EggTableDarkWood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118963471270339794}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 7759724487872939868}
   - component: {fileID: 2989278466211228581}
   - component: {fileID: 1595142396874401472}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TableTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

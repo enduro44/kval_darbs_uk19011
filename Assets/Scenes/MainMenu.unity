@@ -274,6 +274,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 652904324529192996, guid: 2f6fc580b11b26a4d886d3ac076c8d0d, type: 3}
     - target: {fileID: 1601283220351138337, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
+      propertyPath: stand1Prefab
+      value: 
+      objectReference: {fileID: 652904324529192996, guid: 2f6fc580b11b26a4d886d3ac076c8d0d, type: 3}
+    - target: {fileID: 1601283220351138337, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
       propertyPath: stand2Prefab
       value: 
       objectReference: {fileID: 212324936143188356, guid: de62f8c43de29d045b611cf1ee5d0c7f, type: 3}
@@ -289,6 +293,10 @@ PrefabInstance:
       propertyPath: bedPinkPrefab
       value: 
       objectReference: {fileID: 5269983961859383458, guid: f3ce1a10f01c72743860119c31322ff5, type: 3}
+    - target: {fileID: 1601283220351138337, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
+      propertyPath: dollBoyPrefab
+      value: 
+      objectReference: {fileID: 2971530436293909716, guid: 482333c6027742c4aa9a71ca352993c7, type: 3}
     - target: {fileID: 1601283220351138337, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
       propertyPath: bedBrownPrefab
       value: 
@@ -369,6 +377,10 @@ PrefabInstance:
       propertyPath: couchGreenPrefab
       value: 
       objectReference: {fileID: 315227074436757935, guid: 40014593d0ddf2743919adb2f05d3d58, type: 3}
+    - target: {fileID: 1601283220351138337, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
+      propertyPath: dollBarbiePrefab
+      value: 
+      objectReference: {fileID: 4223806906011100545, guid: e9afc7c368652b44cb8a728fa4a0012e, type: 3}
     - target: {fileID: 1601283220351138337, guid: 7b44d80fd74893f4f8f45cb3ae9db2c7, type: 3}
       propertyPath: smallTablePrefab
       value: 
@@ -684,8 +696,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 725548114}
+    - target: {fileID: 6978382141679909841, guid: 045ac47973c67da418a89e9d4f3ba7f3, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: -25
+      objectReference: {fileID: 0}
     - target: {fileID: 6978382141679909843, guid: 045ac47973c67da418a89e9d4f3ba7f3, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978382141861568995, guid: 045ac47973c67da418a89e9d4f3ba7f3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978382141861568996, guid: 045ac47973c67da418a89e9d4f3ba7f3, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6978382142166624967, guid: 045ac47973c67da418a89e9d4f3ba7f3, type: 3}

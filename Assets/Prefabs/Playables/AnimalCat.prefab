@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 6175259832864433667}
   - component: {fileID: 2415844906639718790}
   - component: {fileID: 6247213065955923076}
+  - component: {fileID: -42309946039178063}
   m_Layer: 12
   m_Name: AnimalCat
   m_TagString: Untagged
@@ -424,6 +425,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.036334608
   m_Center: {x: 0.0003014058, y: 0.13600904, z: 0.065853536}
+--- !u!114 &-42309946039178063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363276578740230249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e21c848db90455ca3573417d4365a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1754083722305418644
 GameObject:
   m_ObjectHideFlags: 0

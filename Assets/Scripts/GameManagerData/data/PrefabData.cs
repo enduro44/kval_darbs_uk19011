@@ -138,8 +138,8 @@ namespace GameManagerData.data
         public const string SOFA_GREEN = "SofaGreen(Clone)";
         public GameObject sofaGreenPrefab;
         
-        public const string STAND = "Stand(Clone)";
-        public GameObject standPrefab;
+        public const string STAND_1 = "Stand1(Clone)";
+        public GameObject stand1Prefab;
         public const string STAND_2 = "Stand2(Clone)";
         public GameObject stand2Prefab;
         public const string STAND_3 = "Stand3(Clone)";
@@ -319,8 +319,8 @@ namespace GameManagerData.data
                     return sofaBeigePrefab;
                 case SOFA_GREEN:
                     return sofaGreenPrefab;
-                case STAND:
-                    return standPrefab;
+                case STAND_1:
+                    return stand1Prefab;
                 case STAND_2:
                     return stand2Prefab;
                 case STAND_3:

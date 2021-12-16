@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8771092373687579296}
   - component: {fileID: 3718570061642685142}
   - component: {fileID: 1293833843780868827}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Couch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674530804843546942}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1

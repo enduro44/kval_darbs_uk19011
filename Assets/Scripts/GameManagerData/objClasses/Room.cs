@@ -1,6 +1,5 @@
 using Controllers;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 namespace GameManagerData.objClasses
 {
@@ -16,7 +15,7 @@ namespace GameManagerData.objClasses
         private void OnDestroy()
         {
             GameData.Rooms.Remove(this);
-            //RoomController.GrabbableRooms.Remove(gameObject);
+            RoomController.GrabbableRooms.Remove(gameObject);
         }
     }
 }
