@@ -409,6 +409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'XR Rig no hands '
       objectReference: {fileID: 0}
+    - target: {fileID: 359019610061688696, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 532156032784723238, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -561,6 +565,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3626241423295570005, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4259908025075571864, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_InvalidColorGradient.ctime0
       value: 0
@@ -703,7 +711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllKitchenFurniture.Array.data[13].type
-      value: EggStoolLightWoodClone)
+      value: EggStoolLightWood(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllKitchenFurniture.Array.data[14].type
@@ -961,122 +969,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: HeightController
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
-      value: 27ffec50-3606-402d-86b0-de30ef2652fc
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
-      value: db16ceca-d307-4fa6-9fe5-54534d0ba292
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
-      value: fb99cdee-24b9-44c5-8699-4cfd8a3f57f6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
-      value: HeightController/IncreaseHeight
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
-      value: HeightController/DecreaseHeight
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
-      value: UI/Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 724986266}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: IncreasePlayerHeight
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DecreasePlayerHeight
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MenuPressed
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Controllers.PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Controllers.PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuSystem.Wrist.WristMenu, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7435940466161548012, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.11518903
@@ -1161,9 +1053,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 33.9
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3560964688115914795, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
-    - {fileID: 7335568064067651196, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
 --- !u!114 &724986266 stripped
 MonoBehaviour:

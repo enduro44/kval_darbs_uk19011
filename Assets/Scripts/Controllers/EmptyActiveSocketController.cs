@@ -1,7 +1,5 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GameManagerData.data;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -9,22 +7,22 @@ namespace Controllers
 {
     public class EmptyActiveSocketController : MonoBehaviour
     {
-        public static List<EmptyActiveSocketData> EmptyActiveSocketData = new List<EmptyActiveSocketData>();
+        public static List<EmptyActiveSocketData> EmptyActiveSockets = new List<EmptyActiveSocketData>();
         private static SocketController _controller = new SocketController();
 
         public static void AddData(EmptyActiveSocketData data)
         {
-            EmptyActiveSocketData.Add(data);
+            EmptyActiveSockets.Add(data);
         }
         
         public static void RemoveData(EmptyActiveSocketData data)
         {
-            EmptyActiveSocketData.Remove(data);
+            EmptyActiveSockets.Remove(data);
         }
 
         public static void AddSocket(string controllerID, XRSocketInteractor socket)
         {
-            foreach (var data in EmptyActiveSocketData)
+            foreach (var data in EmptyActiveSockets)
             {
                 if (controllerID == data.controllerID)
                 {
@@ -36,7 +34,7 @@ namespace Controllers
         
         public static void RemoveSocket(string controllerID, XRSocketInteractor socket)
         {
-            foreach (var data in EmptyActiveSocketData)
+            foreach (var data in EmptyActiveSockets)
             {
                 if (controllerID == data.controllerID)
                 {
@@ -47,7 +45,7 @@ namespace Controllers
 
         public static void TurnOnAllSockets()
         {
-            foreach (var data in EmptyActiveSocketData)
+            foreach (var data in EmptyActiveSockets)
             {
                 if (data.isControllerEmpty)
                 {
@@ -63,7 +61,7 @@ namespace Controllers
         
         public static void TurnOffAllSockets()
         {
-            foreach (var data in EmptyActiveSocketData)
+            foreach (var data in EmptyActiveSockets)
             {
                 if (data.isControllerEmpty)
                 {
@@ -78,28 +76,9 @@ namespace Controllers
             }
         }
 
-        public static void TurnOnAllForSpecificHome(string controllerID)
-        {
-            foreach (var data in EmptyActiveSocketData)
-            {
-                if (data.isControllerEmpty)
-                {
-                    _controller.TurnOnControllerSocket(data.controllerSocket);
-                    break;
-                }
-                if (controllerID == data.controllerID)
-                {
-                    foreach (var socket in data.emptyActiveSockets)
-                    {
-                        _controller.TurnOnSocket(socket);
-                    }
-                }
-            }
-        }
-        
         public static void TurnOffAllForSpecificHome(string controllerID)
         {
-            foreach (var data in EmptyActiveSocketData)
+            foreach (var data in EmptyActiveSockets)
             {
                 if (data.isControllerEmpty)
                 {

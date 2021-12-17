@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using GameManagerData.data;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Controllers
 {
@@ -25,43 +26,45 @@ namespace Controllers
             playerObject.transform.position = playerPositionGameLoaded;
         }
 
-        public void SetPlayerPos(PlayerTransformData data)
+        public void SetPlayerPos(PlayerGameData gameData)
         {
-            Vector3 playerPos = new Vector3(data.position[0], data.position[1], data.position[2]);
-            Vector3 playerSize = new Vector3(data.size[0], data.size[1], data.size[2]);
-            Vector3 playerRot = new Vector3(data.rotation[0], data.rotation[1], data.rotation[2]);
+            Vector3 playerPos = new Vector3(gameData.position[0], gameData.position[1], gameData.position[2]);
+            Vector3 playerSize = new Vector3(gameData.size[0], gameData.size[1], gameData.size[2]);
+            Vector3 playerRot = new Vector3(gameData.rotation[0], gameData.rotation[1], gameData.rotation[2]);
             Transform playerTransform = playerObject.transform;
             playerTransform.position = playerPos;
             playerTransform.localScale = playerSize;
             playerTransform.eulerAngles = playerRot;
         }
 
-        public PlayerTransformData SetPlayerData()
+        public PlayerGameData SetPlayerData()
         {
-            PlayerTransformData playerData = new PlayerTransformData();
+            PlayerGameData playerGameData = new PlayerGameData();
+
+            playerGameData.sceneType = SceneManager.GetActiveScene().name;
             
             Vector3 playerPos = playerObject.transform.position;
             
-            playerData.position = new float[]
+            playerGameData.position = new float[]
             {
                 playerPos.x, playerPos.y, playerPos.z
             };
             
             Vector3 playerSize = playerObject.transform.lossyScale;
 
-            playerData.size = new float[]
+            playerGameData.size = new float[]
             {
                 playerSize.x, playerSize.y, playerSize.z
             };
             
             Vector3 playerRot = playerObject.transform.eulerAngles;
 
-            playerData.rotation = new float[]
+            playerGameData.rotation = new float[]
             {
                 playerRot.x, playerRot.y, playerRot.z
             };
 
-            return playerData;
+            return playerGameData;
         }
 
         public void IncreasePlayerHeight(InputAction.CallbackContext context)

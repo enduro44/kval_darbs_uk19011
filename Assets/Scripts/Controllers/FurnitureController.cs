@@ -1,12 +1,11 @@
 ﻿using GameManagerData;
-using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
 {
     public class FurnitureController
     {
-        public static void SetAllFurnitureStatic()
+        public static void SetAllFurnitureNotMovable()
         {
             foreach (var furniture in GameData.Furniture)
             {
@@ -15,7 +14,7 @@ namespace Controllers
             }
         }
         
-        public static void SetAllFurnitureNonStatic()
+        public static void SetAllFurnitureMovable()
         {
             foreach (var furniture in GameData.Furniture)
             {

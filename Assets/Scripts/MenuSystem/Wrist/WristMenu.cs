@@ -18,23 +18,12 @@ namespace MenuSystem.Wrist
         public GameObject exitToMainUI;
         public GameObject exitUI;
         public GameObject backButton;
-        
-        //dont know if I need it yet
-        private FadeController _fadeController;
-        
+
         public bool activeWristUI = true;
         
-        //This is for build/furnish/playables modes
         public GameObject inventoryObject;
         public XRSocketInteractor inventorySocket;
-        public Transform spawnPoint;
-        private GameObject _newRoom;
-        
-        private void Awake()
-        {
-            _fadeController = wristUI.AddComponent<FadeController>();
-        }
-        
+
         private void Start()
         {
             DisplayWristUI();
@@ -63,7 +52,6 @@ namespace MenuSystem.Wrist
             activeWristUI = true;
             
             mainMenuUI.SetActive(true);
-            //_fadeController.FadeIn(mainMenuUI);
             buildMenuUI.SetActive(false);
             furnishMenuUI.SetActive(false);
             playablesUI.SetActive(false);
@@ -78,7 +66,7 @@ namespace MenuSystem.Wrist
         {
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
-            FurnitureController.SetAllFurnitureStatic();
+            FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesNonStatic();
             ScrollViewController.DestroyPreviousData();
             ScrollViewController.HideScrollView();
@@ -96,12 +84,10 @@ namespace MenuSystem.Wrist
         {
             EmptyActiveSocketController.TurnOnAllSockets();
             RoomController.ToggleGrabOnForGrabbableRooms();
-            FurnitureController.SetAllFurnitureStatic();
+            FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesStatic();
             ScrollViewController.DestroyPreviousData();
-           // _fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
-           // _fadeController.FadeIn(buildMenuUI);
             buildMenuUI.SetActive(true);
             backButton.SetActive(true);
             ScrollViewController.ShowScrollView();
@@ -112,12 +98,10 @@ namespace MenuSystem.Wrist
         {
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
-            FurnitureController.SetAllFurnitureNonStatic();
+            FurnitureController.SetAllFurnitureMovable();
             PlayableController.SetAllPlayablesStatic();
             ScrollViewController.DestroyPreviousData();
-            //_fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
-            //_fadeController.FadeIn(furnishMenuUI);
             furnishMenuUI.SetActive(true);
             backButton.SetActive(true);
             ScrollViewController.ShowScrollView();
@@ -128,13 +112,11 @@ namespace MenuSystem.Wrist
         {
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
-            FurnitureController.SetAllFurnitureStatic();
+            FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesNonStatic();
-            
+
             ScrollViewController.DestroyPreviousData();
-           // _fadeController.FadeOut(mainMenuUI);
             mainMenuUI.SetActive(false);
-            //_fadeController.FadeIn(playablesUI);
             playablesUI.SetActive(true);
             backButton.SetActive(true);
             ScrollViewController.ShowScrollView();
@@ -151,7 +133,6 @@ namespace MenuSystem.Wrist
             ScrollViewController.DestroyPreviousData();
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
-            //_fadeController.FadeIn(mainMenuUI);
         }
         
         public void ExitToMainButton()
@@ -166,13 +147,8 @@ namespace MenuSystem.Wrist
         {
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
-            #if UNITY_EDITOR
-                // Application.Quit() does not work in the editor so
-                // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                Application.Quit();
-            #endif
+            GameManager gameManager = GameManager.Instance();
+            gameManager.QuitGame();
         }
     }
 }

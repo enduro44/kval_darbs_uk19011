@@ -4,10 +4,9 @@ using UnityEngine;
 namespace GameManagerData.data
 {
     [Serializable]
-    public class PlayerTransformData
+    public class PlayerGameData
     {
-        // public static string gameName;
-        // public static string sceneType;
+        public string sceneType;
         
         public float[] position;
         public float[] size;

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5253142948505166394}
   - component: {fileID: 9008616475985300338}
   - component: {fileID: 8575399344330863340}
-  - component: {fileID: 7335568064067651196}
   m_Layer: 0
   m_Name: XR Rig no hands
   m_TagString: Untagged
@@ -70,60 +69,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActionAssets:
   - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
---- !u!114 &7335568064067651196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113555804437578079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: bf2d978ccc10d2841af9b487641f6d3e, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7749137922378524649}
-        m_TargetAssemblyTypeName: WristMenu, Assembly-CSharp
-        m_MethodName: MenuPressed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f270ac81-275d-48de-ad61-d1569ed139f3
-    m_ActionName: UI/Menu
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a232b20b-ece5-4daf-9370-d724b00adb9d
-    m_ActionName: HeightController/IncreaseHeight
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9886df7d-6060-4afb-a8ec-95169cd38c53
-    m_ActionName: HeightController/DecreaseHeight
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &237309977909889462
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,7 +5301,6 @@ MonoBehaviour:
   activeWristUI: 1
   inventoryObject: {fileID: 6644659854285890642}
   inventorySocket: {fileID: 2206590970636498173}
-  spawnPoint: {fileID: 2462897359183450053}
 --- !u!1 &3337697378934888192
 GameObject:
   m_ObjectHideFlags: 0

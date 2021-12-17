@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using Controllers;
 using GameManagerData.data;
 using GameManagerData.objClasses;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using Application = UnityEngine.Application;
 
@@ -19,7 +22,7 @@ namespace GameManagerData
         [Header("Load data")]
         private string _saveNameData;
         private static bool _loadGame = false;
-        private PlayerTransformData _data;
+        private PlayerGameData _playerGameLoadData = new PlayerGameData();
         private List<HomeLoadData> _homeLoadData = new List<HomeLoadData>();
         private FurnitureLoadData _furnitureLoadData = new FurnitureLoadData();
         private List<PlayableData> _playableLoadData = new List<PlayableData>();
@@ -50,11 +53,18 @@ namespace GameManagerData
             return _instance;
         }
 
+        public void StartNewGame()
+        {
+            PlayerData.GameID = DateTime.Now.ToString("yyyy-MM-dd_HH-mm");
+            Directory.CreateDirectory(Application.persistentDataPath + "/" + PlayerData.GameID);
+            LoadNewScene("Testing");
+            
+        }
+
         public void SaveGame()
         {
             string folder = PlayerData.GameID;
-            Directory.CreateDirectory(Application.persistentDataPath + "/" + folder);
-            
+
             BinaryFormatter formatter = new BinaryFormatter();
             
             //Saving Player 
@@ -79,9 +89,9 @@ namespace GameManagerData
             
             FileStream stream = new FileStream(path, FileMode.Create);
             PlayerController playerController = PlayerController.Instance();
-            PlayerTransformData data = playerController.SetPlayerData();
+            data.PlayerGameData gameData = playerController.SetPlayerData();
 
-            formatter.Serialize(stream, data);
+            formatter.Serialize(stream, gameData);
             stream.Close();
         }
 
@@ -162,16 +172,23 @@ namespace GameManagerData
         {
             if (!Directory.Exists(Application.persistentDataPath + "/" + saveName))
             {
-                Debug.Log("Game does not exist, path: " + Application.persistentDataPath + "/" + saveName);
+                Debug.LogError("Game does not exist, path: " + Application.persistentDataPath + "/" + saveName);
                 return;
             }
             
+            string path = Application.persistentDataPath + "/" + saveName +  PLAYER;
+
+            if (!File.Exists(path))
+            {
+                _saveNameData = saveName;
+                LoadNewScene("Testing");
+                return;
+            }
+
             BinaryFormatter formatter = new BinaryFormatter();
             
             LoadPlayer(formatter, saveName);
-            
-            //Here could add logic to choose the specific scene player has chosen
-            LoadNewScene("Testing");
+            LoadNewScene(_playerGameLoadData.sceneType);
             _saveNameData = saveName;
             _loadGame = true;
         }
@@ -188,11 +205,11 @@ namespace GameManagerData
             if (File.Exists(path))
             {
                 FileStream stream = new FileStream(path, FileMode.Open);
-                _data = formatter.Deserialize(stream) as PlayerTransformData;
+                _playerGameLoadData = formatter.Deserialize(stream) as PlayerGameData;
 
                 stream.Close();
                     
-                if (_data == null)
+                if (_playerGameLoadData == null)
                 {
                     return;
                 }
@@ -448,11 +465,11 @@ namespace GameManagerData
             }
             
             RoomController.ToggleGrabOffForGrabbableRooms();
-            FurnitureController.SetAllFurnitureStatic();
+            FurnitureController.SetAllFurnitureNotMovable();
             
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();
-            playerController.SetPlayerPos(_data);
+            playerController.SetPlayerPos(_playerGameLoadData);
             
             //Setting back the variable to false
             _loadGame = false;
@@ -461,6 +478,31 @@ namespace GameManagerData
         public static bool IsLoadGame()
         {
             return _loadGame;
+        }
+
+        public string[] GetSavedGames()
+        {
+            string path = Application.persistentDataPath;
+            string[] savedGames = Directory.GetDirectories(path)
+                .Select(Path.GetFileName)
+                .ToArray();
+            return savedGames;
+        }
+
+        public void DeleteGame(string saveName)
+        {
+            Directory.Delete(Application.persistentDataPath + "/" + saveName, true);
+        }
+
+        public void QuitGame()
+        {
+            #if UNITY_EDITOR
+                // Application.Quit() does not work in the editor so
+                // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
         }
     }
 }

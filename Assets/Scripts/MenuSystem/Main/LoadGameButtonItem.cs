@@ -13,24 +13,24 @@ namespace MenuSystem.Main
 
         [SerializeField] public GameObject buttonText;
         private TextMeshProUGUI _textField;
+        private GameManager _gameManager;
         
         private void Awake()
         {
             _textField = buttonText.GetComponent<TextMeshProUGUI>();
             _textField.text = saveName;
-            Debug.Log(saveName);
+            _gameManager = GameManager.Instance();
         }
 
         public void OnButtonClick()
         {
-            GameManager gameManager = GameManager.Instance();
             PlayerData.GameID = saveName;
-            gameManager.LoadGame(saveName);
+            _gameManager.LoadGame(saveName);
         }
 
         public void OnDeleteButtonClick()
         {
-            Directory.Delete(Application.persistentDataPath + "/" + saveName, true);
+            _gameManager.DeleteGame(saveName);
             Destroy(gameObject);
         }
     }

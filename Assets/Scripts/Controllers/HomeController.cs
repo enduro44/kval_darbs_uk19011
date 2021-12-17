@@ -35,6 +35,7 @@ namespace Controllers
             //Each new controller gets a structure to save all active empty sockets that it has attached to it
             _emptyActiveSocketData = new EmptyActiveSocketData(_root.GetComponent<HomeControllerObject>().controllerID, _homeSocket);
             EmptyActiveSocketController.AddData(_emptyActiveSocketData);
+            RoomController.GrabbableRooms.Add(_root);
         }
         
         private void OnDestroy()
@@ -60,6 +61,7 @@ namespace Controllers
             
             GameObject room = args.interactable.gameObject;
             RoomController.GrabbableRooms.Add(room);
+            RoomController.GrabbableRooms.Remove(_root);
         }
     
         private void Exited(SelectExitEventArgs args)
@@ -80,6 +82,7 @@ namespace Controllers
             
             GameObject room = args.interactable.gameObject;
             RoomController.GrabbableRooms.Remove(room);
+            RoomController.GrabbableRooms.Add(_root);
         }
         
         private void ToggleSockets(XRBaseInteractable obj)
@@ -98,7 +101,7 @@ namespace Controllers
 
         public static void SetControllerGrabbable()
         {
-            _root.transform.root.GetComponent<XRGrabInteractable>().interactionLayerMask = 1<<8;
+            _root.transform.root.GetComponent<XRGrabInteractable>().interactionLayerMask = (1<<7) | (1<<8);
         }
         
         public static void SetControllerNotGrabbable()
