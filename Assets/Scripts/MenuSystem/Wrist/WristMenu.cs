@@ -1,8 +1,11 @@
+using System.Collections;
 using Controllers;
 using GameManagerData;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace MenuSystem.Wrist
@@ -15,9 +18,10 @@ namespace MenuSystem.Wrist
         public GameObject buildMenuUI;
         public GameObject furnishMenuUI;
         public GameObject playablesUI;
-        public GameObject exitToMainUI;
-        public GameObject exitUI;
         public GameObject backButton;
+        public GameObject confirmationExitToMain;
+        public GameObject confirmationExit;
+        public GameObject savingGamePopup;
 
         public bool activeWristUI = true;
         
@@ -55,11 +59,9 @@ namespace MenuSystem.Wrist
             buildMenuUI.SetActive(false);
             furnishMenuUI.SetActive(false);
             playablesUI.SetActive(false);
-            exitToMainUI.SetActive(false);
-            exitUI.SetActive(false);
             backButton.SetActive(false);
+            confirmationExitToMain.SetActive(false);
             
-            ScrollViewController.DestroyPreviousData();
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
         }
@@ -71,16 +73,27 @@ namespace MenuSystem.Wrist
             FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesNonStatic();
             
-            ScrollViewController.DestroyPreviousData();
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
         }
-        
+
         public void SaveButton()
         {
-            //Need to make button unpressable and show that game is saved
-            GameManager gameManager = GameManager.Instance();
-            gameManager.SaveGame();   
+            mainMenuUI.SetActive(false);
+            savingGamePopup.SetActive(true);
+            StartCoroutine(SaveWithPopup());
+        }
+        
+        IEnumerator SaveWithPopup()
+        {
+            TextMeshProUGUI textObject = savingGamePopup.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+            SaveGame();
+            textObject.text = "Saving the game...";
+            yield return new WaitForSeconds(5f);
+            textObject.text = "Game saved!";
+            yield return new WaitForSeconds(0.5f);
+            savingGamePopup.SetActive(false);
+            mainMenuUI.SetActive(true);
         }
         
         public void BuildButton()
@@ -98,6 +111,7 @@ namespace MenuSystem.Wrist
             mainMenuUI.SetActive(false);
             buildMenuUI.SetActive(true);
             backButton.SetActive(true);
+            confirmationExitToMain.SetActive(false);
 
             ScrollViewController.DestroyPreviousData();
             ScrollViewController.ShowScrollView();
@@ -119,6 +133,7 @@ namespace MenuSystem.Wrist
             mainMenuUI.SetActive(false);
             furnishMenuUI.SetActive(true);
             backButton.SetActive(true);
+            confirmationExitToMain.SetActive(false);
 
             ScrollViewController.DestroyPreviousData();
             ScrollViewController.ShowScrollView();
@@ -140,6 +155,7 @@ namespace MenuSystem.Wrist
             mainMenuUI.SetActive(false);
             playablesUI.SetActive(true);
             backButton.SetActive(true);
+            confirmationExitToMain.SetActive(false);
 
             ScrollViewController.DestroyPreviousData();
             ScrollViewController.ShowScrollView();
@@ -153,6 +169,8 @@ namespace MenuSystem.Wrist
             playablesUI.SetActive(false); 
             mainMenuUI.SetActive(true);
             backButton.SetActive(false);
+            confirmationExitToMain.SetActive(false);
+            
             ScrollViewController.DestroyPreviousData();
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
@@ -160,18 +178,73 @@ namespace MenuSystem.Wrist
         
         public void ExitToMainButton()
         {
-            ScrollViewController.HideScrollView();
-            InventoryController.HideInventory();
+            mainMenuUI.SetActive(false);
+            confirmationExitToMain.SetActive(true);
+        }
+
+        public void ExitToMainSaveConfirmed()
+        {
+            StartCoroutine(SaveAndExitToMain());
+        }
+
+        IEnumerator SaveAndExitToMain()
+        {
+            TextMeshProUGUI textObject = confirmationExitToMain.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+            confirmationExitToMain.SetActive(false);
+            savingGamePopup.SetActive(true);
+            SaveGame();
+            textObject.text = "Saving the game...";
+            yield return new WaitForSeconds(5f);
+            textObject.text = "Game saved!";
+            yield return new WaitForSeconds(1f);
+            textObject.text = "Exiting to main menu!";
+            yield return new WaitForSeconds(1f);
+            ExitToMain();
+        }
+
+        public void ExitToMain()
+        {
             GameManager gameManager = GameManager.Instance();
             gameManager.LoadNewScene("MainMenu");
         }
-        
         public void ExitButton()
         {
-            ScrollViewController.HideScrollView();
-            InventoryController.HideInventory();
+            mainMenuUI.SetActive(false);
+            confirmationExitToMain.SetActive(true);
+        }
+        
+        public void ExitGameSaveConfirmed()
+        {
+            StartCoroutine(ExitWithSaving());
+        }
+
+        IEnumerator ExitWithSaving()
+        {
+            TextMeshProUGUI textObject = confirmationExit.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+            confirmationExitToMain.SetActive(false);
+            savingGamePopup.SetActive(true);
+            SaveGame();
+            textObject.text = "Saving the game...";
+            yield return new WaitForSeconds(5f);
+            textObject.text = "Game saved!";
+            yield return new WaitForSeconds(1f);
+            textObject.text = "Exiting the game!";
+            yield return new WaitForSeconds(1f);
+            Exit();
+        }
+
+        public void Exit()
+        {
             GameManager gameManager = GameManager.Instance();
             gameManager.QuitGame();
         }
+
+        public void SaveGame()
+        {
+            GameManager gameManager = GameManager.Instance();
+            gameManager.SaveGame();
+        }
+
+
     }
 }

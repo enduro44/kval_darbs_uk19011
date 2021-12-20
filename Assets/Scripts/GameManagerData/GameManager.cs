@@ -170,6 +170,8 @@ namespace GameManagerData
 
         public void LoadGame(string saveName)
         {
+            ResetGameData();
+            
             if (!Directory.Exists(Application.persistentDataPath + "/" + saveName))
             {
                 Debug.LogError("Game does not exist, path: " + Application.persistentDataPath + "/" + saveName);
@@ -492,6 +494,20 @@ namespace GameManagerData
         public void DeleteGame(string saveName)
         {
             Directory.Delete(Application.persistentDataPath + "/" + saveName, true);
+        }
+
+        public void ResetGameData()
+        {
+            EmptyActiveSocketController.EmptyActiveSockets.Clear();
+            RoomController.GrabbableRooms.Clear();
+            GameData.HomeControllers.Clear();
+            GameData.Rooms.Clear();
+            GameData.Furniture.Clear();
+            GameData.Playables.Clear();
+            
+            _homeLoadData.Clear();
+            _furnitureLoadData.Furniture.Clear();
+            _playableLoadData.Clear();
         }
 
         public void QuitGame()

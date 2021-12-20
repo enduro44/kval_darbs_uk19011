@@ -1,12 +1,11 @@
-using System.IO;
-using System.Linq;
 using GameManagerData;
 using UnityEngine;
 
 namespace MenuSystem.Main
 {
-        public class MainMenu : MonoBehaviour
+    public class MainMenu : MonoBehaviour
     {
+        private static MainMenu _instance;
         public GameObject mainUI;
         [SerializeField] public GameObject saveButtonPrefab;
         [SerializeField] public Transform contentParent;
@@ -16,17 +15,27 @@ namespace MenuSystem.Main
         private GameObject _newGameUI;
         private GameObject _loadGameUI;
         private GameObject _optionsUI;
+        private GameObject _confirmationUI;
+        
+        private string _saveName;
+        private GameObject _button;
 
         private GameManager _gameManager;
 
         private void Awake()
         {
+            _instance = this;
             _mainMenuUI = mainUI.transform.GetChild(0).gameObject;
             _newGameUI = mainUI.transform.GetChild(1).gameObject;
             _loadGameUI = mainUI.transform.GetChild(2).gameObject;
             _optionsUI = mainUI.transform.GetChild(3).gameObject;
+            _confirmationUI = mainUI.transform.GetChild(4).gameObject;
             _fadeController = mainUI.AddComponent<FadeController>();
             _gameManager = GameManager.Instance();
+        }
+        
+        public static MainMenu Instance() {
+            return _instance;
         }
 
         private void Start()
@@ -36,12 +45,14 @@ namespace MenuSystem.Main
             _newGameUI.SetActive(false);
             _loadGameUI.SetActive(false);
             _optionsUI.SetActive(false);
+            _confirmationUI.SetActive(false);
         }
 
         public void NewButton()
         {
             _gameManager.StartNewGame();
         }
+
         public void LoadButton()
         {
             _fadeController.FadeOut(_mainMenuUI);
@@ -50,15 +61,18 @@ namespace MenuSystem.Main
             _fadeController.FadeIn(_loadGameUI);
             _loadGameUI.SetActive(true);
         }
-        
+
         public void BackButton()
         {
+            foreach (Transform child in contentParent) {
+                GameObject.Destroy(child.gameObject);
+            }
             _fadeController.FadeOut(_loadGameUI);
             _loadGameUI.SetActive(false);
             _fadeController.FadeIn(_mainMenuUI);
             _mainMenuUI.SetActive(true);
         }
-        
+
         public void OptionsButton()
         {
             _fadeController.FadeOut(_mainMenuUI);
@@ -66,11 +80,40 @@ namespace MenuSystem.Main
             _fadeController.FadeIn(_optionsUI);
             _optionsUI.SetActive(true);
         }
-        
+
         public void ExitButton()
         {
             _fadeController.FadeOut(_mainMenuUI);
             _gameManager.QuitGame();
+        }
+
+        public void ShowPopup(string saveName, GameObject button)
+        {
+            _saveName = saveName;
+            _button = button;
+            _fadeController.FadeOut(_loadGameUI);
+            _loadGameUI.SetActive(false);
+            _fadeController.FadeIn(_confirmationUI);
+            _confirmationUI.SetActive(true);
+        }
+        
+        public void HidePopup()
+        {
+            _confirmationUI.SetActive(false);
+            _fadeController.FadeOut(_confirmationUI);
+            _fadeController.FadeIn(_loadGameUI);
+            _loadGameUI.SetActive(true);
+        }
+        
+        public void OnDeleteDisconfirmation()
+        {
+            HidePopup();
+        }
+        public void OnDeleteConfirmation()
+        {
+            _gameManager.DeleteGame(_saveName);
+            Destroy(_button);
+            HidePopup();
         }
 
         private void PopulateSaveGameData()
@@ -84,4 +127,3 @@ namespace MenuSystem.Main
         }
     }
 }
-
