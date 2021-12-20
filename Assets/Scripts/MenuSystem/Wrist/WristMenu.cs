@@ -58,6 +58,8 @@ namespace MenuSystem.Wrist
             exitToMainUI.SetActive(false);
             exitUI.SetActive(false);
             backButton.SetActive(false);
+            
+            ScrollViewController.DestroyPreviousData();
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
         }
@@ -68,6 +70,7 @@ namespace MenuSystem.Wrist
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesNonStatic();
+            
             ScrollViewController.DestroyPreviousData();
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
@@ -86,43 +89,63 @@ namespace MenuSystem.Wrist
             RoomController.ToggleGrabOnForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesStatic();
-            ScrollViewController.DestroyPreviousData();
+
+            ShowBuildMenu();
+        }
+
+        private void ShowBuildMenu()
+        {
             mainMenuUI.SetActive(false);
             buildMenuUI.SetActive(true);
             backButton.SetActive(true);
+
+            ScrollViewController.DestroyPreviousData();
             ScrollViewController.ShowScrollView();
             InventoryController.ShowInventory();
         }
-        
+
         public void FurnishButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureMovable();
             PlayableController.SetAllPlayablesStatic();
-            ScrollViewController.DestroyPreviousData();
+
+            ShowFurnishMenu();
+        }
+
+        private void ShowFurnishMenu()
+        {
             mainMenuUI.SetActive(false);
             furnishMenuUI.SetActive(true);
             backButton.SetActive(true);
+
+            ScrollViewController.DestroyPreviousData();
             ScrollViewController.ShowScrollView();
             InventoryController.ShowInventory();
         }
-        
+
         public void PlayablesButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesNonStatic();
+            
+            ShowPlayablesMenu();
+        }
 
-            ScrollViewController.DestroyPreviousData();
+        private void ShowPlayablesMenu()
+        {
             mainMenuUI.SetActive(false);
             playablesUI.SetActive(true);
             backButton.SetActive(true);
+
+            ScrollViewController.DestroyPreviousData();
             ScrollViewController.ShowScrollView();
             InventoryController.ShowInventory();
         }
-        
+
         public void BackToMenuButton()
         {
             buildMenuUI.SetActive(false);
