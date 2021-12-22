@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Controllers;
 using GameManagerData.data;
 using GameManagerData.objClasses;
+using MenuSystem.Main;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,7 @@ namespace GameManagerData
         private static bool _loadGame = false;
         private PlayerGameData _playerGameLoadData = new PlayerGameData();
         private List<HomeLoadData> _homeLoadData = new List<HomeLoadData>();
+        private List<RoomData> _freeroamRoomData = new List<RoomData>();
         private FurnitureLoadData _furnitureLoadData = new FurnitureLoadData();
         private List<PlayableData> _playableLoadData = new List<PlayableData>();
         public InstantiateLoadedData instantiateLoadedData;
@@ -97,8 +99,8 @@ namespace GameManagerData
 
         private void SaveControllerData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder +  HOME_CONTROLLERS_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + "/" + folder + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + "/" + folder +  HOME_CONTROLLERS_SUB;
+            string countPath = Application.persistentDataPath + "/" + folder + HOME_CONTROLLERS_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.HomeControllers.Count);
@@ -115,8 +117,8 @@ namespace GameManagerData
         
         private void SaveRoomData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder + ROOMS_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + "/" + folder + ROOMS_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + "/" + folder + ROOMS_SUB;
+            string countPath = Application.persistentDataPath + "/" + folder + ROOMS_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Rooms.Count);
@@ -133,8 +135,8 @@ namespace GameManagerData
         
         private void SaveFurnitureData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder + FURNITURE_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + "/" + folder + FURNITURE_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + "/" + folder + FURNITURE_SUB;
+            string countPath = Application.persistentDataPath + "/" + folder + FURNITURE_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Furniture.Count);
@@ -152,8 +154,8 @@ namespace GameManagerData
         
         private void SavePlayableData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder + PLAYABLE_SUB + SceneManager.GetActiveScene().buildIndex;
-            string countPath = Application.persistentDataPath + "/" + folder + PLAYABLE_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
+            string path = Application.persistentDataPath + "/" + folder + PLAYABLE_SUB;
+            string countPath = Application.persistentDataPath + "/" + folder + PLAYABLE_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Playables.Count);
@@ -171,27 +173,41 @@ namespace GameManagerData
         public void LoadGame(string saveName)
         {
             ResetGameData();
+            _saveNameData = saveName;
+            MainMenu mainMenu = MainMenu.Instance();
             
             if (!Directory.Exists(Application.persistentDataPath + "/" + saveName))
             {
-                Debug.LogError("Game does not exist, path: " + Application.persistentDataPath + "/" + saveName);
+                Debug.Log("Game does not exist, path: " + Application.persistentDataPath + "/" + saveName);
+                mainMenu.ShowGameCouldNotBeLoadedError();
                 return;
             }
-            
-            string path = Application.persistentDataPath + "/" + saveName +  PLAYER;
 
-            if (!File.Exists(path))
-            {
-                _saveNameData = saveName;
-                LoadNewScene("Testing");
-                return;
-            }
+            //Case where game was created, but nothing was saved
+            string[] files = Directory.GetFiles(Application.persistentDataPath + "/" + saveName);
+             if (files.Length == 0)
+             {
+                 _saveNameData = saveName;
+                 LoadNewScene("Testing");
+                 return;
+             }
 
             BinaryFormatter formatter = new BinaryFormatter();
-            
-            LoadPlayer(formatter, saveName);
+
+            try
+            {
+                Debug.Log("Loading data");
+                LoadGameData();
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Error");
+                //Debug.LogException(e, this);
+                mainMenu.ShowGameCouldNotBeLoadedError();
+                return;
+            }
+            Debug.Log("Loading scene");
             LoadNewScene(_playerGameLoadData.sceneType);
-            _saveNameData = saveName;
             _loadGame = true;
         }
 
@@ -200,8 +216,29 @@ namespace GameManagerData
             sceneController.StartSceneLoad(sceneName);
         }
 
+        public void LoadGameData()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            
+            //Laoding Player
+            LoadPlayer(formatter, _saveNameData);
+            
+            //Loading Home controllers
+            LoadControllers(formatter, _saveNameData);
+
+            //Loading Rooms
+            LoadRooms(formatter, _saveNameData);
+
+            //Loading Furniture
+            LoadFurniture(formatter, _saveNameData);
+
+            //Loading Playables
+            LoadPlayables(formatter, _saveNameData);
+        }
+
         private void LoadPlayer(BinaryFormatter formatter, string saveName)
         {
+            
             string path = Application.persistentDataPath + "/" + saveName +  PLAYER;
             
             if (File.Exists(path))
@@ -210,47 +247,17 @@ namespace GameManagerData
                 _playerGameLoadData = formatter.Deserialize(stream) as PlayerGameData;
 
                 stream.Close();
-                    
-                if (_playerGameLoadData == null)
-                {
-                    return;
-                }
             }
             else
             {
-                Debug.LogError("Path not found " + path);
-                return;
+                throw new Exception("Path not found " + path);
             }
         }
-
-        public void LoadGameData()
-        {
-            if (!_loadGame)
-            {
-                return;
-            }
-            BinaryFormatter formatter = new BinaryFormatter();
-            
-            //Loading Home controllers
-            LoadControllers(formatter, _saveNameData);
-
-            //Loading Rooms
-            LoadRooms(formatter, _saveNameData);
-            
-            //Loading Furniture
-            LoadFurniture(formatter, _saveNameData);
-            
-            //Loading Playables
-            LoadPlayables(formatter, _saveNameData);
-
-            //Creating loaded data in the scene
-            InstantiateLoadedData();
-        }
-
+        
         private void LoadControllers(BinaryFormatter formatter, string saveName)
         {
-            string controllersPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
-            string controllersCountPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+            string controllersPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_SUB;
+            string controllersCountPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_COUNT_SUB;
 
             int controllerCount = 0;
             if (File.Exists(controllersCountPath))
@@ -261,8 +268,7 @@ namespace GameManagerData
             }
             else
             {
-                Debug.LogError("Path not found " + controllersCountPath);
-                return;
+                throw new Exception("Path not found " + controllersCountPath);
             }
 
             for (int i = 0; i < controllerCount; i++)
@@ -285,16 +291,15 @@ namespace GameManagerData
                 }
                 else
                 {
-                    Debug.LogError("Path not found " + controllersPath + i);
-                    return;
+                    throw new Exception("Path not found " + controllersPath + i);
                 }
             }
         }
 
         private void LoadRooms(BinaryFormatter formatter, string saveName)
         {
-            string roomsPath = Application.persistentDataPath + "/" + saveName + ROOMS_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
-            string roomsCountPath = Application.persistentDataPath + "/" + saveName + ROOMS_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+            string roomsPath = Application.persistentDataPath + "/" + saveName + ROOMS_SUB;
+            string roomsCountPath = Application.persistentDataPath + "/" + saveName + ROOMS_COUNT_SUB;
 
             int roomCount = 0;
             if (File.Exists(roomsCountPath))
@@ -305,8 +310,7 @@ namespace GameManagerData
             }
             else
             {
-                Debug.LogError("Path not found " + roomsCountPath);
-                return;
+                throw new Exception("Path not found " + roomsCountPath);
             }
 
             for (int i = 0; i < roomCount; i++)
@@ -332,21 +336,23 @@ namespace GameManagerData
                             break;
                         }
                     }
-                    
-                    HandleParentlessRoom(data);
+
+                    if (data != null)
+                    {
+                        _freeroamRoomData.Add(data);
+                    }
                 }
                 else
                 {
-                    Debug.LogError("Path not found " + roomsPath + i);
-                    return;
+                    throw new Exception("Path not found " + roomsPath + i);
                 }
             }
         }
         
         private void LoadFurniture(BinaryFormatter formatter, string saveName)
         {
-            string path = Application.persistentDataPath + "/" + saveName + FURNITURE_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
-            string countPath = Application.persistentDataPath + "/" + saveName + FURNITURE_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+            string path = Application.persistentDataPath + "/" + saveName + FURNITURE_SUB;
+            string countPath = Application.persistentDataPath + "/" + saveName + FURNITURE_COUNT_SUB;
 
             int furnitureCount = 0;
             if (File.Exists(countPath))
@@ -357,8 +363,7 @@ namespace GameManagerData
             }
             else
             {
-                Debug.LogError("Path not found " + countPath);
-                return;
+                throw new Exception("Path not found " + countPath);
             }
 
             for (int i = 0; i < furnitureCount; i++)
@@ -379,16 +384,15 @@ namespace GameManagerData
                 }
                 else
                 {
-                    Debug.LogError("Path not found " + path + i);
-                    return;
+                    throw new Exception("Path not found " + path + i);
                 }
             }
         }
         
         private void LoadPlayables(BinaryFormatter formatter, string saveName)
         {
-            string path = Application.persistentDataPath + "/" + saveName + PLAYABLE_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
-            string countPath = Application.persistentDataPath + "/" + saveName + PLAYABLE_COUNT_SUB + SceneManager.GetSceneByName("Testing").buildIndex;
+            string path = Application.persistentDataPath + "/" + saveName + PLAYABLE_SUB;
+            string countPath = Application.persistentDataPath + "/" + saveName + PLAYABLE_COUNT_SUB;
 
             int playableCount = 0;
             if (File.Exists(countPath))
@@ -399,8 +403,7 @@ namespace GameManagerData
             }
             else
             {
-                Debug.LogError("Path not found " + countPath);
-                return;
+                throw new Exception("Path not found " + countPath);
             }
 
             for (int i = 0; i < playableCount; i++)
@@ -421,23 +424,17 @@ namespace GameManagerData
                 }
                 else
                 {
-                    Debug.LogError("Path not found " + path + i);
-                    return;
+                    throw new Exception("Path not found " + path + i);
                 }
             }
         }
 
-        private void HandleParentlessRoom(RoomData data)
+        public void InstantiateLoadedData()
         {
-            //If room has not been attached to a specific controller we can load it already
-            if (data != null)
+            if (!_loadGame)
             {
-                instantiateLoadedData.LoadSavedRoom(data);
+                return;
             }
-        }
-
-        private void InstantiateLoadedData()
-        {
             StartCoroutine(ProcessLoadedData());
         }
 
@@ -454,6 +451,13 @@ namespace GameManagerData
                 yield return new WaitForSeconds(0.5f);
                 EmptyActiveSocketController.TurnOffAllForSpecificHome(home.GetComponent<HomeControllerObject>().controllerID);
             }
+            
+            //Adding free roaming rooms
+            foreach (var room in _freeroamRoomData)
+            {
+                instantiateLoadedData.LoadSavedRoom(room);
+            }
+
             //Adding furniture
             foreach (var furniture in _furnitureLoadData.Furniture)
             {
@@ -506,6 +510,7 @@ namespace GameManagerData
             GameData.Playables.Clear();
             
             _homeLoadData.Clear();
+            _freeroamRoomData.Clear();
             _furnitureLoadData.Furniture.Clear();
             _playableLoadData.Clear();
         }

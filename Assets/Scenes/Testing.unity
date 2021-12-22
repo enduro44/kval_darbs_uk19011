@@ -2286,6 +2286,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
   m_PrefabInstance: {fileID: 724986263}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &724986265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 113555804437578079, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+  m_PrefabInstance: {fileID: 724986263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &724986266 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7749137922378524649, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
@@ -3056,6 +3061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1165839738}
+  xrRig: {fileID: 724986265}
   playerPositionGameLoaded: {x: 0, y: 0, z: 0}
   playerPositionGameLoading: {x: 0, y: 0, z: -500}
 --- !u!114 &1165839741

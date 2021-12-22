@@ -16,6 +16,7 @@ namespace MenuSystem.Main
         private GameObject _loadGameUI;
         private GameObject _optionsUI;
         private GameObject _confirmationUI;
+        private GameObject _errorUI;
         
         private string _saveName;
         private GameObject _button;
@@ -30,6 +31,7 @@ namespace MenuSystem.Main
             _loadGameUI = mainUI.transform.GetChild(2).gameObject;
             _optionsUI = mainUI.transform.GetChild(3).gameObject;
             _confirmationUI = mainUI.transform.GetChild(4).gameObject;
+            _errorUI = mainUI.transform.GetChild(5).gameObject;
             _fadeController = mainUI.AddComponent<FadeController>();
             _gameManager = GameManager.Instance();
         }
@@ -46,6 +48,7 @@ namespace MenuSystem.Main
             _loadGameUI.SetActive(false);
             _optionsUI.SetActive(false);
             _confirmationUI.SetActive(false);
+            _errorUI.SetActive(false);
         }
 
         public void NewButton()
@@ -114,6 +117,22 @@ namespace MenuSystem.Main
             _gameManager.DeleteGame(_saveName);
             Destroy(_button);
             HidePopup();
+        }
+
+        public void ShowGameCouldNotBeLoadedError()
+        {
+            _fadeController.FadeOut(_loadGameUI);
+            _loadGameUI.SetActive(false);
+            _fadeController.FadeIn(_errorUI);
+            _errorUI.SetActive(true);
+        }
+
+        public void CloseGameCouldNotBeLoadedError()
+        {
+            _fadeController.FadeOut(_errorUI);
+            _errorUI.SetActive(false);
+            _fadeController.FadeIn(_loadGameUI);
+            _loadGameUI.SetActive(true);
         }
 
         private void PopulateSaveGameData()

@@ -8,10 +8,11 @@ namespace GameManagerData
         void Awake()
         {
             GameManager gameManager = GameManager.Instance();
-            gameManager.LoadGameData();
+            gameManager.InstantiateLoadedData();
             
             if (!GameManager.IsLoadGame())
             {
+                Debug.Log("New game position");
                 PlayerController playerController = PlayerController.Instance();
                 playerController.SetNewGamePlayerPos();
             }

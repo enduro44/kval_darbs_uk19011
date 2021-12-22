@@ -89,7 +89,7 @@ namespace MenuSystem.Wrist
             TextMeshProUGUI textObject = savingGamePopup.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
             SaveGame();
             textObject.text = "Saving the game...";
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             textObject.text = "Game saved!";
             yield return new WaitForSeconds(0.5f);
             savingGamePopup.SetActive(false);
@@ -194,7 +194,7 @@ namespace MenuSystem.Wrist
             savingGamePopup.SetActive(true);
             SaveGame();
             textObject.text = "Saving the game...";
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             textObject.text = "Game saved!";
             yield return new WaitForSeconds(1f);
             textObject.text = "Exiting to main menu!";
@@ -210,7 +210,7 @@ namespace MenuSystem.Wrist
         public void ExitButton()
         {
             mainMenuUI.SetActive(false);
-            confirmationExitToMain.SetActive(true);
+            confirmationExit.SetActive(true);
         }
         
         public void ExitGameSaveConfirmed()
@@ -225,7 +225,7 @@ namespace MenuSystem.Wrist
             savingGamePopup.SetActive(true);
             SaveGame();
             textObject.text = "Saving the game...";
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             textObject.text = "Game saved!";
             yield return new WaitForSeconds(1f);
             textObject.text = "Exiting the game!";
