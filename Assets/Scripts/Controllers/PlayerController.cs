@@ -25,7 +25,6 @@ namespace Controllers
         public void SetNewGamePlayerPos()
         {
             playerObject.transform.position = playerPositionGameLoaded;
-            //xrRig.transform.position = playerObject.transform.position;
         }
 
         public void SetPlayerPos(PlayerGameData gameData)

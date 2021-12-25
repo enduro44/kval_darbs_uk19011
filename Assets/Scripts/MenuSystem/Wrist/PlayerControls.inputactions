@@ -106,6 +106,44 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DeleteObject",
+            "id": "d4a5b2bc-7514-4c0f-b722-d48af31be4b6",
+            "actions": [
+                {
+                    "name": "DeleteObjectsInHands",
+                    "type": "Button",
+                    "id": "491ab911-a6f8-44f3-ab04-9ad5e6a81b15",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5c87a716-ff08-46a2-a782-65ed51d7db24",
+                    "path": "<OculusTouchController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DeleteObjectsInHands",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2be6f49-0135-4628-a329-eb12326f6a1c",
+                    "path": "<XRSimulatedController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DeleteObjectsInHands",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

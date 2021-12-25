@@ -1723,6 +1723,58 @@ PrefabInstance:
       propertyPath: m_InteractionLayerMask.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 724986270}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 724986270}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnsetGameObjectRightHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetGameObjectRightHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Controllers.DeleteObjectController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Controllers.DeleteObjectController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562734810522280124, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2590984182702549321, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2115,6 +2167,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 724986270}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 724986270}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnsetGameObjectLeftHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetGameObjectLeftHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Controllers.DeleteObjectController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Controllers.DeleteObjectController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660124981422075189, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5748402569359968146, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2356,6 +2456,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fb99cdee-24b9-44c5-8699-4cfd8a3f57f6
     m_ActionName: UI/Menu
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 06fa4c2e-c3ae-4714-8574-5ccdb5eada43
+    m_ActionName: DeleteObject/DeleteObjectRightHand
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 68dc97ec-be20-4727-929c-299c72c6fe7f
+    m_ActionName: DeleteObject/DeleteObjectLeftHand
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -2366,6 +2474,100 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5253142948505166394, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
   m_PrefabInstance: {fileID: 724986263}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &724986270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724986265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712d08fe9c4d3d049ba8df47b30eff6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &724986271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724986265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: bf2d978ccc10d2841af9b487641f6d3e, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1165839740}
+        m_TargetAssemblyTypeName: Controllers.PlayerController, Assembly-CSharp
+        m_MethodName: IncreasePlayerHeight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 27ffec50-3606-402d-86b0-de30ef2652fc
+    m_ActionName: HeightController/IncreaseHeight
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1165839740}
+        m_TargetAssemblyTypeName: Controllers.PlayerController, Assembly-CSharp
+        m_MethodName: DecreasePlayerHeight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: db16ceca-d307-4fa6-9fe5-54534d0ba292
+    m_ActionName: HeightController/DecreaseHeight
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fb99cdee-24b9-44c5-8699-4cfd8a3f57f6
+    m_ActionName: UI/Menu
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 724986270}
+        m_TargetAssemblyTypeName: Controllers.DeleteObjectController, Assembly-CSharp
+        m_MethodName: DeleteObjectsInHands
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 491ab911-a6f8-44f3-ab04-9ad5e6a81b15
+    m_ActionName: DeleteObject/DeleteObjectsInHands
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: d4a5b2bc-7514-4c0f-b722-d48af31be4b6
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &773007598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,6 +3327,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fb99cdee-24b9-44c5-8699-4cfd8a3f57f6
     m_ActionName: UI/Menu
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 491ab911-a6f8-44f3-ab04-9ad5e6a81b15
+    m_ActionName: DeleteObject/DeleteObjectsInHands
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: HeightController
