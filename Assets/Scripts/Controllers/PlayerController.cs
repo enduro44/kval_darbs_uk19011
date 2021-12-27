@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using GameManagerData.data;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
 {
@@ -10,6 +12,12 @@ namespace Controllers
         private static PlayerController _instance;
         public GameObject playerObject;
         public GameObject xrRig;
+        private bool HeightChangeAllowed = false;
+        
+        public GameObject LocomotionSystem;
+        public GameObject LeftHand;
+        public GameObject RightHand;
+        
         public Vector3 playerPositionGameLoaded = new Vector3(0,0,0);
         public Vector3 playerPositionGameLoading = new Vector3(0,0,-500);
 
@@ -22,14 +30,16 @@ namespace Controllers
             return _instance;
         }
         
-        public void SetNewGamePlayerPos()
+        public void PreparePlayerNewGame()
         {
             playerObject.transform.position = playerPositionGameLoaded;
+            EnablePlayerMovement();
+            EnableRaysBothHands();
+            HeightChangeAllowed = true;
         }
 
-        public void SetPlayerPos(PlayerGameData gameData)
+        public void PreparePlayerLoadGame(PlayerGameData gameData)
         {
-            Debug.Log("Load game position");
             Vector3 playerPos = new Vector3(gameData.position[0], gameData.position[1], gameData.position[2]);
             Vector3 playerSize = new Vector3(gameData.size[0], gameData.size[1], gameData.size[2]);
             Vector3 playerRot = new Vector3(gameData.rotation[0], gameData.rotation[1], gameData.rotation[2]);
@@ -37,6 +47,9 @@ namespace Controllers
             playerTransform.position = playerPos;
             playerTransform.localScale = playerSize;
             playerTransform.eulerAngles = playerRot;
+            EnablePlayerMovement();
+            EnableRaysBothHands();
+            HeightChangeAllowed = true;
         }
 
         public PlayerGameData SetPlayerData()
@@ -72,7 +85,7 @@ namespace Controllers
 
         public void IncreasePlayerHeight(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && HeightChangeAllowed)
             {
                 Transform playerTransform = playerObject.transform;
                 Vector3 playerPosition = playerObject.transform.position;
@@ -87,7 +100,7 @@ namespace Controllers
         
         public void DecreasePlayerHeight(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && HeightChangeAllowed)
             {
                 Transform playerTransform = playerObject.transform;
                 Vector3 playerPosition = playerObject.transform.position;
@@ -97,6 +110,71 @@ namespace Controllers
                     playerPosition.y = playerHeight - 0.2f;
                     playerTransform.position = playerPosition;
                 }
+            }
+        }
+
+        public void DisablePlayerMovement()
+        {
+            LocomotionSystem.SetActive(false);
+            HeightChangeAllowed = false;
+        }
+
+        public void EnablePlayerMovement()
+        {
+            LocomotionSystem.SetActive(true);
+            HeightChangeAllowed = true;
+        }
+
+        public void EnableRayRightHand()
+        {
+            RightHand.GetComponent<XRRayInteractor>().enabled = true;
+        }
+        
+        public void DisableRayRightHand()
+        {
+            RightHand.GetComponent<XRRayInteractor>().enabled = false;
+        }
+        
+        public void EnableRayLeftHand()
+        {
+            LeftHand.GetComponent<XRRayInteractor>().enabled = true;
+        }
+        
+        public void DisableRayLeftHand()
+        {
+            LeftHand.GetComponent<XRRayInteractor>().enabled = false;
+        }
+
+        public void EnableRaysBothHands()
+        {
+            EnableRayLeftHand();
+            EnableRayRightHand();
+        }
+        
+        public void DisableRaysBothHands()
+        {
+            DisableRayLeftHand();
+            DisableRayRightHand();
+        }
+
+        public void EnableMovementAndRays()
+        {
+            EnablePlayerMovement();
+            EnableRaysBothHands();
+        }
+        
+        public void DisableMovementAndRays()
+        {
+            DisablePlayerMovement();
+            DisableRaysBothHands();
+        }
+        
+        public void OnTriggerEnter(Collider col)
+        {
+            if (col.gameObject.CompareTag("Barrier"))
+            {
+                playerObject.transform.position = playerPositionGameLoaded;
+                xrRig.transform.position = playerPositionGameLoaded;
             }
         }
     }

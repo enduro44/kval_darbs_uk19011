@@ -5,7 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 namespace Controllers
 {
     public class PlayableController
-
     {
     public static void SetAllPlayablesStatic()
     {

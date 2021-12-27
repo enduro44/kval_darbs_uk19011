@@ -47,7 +47,6 @@ namespace Controllers
             if (typeOfRootObject != typeOfObjectInSocket)
             {
                 Destroy(_socketC.selectTarget.gameObject.transform.root.gameObject);
-                Debug.Log("Can't place this here");
                 return;
             }
 

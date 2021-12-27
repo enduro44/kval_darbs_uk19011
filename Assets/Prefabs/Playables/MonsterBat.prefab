@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5861591876926259919}
   - component: {fileID: 6663353154903005979}
   - component: {fileID: -729443860387211511}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: MonsterBat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

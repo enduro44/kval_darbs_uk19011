@@ -42,7 +42,6 @@ namespace Controllers
             if (!_canBePlaced)
             {
                 Destroy(_socketL.selectTarget.gameObject.transform.root.gameObject);
-                Debug.Log("Can't place this here");
                 return;
             }
 

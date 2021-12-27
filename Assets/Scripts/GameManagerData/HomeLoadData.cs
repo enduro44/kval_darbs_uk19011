@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GameManagerData.data;
-using GameManagerData.objClasses;
 using UnityEngine;
 
 namespace GameManagerData
@@ -22,10 +20,8 @@ namespace GameManagerData
         {
             if (ControllerID != data.controllerID)
             {
-                Debug.Log("Trying to add room to incorrect controller!");
                 return;
             }
-            Debug.Log(data.controllerID);
             ControllersRooms.Add(data);
         }
     }

@@ -117,7 +117,6 @@ namespace Controllers
          {
              foreach (var room in GrabbableRooms)
              {
-                 Debug.Log("Is there a room?: " + room);
                  room.GetComponent<XRGrabInteractable>().interactionLayerMask = (1 << 6);
              }
          }

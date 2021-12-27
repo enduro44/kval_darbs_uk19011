@@ -8,6 +8,7 @@ using Controllers;
 using GameManagerData.data;
 using GameManagerData.objClasses;
 using MenuSystem.Main;
+using MenuSystem.Wrist;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
@@ -57,32 +58,42 @@ namespace GameManagerData
 
         public void StartNewGame()
         {
+            ResetGameData();
             PlayerData.GameID = DateTime.Now.ToString("yyyy-MM-dd_HH-mm");
             Directory.CreateDirectory(Application.persistentDataPath + "/" + PlayerData.GameID);
             LoadNewScene("Testing");
             
         }
 
-        public void SaveGame()
+        public bool SaveGame()
         {
             string folder = PlayerData.GameID;
 
             BinaryFormatter formatter = new BinaryFormatter();
-            
-            //Saving Player 
-            SavePlayer(formatter, folder);
-            
-            //Saving Home controllers
-            SaveControllerData(formatter, folder);
 
-            //Saving Rooms
-            SaveRoomData(formatter, folder);
-            
-            //Saving Furniture
-            SaveFurnitureData(formatter, folder);
-            
-            //Saving Playables
-            SavePlayableData(formatter, folder);
+            try
+            {
+                //Saving Player 
+                SavePlayer(formatter, folder);
+
+                //Saving Home controllers
+                SaveControllerData(formatter, folder);
+
+                //Saving Rooms
+                SaveRoomData(formatter, folder);
+
+                //Saving Furniture
+                SaveFurnitureData(formatter, folder);
+
+                //Saving Playables
+                SavePlayableData(formatter, folder);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+                return false;
+            }
+            return true;
         }
 
         private void SavePlayer(BinaryFormatter formatter, string folder)
@@ -145,7 +156,6 @@ namespace GameManagerData
             {
                 FileStream stream = new FileStream(path + i, FileMode.Create);
                 FurnitureData data = new FurnitureData(GameData.Furniture[i]);
-                Debug.Log(data.type);
 
                 formatter.Serialize(stream, data);
                 stream.Close();
@@ -168,6 +178,9 @@ namespace GameManagerData
                 formatter.Serialize(stream, data);
                 stream.Close();
             }
+            // WristMenu wristMenu = WristMenu.Instance();
+            // wristMenu.GameSavedWithPopup();
+            
         }
 
         public void LoadGame(string saveName)
@@ -196,17 +209,14 @@ namespace GameManagerData
 
             try
             {
-                Debug.Log("Loading data");
                 LoadGameData();
             }
             catch (Exception e)
             {
-                Debug.Log("Error");
-                //Debug.LogException(e, this);
+                Debug.Log(e);
                 mainMenu.ShowGameCouldNotBeLoadedError();
                 return;
             }
-            Debug.Log("Loading scene");
             LoadNewScene(_playerGameLoadData.sceneType);
             _loadGame = true;
         }
@@ -475,7 +485,7 @@ namespace GameManagerData
             
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();
-            playerController.SetPlayerPos(_playerGameLoadData);
+            playerController.PreparePlayerLoadGame(_playerGameLoadData);
             
             //Setting back the variable to false
             _loadGame = false;

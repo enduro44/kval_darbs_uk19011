@@ -41,7 +41,7 @@ namespace GameManagerData.data
         public const string BIN_YELLOW = "BinYellow(Clone)";
         public GameObject binYellowPrefab;
         
-        //need to be reworked
+        //needs to be reworked
         public const string CABINET = "Cabinet(Clone)";
         public GameObject cabinetPrefab;
         
@@ -166,8 +166,6 @@ namespace GameManagerData.data
         public const string ANIMAL_CAT = "AnimalCat(Clone)";
         public GameObject animalCatPrefab;
         
-        public const string CAR_AMBULANCE = "CarAmbulance(Clone)";
-        public GameObject carAmbulancePrefab;
         public const string CAR_BLUE = "CarBlue(Clone)";
         public GameObject carBluePrefab;
         public const string CAR_HOTDOG_TRACK = "CarHotdogTrack(Clone)";
@@ -351,8 +349,6 @@ namespace GameManagerData.data
             {
                 case ANIMAL_CAT:
                     return animalCatPrefab;
-                case CAR_AMBULANCE:
-                    return carAmbulancePrefab;
                 case CAR_BLUE:
                     return carBluePrefab;
                 case CAR_HOTDOG_TRACK:

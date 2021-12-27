@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3345246107255935176}
   - component: {fileID: 2597583621010532640}
   - component: {fileID: -433726149372862659}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: DollBarbie
   m_TagString: Untagged
   m_Icon: {fileID: 0}

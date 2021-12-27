@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Connected
   - Disconnected
+  - Barrier
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Furniture
   - Underground
   - Rooms
-  - 
+  - Barrier
   - 
   - 
   - 

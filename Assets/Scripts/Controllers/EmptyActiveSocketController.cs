@@ -82,7 +82,6 @@ namespace Controllers
             {
                 if (data.isControllerEmpty)
                 {
-                    Debug.Log("Controller is empty");
                     _controller.TurnOffControllerSocket(data.controllerSocket);
                     break;
                 }
