@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3190575621990930989}
   - component: {fileID: 5551116444935628277}
   - component: {fileID: -5157616494410946295}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: DollPoliceman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e21c848db90455ca3573417d4365a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectType: Playable
 --- !u!1001 &3642101621142120194
 PrefabInstance:
   m_ObjectHideFlags: 0

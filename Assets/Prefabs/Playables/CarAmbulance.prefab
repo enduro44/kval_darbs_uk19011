@@ -2215,7 +2215,7 @@ GameObject:
   - component: {fileID: -6566716776062813154}
   - component: {fileID: -5817281092966899043}
   - component: {fileID: 4240232532693207006}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: CarAmbulance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2431,6 +2431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e21c848db90455ca3573417d4365a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectType: Playable
 --- !u!1 &8676833619646352266
 GameObject:
   m_ObjectHideFlags: 0

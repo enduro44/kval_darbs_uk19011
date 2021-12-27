@@ -33,17 +33,17 @@ namespace Controllers
     
         private void Entered(SelectEnterEventArgs args)
         {
-            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
-            EmptyActiveSocketController.RemoveSocket(controllerID, _socketL);
-            
-            XRBaseInteractable obj = args.interactable;
-            GameObject rootObj = obj.transform.root.gameObject;
-            
             if (!_canBePlaced)
             {
                 Destroy(_socketL.selectTarget.gameObject.transform.root.gameObject);
                 return;
             }
+            
+            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+            EmptyActiveSocketController.RemoveSocket(controllerID, _socketL);
+            
+            XRBaseInteractable obj = args.interactable;
+            GameObject rootObj = obj.transform.root.gameObject;
 
             TransformPosition(obj);
             

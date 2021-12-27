@@ -6,40 +6,40 @@ namespace Controllers
 {
     public class DeleteObjectController : MonoBehaviour
     {
-        private GameObject gameObjectRightHand;
-        private GameObject gameObjectLeftHand;
+        private GameObject _gameObjectRightHand;
+        private GameObject _gameObjectLeftHand;
 
         public void SetGameObjectRightHand(SelectEnterEventArgs args)
         {
-            gameObjectRightHand = args.interactable.gameObject.transform.root.gameObject;
+            _gameObjectRightHand = args.interactable.gameObject.transform.root.gameObject;
         }
 
         public void UnsetGameObjectRightHand(SelectExitEventArgs args)
         {
-            gameObjectRightHand = null;
+            _gameObjectRightHand = null;
         }
 
         public void SetGameObjectLeftHand(SelectEnterEventArgs args)
         {
-            gameObjectLeftHand = args.interactable.gameObject.transform.root.gameObject;
+            _gameObjectLeftHand = args.interactable.gameObject.transform.root.gameObject;
         }
         
         public void UnsetGameObjectLeftHand(SelectExitEventArgs args)
         {
-            gameObjectLeftHand = null;
+            _gameObjectLeftHand = null;
         }
 
         public void DeleteObjectsInHands(InputAction.CallbackContext context)
         {
-            if (gameObjectLeftHand != null)
+            if (_gameObjectLeftHand != null)
             {
-                gameObjectLeftHand.GetComponent<XRGrabInteractable>().colliders.Clear();
-                Destroy(gameObjectLeftHand);
+                _gameObjectLeftHand.GetComponent<XRGrabInteractable>().colliders.Clear();
+                Destroy(_gameObjectLeftHand);
             }
-            if (gameObjectRightHand != null)
+            if (_gameObjectRightHand != null)
             {
-                gameObjectRightHand.GetComponent<XRGrabInteractable>().colliders.Clear();
-                Destroy(gameObjectRightHand);
+                _gameObjectRightHand.GetComponent<XRGrabInteractable>().colliders.Clear();
+                Destroy(_gameObjectRightHand);
             }
         }
     }

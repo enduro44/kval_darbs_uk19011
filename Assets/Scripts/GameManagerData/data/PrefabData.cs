@@ -1,5 +1,4 @@
 ﻿using System;
-using GameManagerData.objClasses;
 using UnityEngine;
 
 namespace GameManagerData.data

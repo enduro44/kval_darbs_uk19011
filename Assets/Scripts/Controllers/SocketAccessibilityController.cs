@@ -5,7 +5,6 @@ namespace Controllers
 {
     public class SocketAccessibilityController
     {
-        //public Color meshColorActive = new Color(0, 230, 230, 0.3f);
         public Color meshColorActive = new Color(255, 0, 255, 0.3f);
         public Color meshColorAllowed = new Color(0, 204, 102, 0.3f);
         public Color meshColorDanger = new Color(255, 0, 0, 0.3f);
@@ -32,6 +31,12 @@ namespace Controllers
             GameObject rootObj = obj.transform.root.gameObject;
 
             if (rootObj.CompareTag("Connected") || !canBePlaced)
+            {
+                ColorDanger(mesh);
+                return false;
+            }
+
+            if (rootObj.name == "HomeController(Clone)")
             {
                 ColorDanger(mesh);
                 return false;
@@ -70,6 +75,27 @@ namespace Controllers
         {
             ColorActive(mesh);
         }
+
+        public void ProcessEnterH(HoverEnterEventArgs args, MeshFilter mesh)
+        {
+            XRBaseInteractable obj = args.interactable;
+            string typeOfObjectInSocket = obj.gameObject.transform.root.gameObject.name;
+            
+            if (typeOfObjectInSocket == "HomeController(Clone)")
+            {
+                ColorDanger(mesh);
+            }
+            else
+            {
+                ColorAllowed(mesh);
+            }
+        }
+        
+        public void ProcessExitH(MeshFilter mesh)
+        {
+            ColorActive(mesh);
+        }
+        
     }
 
 }

@@ -24,11 +24,11 @@ namespace GameManagerData
         [Header("Load data")]
         private string _saveNameData;
         private static bool _loadGame = false;
-        private PlayerGameData _playerGameLoadData = new PlayerGameData();
+        private PlayerData _playerLoadData = new PlayerData();
         private List<HomeLoadData> _homeLoadData = new List<HomeLoadData>();
         private List<RoomData> _freeroamRoomData = new List<RoomData>();
         private FurnitureLoadData _furnitureLoadData = new FurnitureLoadData();
-        private List<PlayableData> _playableLoadData = new List<PlayableData>();
+        private PlayableLoadData _playableLoadData = new PlayableLoadData();
         public InstantiateLoadedData instantiateLoadedData;
 
         [Header("Constants")] 
@@ -102,7 +102,7 @@ namespace GameManagerData
             
             FileStream stream = new FileStream(path, FileMode.Create);
             PlayerController playerController = PlayerController.Instance();
-            data.PlayerGameData gameData = playerController.SetPlayerData();
+            PlayerData gameData = playerController.SetPlayerData();
 
             formatter.Serialize(stream, gameData);
             stream.Close();
@@ -217,7 +217,7 @@ namespace GameManagerData
                 mainMenu.ShowGameCouldNotBeLoadedError();
                 return;
             }
-            LoadNewScene(_playerGameLoadData.sceneType);
+            LoadNewScene(_playerLoadData.sceneType);
             _loadGame = true;
         }
 
@@ -254,7 +254,7 @@ namespace GameManagerData
             if (File.Exists(path))
             {
                 FileStream stream = new FileStream(path, FileMode.Open);
-                _playerGameLoadData = formatter.Deserialize(stream) as PlayerGameData;
+                _playerLoadData = formatter.Deserialize(stream) as PlayerData;
 
                 stream.Close();
             }
@@ -430,7 +430,7 @@ namespace GameManagerData
                         return;
                     }
                     
-                    _playableLoadData.Add(data);
+                    _playableLoadData.Playables.Add(data);
                 }
                 else
                 {
@@ -475,7 +475,7 @@ namespace GameManagerData
             }
             
             //Adding playables
-            foreach (var playable in _playableLoadData)
+            foreach (var playable in _playableLoadData.Playables)
             {
                 instantiateLoadedData.LoadSavedPlayable(playable);
             }
@@ -485,7 +485,7 @@ namespace GameManagerData
             
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();
-            playerController.PreparePlayerLoadGame(_playerGameLoadData);
+            playerController.PreparePlayerLoadGame(_playerLoadData);
             
             //Setting back the variable to false
             _loadGame = false;
@@ -522,7 +522,7 @@ namespace GameManagerData
             _homeLoadData.Clear();
             _freeroamRoomData.Clear();
             _furnitureLoadData.Furniture.Clear();
-            _playableLoadData.Clear();
+            _playableLoadData.Playables.Clear();
         }
 
         public void QuitGame()

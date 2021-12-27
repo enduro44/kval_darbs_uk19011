@@ -11,8 +11,8 @@ namespace Controllers
         
         private GameObject _socketVisual;
         private MeshFilter _mesh;
-        private SocketAccessibilityController _socketAccessibilityController;
         private bool _canBePlaced = true;
+        private SocketAccessibilityController _socketAccessibilityController;
         private GameObject _socketTransform;
         
         void Awake()
@@ -33,16 +33,17 @@ namespace Controllers
 
         private void Entered(SelectEnterEventArgs args)
         {
-            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
-            EmptyActiveSocketController.RemoveSocket(controllerID, _socketR);
-            
-            XRBaseInteractable obj = args.interactable;
-            GameObject rootObj = obj.transform.root.gameObject;
             if (!_canBePlaced)
             {
                 Destroy(_socketR.selectTarget.gameObject.transform.root.gameObject);
                 return;
             }
+            
+            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+            EmptyActiveSocketController.RemoveSocket(controllerID, _socketR);
+            
+            XRBaseInteractable obj = args.interactable;
+            GameObject rootObj = obj.transform.root.gameObject;
             
             TransformPosition(obj);
             

@@ -95,7 +95,7 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
-            PlayableController.SetAllPlayablesNonStatic();
+            PlayableController.SetAllPlayablesNotMovable();
             
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
@@ -154,7 +154,7 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOnAllSockets();
             RoomController.ToggleGrabOnForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
-            PlayableController.SetAllPlayablesStatic();
+            PlayableController.SetAllPlayablesMovable();
 
             ShowBuildMenu();
         }
@@ -176,7 +176,7 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureMovable();
-            PlayableController.SetAllPlayablesStatic();
+            PlayableController.SetAllPlayablesMovable();
 
             ShowFurnishMenu();
         }
@@ -198,7 +198,7 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
-            PlayableController.SetAllPlayablesNonStatic();
+            PlayableController.SetAllPlayablesNotMovable();
             
             ShowPlayablesMenu();
         }

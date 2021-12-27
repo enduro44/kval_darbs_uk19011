@@ -46,6 +46,7 @@ namespace MenuSystem.Wrist
 
         private void Exited(SelectExitEventArgs args)
         {
+            //args.interactable.transform.root.gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask &= ~(1<<11);
             _objInInventory = null;
         }
 

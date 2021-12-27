@@ -1,5 +1,5 @@
 using System;
-using MenuSystem;
+using Controllers;
 using UnityEngine;
 
 namespace GameManagerData.objClasses
@@ -17,6 +17,7 @@ namespace GameManagerData.objClasses
         private void OnDestroy()
         {
             GameData.HomeControllers.Remove(this);
+            RoomController.GrabbableRooms.Remove(gameObject);
         }
 
         private string GuidGenerator()

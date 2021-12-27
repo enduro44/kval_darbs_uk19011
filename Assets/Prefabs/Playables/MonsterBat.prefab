@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5861591876926259919}
   - component: {fileID: 6663353154903005979}
   - component: {fileID: -729443860387211511}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: MonsterBat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e21c848db90455ca3573417d4365a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectType: Playable
 --- !u!1 &667385878824557087
 GameObject:
   m_ObjectHideFlags: 0

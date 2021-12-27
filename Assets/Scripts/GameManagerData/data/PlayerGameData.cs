@@ -6,10 +6,10 @@ namespace GameManagerData.data
     [Serializable]
     public class PlayerGameData
     {
-        public string sceneType;
-        
-        public float[] position;
-        public float[] size;
-        public float[] rotation;
+        // public string sceneType;
+        //
+        // public float[] position;
+        // public float[] size;
+        // public float[] rotation;
     }
 }

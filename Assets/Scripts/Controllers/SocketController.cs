@@ -1,5 +1,4 @@
-﻿using GameManagerData;
-using GameManagerData.objClasses;
+﻿using GameManagerData.objClasses;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 

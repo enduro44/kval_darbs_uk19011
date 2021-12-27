@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 2415844906639718790}
   - component: {fileID: 6247213065955923076}
   - component: {fileID: -42309946039178063}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: AnimalCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e21c848db90455ca3573417d4365a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectType: Playable
 --- !u!1 &1754083722305418644
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5886789882043060006}
   - component: {fileID: 6508828323055403634}
   - component: {fileID: 4759149698118182422}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: DollBoy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
