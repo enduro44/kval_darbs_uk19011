@@ -10,8 +10,6 @@ using GameManagerData.objClasses;
 using MenuSystem.Main;
 using MenuSystem.Wrist;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.SceneManagement;
 using Application = UnityEngine.Application;
 
 namespace GameManagerData
@@ -430,7 +428,7 @@ namespace GameManagerData
                         return;
                     }
                     
-                    _playableLoadData.Playables.Add(data);
+                    _playableLoadData.AddPlayableData(data);
                 }
                 else
                 {

@@ -12,14 +12,14 @@ namespace MenuSystem.Main
         private FadeController _fadeController;
 
         private GameObject _mainMenuUI;
-        private GameObject _newGameUI;
+        //private GameObject _newGameUI;
         private GameObject _loadGameUI;
-        private GameObject _optionsUI;
+        //private GameObject _optionsUI;
         private GameObject _confirmationUI;
         private GameObject _errorUI;
         
         private string _saveName;
-        private GameObject _button;
+        private GameObject _saveGameButton;
 
         private GameManager _gameManager;
 
@@ -27,9 +27,9 @@ namespace MenuSystem.Main
         {
             _instance = this;
             _mainMenuUI = mainUI.transform.GetChild(0).gameObject;
-            _newGameUI = mainUI.transform.GetChild(1).gameObject;
+            //_newGameUI = mainUI.transform.GetChild(1).gameObject;
             _loadGameUI = mainUI.transform.GetChild(2).gameObject;
-            _optionsUI = mainUI.transform.GetChild(3).gameObject;
+            //_optionsUI = mainUI.transform.GetChild(3).gameObject;
             _confirmationUI = mainUI.transform.GetChild(4).gameObject;
             _errorUI = mainUI.transform.GetChild(5).gameObject;
             _fadeController = mainUI.AddComponent<FadeController>();
@@ -44,9 +44,9 @@ namespace MenuSystem.Main
         {
             _mainMenuUI.SetActive(true);
             _fadeController.FadeIn(_mainMenuUI);
-            _newGameUI.SetActive(false);
+            //_newGameUI.SetActive(false);
             _loadGameUI.SetActive(false);
-            _optionsUI.SetActive(false);
+            //_optionsUI.SetActive(false);
             _confirmationUI.SetActive(false);
             _errorUI.SetActive(false);
         }
@@ -76,13 +76,13 @@ namespace MenuSystem.Main
             _mainMenuUI.SetActive(true);
         }
 
-        public void OptionsButton()
-        {
-            _fadeController.FadeOut(_mainMenuUI);
-            _mainMenuUI.SetActive(false);
-            _fadeController.FadeIn(_optionsUI);
-            _optionsUI.SetActive(true);
-        }
+        // public void OptionsButton()
+        // {
+        //     _fadeController.FadeOut(_mainMenuUI);
+        //     _mainMenuUI.SetActive(false);
+        //     _fadeController.FadeIn(_optionsUI);
+        //     _optionsUI.SetActive(true);
+        // }
 
         public void ExitButton()
         {
@@ -93,7 +93,7 @@ namespace MenuSystem.Main
         public void ShowPopup(string saveName, GameObject button)
         {
             _saveName = saveName;
-            _button = button;
+            _saveGameButton = button;
             _fadeController.FadeOut(_loadGameUI);
             _loadGameUI.SetActive(false);
             _fadeController.FadeIn(_confirmationUI);
@@ -115,7 +115,7 @@ namespace MenuSystem.Main
         public void OnDeleteConfirmation()
         {
             _gameManager.DeleteGame(_saveName);
-            Destroy(_button);
+            Destroy(_saveGameButton);
             HidePopup();
         }
 

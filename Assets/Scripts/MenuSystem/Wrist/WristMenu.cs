@@ -2,10 +2,8 @@ using System.Collections;
 using Controllers;
 using GameManagerData;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace MenuSystem.Wrist
@@ -26,8 +24,8 @@ namespace MenuSystem.Wrist
 
         public bool activeWristUI = true;
         private bool isGameBeingSaved = false;
-        private bool shouldExitToMain = false;
-        private bool shouldExit = false;
+        // private bool shouldExitToMain = false;
+        // private bool shouldExit = false;
         
         public GameObject inventoryObject;
         public XRSocketInteractor inventorySocket;
@@ -125,29 +123,29 @@ namespace MenuSystem.Wrist
             isGameBeingSaved = false;
         }
 
-        public void GameSavedWithPopup()
-        {
-            Debug.Log("here");
-            TextMeshProUGUI textObject = savingGamePopup.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-            textObject.text = "Game saved!";
-            
-            _playerController.EnableMovementAndRays();
-            savingGamePopup.SetActive(false);
-            mainMenuUI.SetActive(true);
-
-            if (shouldExitToMain)
-            {
-                textObject.text = "Exiting to main menu!";
-                ExitToMain();
-            }
-
-            if (shouldExit)
-            {
-                textObject.text = "Exiting the game!";
-                Exit();
-            }
-            isGameBeingSaved = false;
-        }
+        // public void GameSavedWithPopup()
+        // {
+        //     Debug.Log("here");
+        //     TextMeshProUGUI textObject = savingGamePopup.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+        //     textObject.text = "Game saved!";
+        //     
+        //     _playerController.EnableMovementAndRays();
+        //     savingGamePopup.SetActive(false);
+        //     mainMenuUI.SetActive(true);
+        //
+        //     if (shouldExitToMain)
+        //     {
+        //         textObject.text = "Exiting to main menu!";
+        //         ExitToMain();
+        //     }
+        //
+        //     if (shouldExit)
+        //     {
+        //         textObject.text = "Exiting the game!";
+        //         Exit();
+        //     }
+        //     isGameBeingSaved = false;
+        // }
         
         public void BuildButton()
         {

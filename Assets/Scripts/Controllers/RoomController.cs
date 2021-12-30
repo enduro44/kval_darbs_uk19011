@@ -4,7 +4,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
 {
-    //Class controls if the room can be picked up by the player or not
+    //Klase kontrolē vai istaba ir paceļama vai nē, kā arī tā satur statisku sarakstu ar visām istabām, kas ir paceļamas, lai
+    //situācijā, kad spēles stadija mainās, sistēma var padarīt visas paceļamās istabas nepaceļamas un vice versa pēc attiecīgās
+    //spēles stadijas nepieciešamības.
     public class RoomController : MonoBehaviour
     {
         public static List<GameObject> GrabbableRooms = new List<GameObject>();
@@ -15,7 +17,9 @@ namespace Controllers
 
         void Awake()
         {
+            //Šī ir istabas komponente, kas kontrolē to vai istaba ir paceļama vai nē
             _grabber = gameObject.GetComponent<XRGrabInteractable>();
+            
             GameObject box = gameObject.transform.GetChild(0).gameObject;
             GameObject grandChildObjL = box.transform.GetChild(1).gameObject;
             GameObject grandChildObjR = box.transform.GetChild(2).gameObject;
@@ -26,6 +30,9 @@ namespace Controllers
             XRSocketInteractor socketL = left.GetComponent<XRSocketInteractor>();
             XRSocketInteractor socketR = right.GetComponent<XRSocketInteractor>();
             XRSocketInteractor socketC = ceiling.GetComponent<XRSocketInteractor>();
+            
+            //Visām kontaktligzdām ir pievienoti listeneri, lai kontrolētu kontakligzdu pieejamību un no tā izsecinātu
+            //vai istaba ir paceļama vai nē
             socketL.selectEntered.AddListener(EnteredL);
             socketL.selectExited.AddListener(ExitedL);
             socketR.selectEntered.AddListener(EnteredR);
@@ -96,14 +103,19 @@ namespace Controllers
         {
             if (_hasObjectL || _hasObjectR || _hasObjectC)
             {
-                //Changing the layer to "Socket" only, so the player can't pick up the room
+                //Situācijā, kad kādā no kontakligzdām ir pievienota istaba, bāzes istaba nevar būt paceļama, tāpēc
+                //tiek mainīta interactionLayerMask, lai spēlētājs to nevar pacelt, bet, lai istaba joprojām var būt
+                //savienota ar citu istabu
                 _grabber.interactionLayerMask = (1 << 6);
                 return;
             }
-            //Changing the layer back to "Socket" and "Player"
+            //Ja kontakligzdās nav nevienas istabas, tad istabu drīkst pacelt, tāpēc tiek pielikta atpakaļ
+            //spēlētāja interactionLayerMask
             _grabber.interactionLayerMask = (1<<6) | (1<<7);
         }
         
+        //Metode brīdī, kad istabai tiek noņemta pievienotā istaba pārbauda vai kādā citā kontaktligzdā ir pievienota istaba
+        //un, ja ir, tad nedara neko, bet, ja nav, tad pievieno istabu paceļamo istabu sarkastā
         private void ProcessBaseRoom(GameObject obj)
          {
              if (_hasObjectL || _hasObjectR || _hasObjectC)
@@ -113,6 +125,8 @@ namespace Controllers
              GrabbableRooms.Add(gameObject);
          }
         
+        //Šīs abas metodes tiek izmantotas spēles stadijas maiņā, lai neļautu spēlētājam pacelt istabas, kuras ir paceļamas
+        //vai, lai atgrieztu spēlētājam iespēju pacelt paceļamās istabas
         public static void ToggleGrabOffForGrabbableRooms()
          {
              foreach (var room in GrabbableRooms)

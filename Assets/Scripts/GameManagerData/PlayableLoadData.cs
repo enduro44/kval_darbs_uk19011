@@ -7,7 +7,7 @@ namespace GameManagerData
     {
         public List<PlayableData> Playables = new List<PlayableData>();
 
-        public void AddFurnitureData(PlayableData data)
+        public void AddPlayableData(PlayableData data)
         {
             Playables.Add(data);
         }

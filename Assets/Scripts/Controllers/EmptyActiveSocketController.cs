@@ -26,7 +26,7 @@ namespace Controllers
             {
                 if (controllerID == data.controllerID)
                 {
-                    data.emptyActiveSockets.Add(socket);
+                    data.AddSocket(socket);
                     return;
                 }
             }
