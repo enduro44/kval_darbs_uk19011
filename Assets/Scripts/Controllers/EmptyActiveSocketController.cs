@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
 {
+    //Klase satur sarakstu ar tukšām aktīvajām kontakligzdām un spēj tās ieslēgt un izslēgt
     public class EmptyActiveSocketController : MonoBehaviour
     {
         public static List<EmptyActiveSocketData> EmptyActiveSockets = new List<EmptyActiveSocketData>();

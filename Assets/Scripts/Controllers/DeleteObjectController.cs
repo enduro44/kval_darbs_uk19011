@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
 {
+    //Klase reģistrē objektus, ko lietotājs ir paņēmis rokās un ļauj tos dzēst ar pogas spiedienu
     public class DeleteObjectController : MonoBehaviour
     {
         private GameObject _gameObjectRightHand;
@@ -29,6 +30,7 @@ namespace Controllers
             _gameObjectLeftHand = null;
         }
 
+        //Metodi izsauc kreisā kontroliera sekundārās pogas spiediens
         public void DeleteObjectsInHands(InputAction.CallbackContext context)
         {
             if (_gameObjectLeftHand != null)

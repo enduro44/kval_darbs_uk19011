@@ -41,6 +41,8 @@ namespace Controllers
             socketC.selectExited.AddListener(ExitedC);
         }
 
+        //Brīdī, kad kādā no istabas kontaktligzdām tiek pievienota jauna istaba tā vairs nav paceļama, 
+        //bet jaunā istaba ir paceļama, šo konfigurāciju apstrādā visas Entered metodes
         private void EnteredL(SelectEnterEventArgs args)
         {
             _hasObjectL = true;
@@ -51,6 +53,10 @@ namespace Controllers
             GrabbableRooms.Remove(gameObject);
         }
         
+        //Brīdī, kad bāzes istabai tiek noņemta istabas no tās kontakligzdas, noņemtā istaba tiek pievienota
+        //paceļamo istabu sarakstam un bāzes istabu apstrādā ProcessBaseRoom() metode, kas nosaka vai
+        //kādā citā kontaktligzdā vēl ir istabas, un,ja nav, tad pievieno bāzes istabu paceļamo istabu sarakstā.
+        //Šādu konfigurāciju veic visas Exited metodes.
         private void ExitedL(SelectExitEventArgs args)
         {
             _hasObjectL = false;

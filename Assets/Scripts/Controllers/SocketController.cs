@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
 {
+    //Klase pārvalda tai padotās kontakligzdas, izslēdz vai ieslēdz tās, apstrādā savienojuma etiķetes, kā arī pievieno vai noņem aktīvo brīvo kontakligzdu sarakstam
     public class SocketController
     {
         private GameObject _socketVisual;

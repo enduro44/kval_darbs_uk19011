@@ -7,6 +7,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controllers
 {
+    //Klase pārvalda spēlētāja pozīciju spēles ainā, spēlētāja iespēju mijiedarboties ar spēles ainu un spēlētāja augstuma maiņas funkcionalitāti
+    //Kā arī klase sagatavo datus par spēlētāja pozīciju ainā brīdī, kad spēle tiek saglabāta
     public class PlayerController : MonoBehaviour
     {
         private static PlayerController _instance;
@@ -30,6 +32,7 @@ namespace Controllers
             return _instance;
         }
         
+        //Metode sagatavo spēlētāju jaunas spēles ainā
         public void PreparePlayerNewGame()
         {
             playerObject.transform.position = playerPositionGameLoaded;
@@ -38,6 +41,7 @@ namespace Controllers
             _heightChangeAllowed = true;
         }
 
+        //Metode sagatavo spēlētāju ielādētas spēles ainā
         public void PreparePlayerLoadGame(PlayerData data)
         {
             Vector3 playerPos = new Vector3(data.position[0], data.position[1], data.position[2]);
@@ -52,6 +56,7 @@ namespace Controllers
             _heightChangeAllowed = true;
         }
 
+        //Metode sagatavo spēlētāja datus brīdī, kad spēle tiek saglabāta
         public PlayerData SetPlayerData()
         {
             PlayerData playerData = new PlayerData();
@@ -83,6 +88,7 @@ namespace Controllers
             return playerData;
         }
 
+        //Metodi izsauc labā kontroliera sekundārās pogas spiediens
         public void IncreasePlayerHeight(InputAction.CallbackContext context)
         {
             if (context.performed && _heightChangeAllowed)
@@ -98,6 +104,7 @@ namespace Controllers
             }
         }
         
+        //Metodi izsauc labā kontroliera primārās pogas spiediens
         public void DecreasePlayerHeight(InputAction.CallbackContext context)
         {
             if (context.performed && _heightChangeAllowed)
@@ -169,6 +176,8 @@ namespace Controllers
             DisableRaysBothHands();
         }
         
+        //Metode nodrošina, ka spēlētājs nevar iziet no spēles ainas spēlējamās zonas, ja spēlētājs mēģina to darīt, 
+        //tad tā pozīcija tiek pārlikta atpakaļ uz ielādētas jaunas spēles pozīciju(ainas centrā).
         public void OnTriggerEnter(Collider col)
         {
             if (col.gameObject.CompareTag("Barrier"))
