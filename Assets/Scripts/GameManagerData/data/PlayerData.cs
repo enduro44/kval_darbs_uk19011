@@ -12,6 +12,5 @@ namespace GameManagerData.data
       public float[] position;
       public float[] size;
       public float[] rotation;
-
    }
 }

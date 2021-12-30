@@ -46,6 +46,4 @@ namespace MenuSystem.Wrist
             scrollView.SetActive(true);
         }
     }
-    
-    
 }

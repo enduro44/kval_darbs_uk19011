@@ -29,7 +29,5 @@ namespace MenuSystem
                 yield return null;
             }
         }
-
-
     }
 }
