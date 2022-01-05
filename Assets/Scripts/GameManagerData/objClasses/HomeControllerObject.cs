@@ -1,6 +1,7 @@
 using System;
 using Controllers;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace GameManagerData.objClasses
 {
@@ -18,6 +19,7 @@ namespace GameManagerData.objClasses
         {
             GameData.HomeControllers.Remove(this);
             RoomController.GrabbableRooms.Remove(gameObject);
+           
         }
 
         private string GuidGenerator()

@@ -149,6 +149,7 @@ namespace Controllers
         
         public void DisableRayLeftHand()
         {
+            Debug.Log("turning leftoff");
             leftHand.GetComponent<XRRayInteractor>().enabled = false;
         }
 

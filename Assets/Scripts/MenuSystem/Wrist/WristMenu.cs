@@ -94,6 +94,7 @@ namespace MenuSystem.Wrist
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesNotMovable();
+            DeleteObjectController.isPlayGameMode = true;
             
             ScrollViewController.HideScrollView();
             InventoryController.HideInventory();
@@ -153,7 +154,8 @@ namespace MenuSystem.Wrist
             RoomController.ToggleGrabOnForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesMovable();
-
+            DeleteObjectController.isPlayGameMode = false;
+            
             ShowBuildMenu();
         }
 
@@ -175,6 +177,7 @@ namespace MenuSystem.Wrist
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureMovable();
             PlayableController.SetAllPlayablesMovable();
+            DeleteObjectController.isPlayGameMode = false;
 
             ShowFurnishMenu();
         }
@@ -197,6 +200,7 @@ namespace MenuSystem.Wrist
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
             PlayableController.SetAllPlayablesNotMovable();
+            DeleteObjectController.isPlayGameMode = false;
             
             ShowPlayablesMenu();
         }

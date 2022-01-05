@@ -31,6 +31,17 @@ namespace Controllers
         {
             return obj.transform.root.gameObject;
         }
+
+        public bool IsRoof(XRBaseInteractable obj)
+        {
+            string typeOfObjectInSocket = GetType(obj);
+            if (typeOfObjectInSocket == "SmallRoof(Clone)" || typeOfObjectInSocket == "LargeRoof(Clone)" || typeOfObjectInSocket == "CornerRoof(Clone)")
+            {
+                return true;
+            }
+
+            return false;
+        }
         
         public void ToogleConnectedTag(XRBaseInteractable obj)
         {

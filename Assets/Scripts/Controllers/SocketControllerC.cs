@@ -29,9 +29,9 @@ namespace Controllers
             _socketVisual = _socketC.transform.GetChild(0).gameObject;
             _mesh = _socketVisual.GetComponent<MeshFilter>();
 
-            _socketTransform = _socketC.transform.parent.gameObject.transform.GetChild(1).gameObject;
-
-            _root = _socketC.transform.root.gameObject;
+            Transform transformC = _socketC.transform;
+            _socketTransform = transformC.parent.gameObject.transform.GetChild(1).gameObject;
+            _root = transformC.root.gameObject;
         }
 
         private void Entered(SelectEnterEventArgs args)
@@ -44,7 +44,7 @@ namespace Controllers
             string typeOfObjectInSocket = _controller.GetType(obj);
             string typeOfRootObject = _root.name;
 
-            if (typeOfRootObject != typeOfObjectInSocket)
+            if (typeOfRootObject != typeOfObjectInSocket && !_controller.IsRoof(obj))
             {
                 Destroy(_socketC.selectTarget.gameObject.transform.root.gameObject);
                 return;
@@ -56,8 +56,15 @@ namespace Controllers
             obj.transform.localScale = scaleChange;
             
             obj.GetComponent<Room>().controllerID = controllerID;
-            _controller.TurnOnSocketCeiling(obj);
+            
             _socketVisual.SetActive(false);
+            
+            if (_controller.IsRoof(obj))
+            {
+                return;
+            }
+            
+            _controller.TurnOnSocketCeiling(obj);
         }
 
         private void TransformPosition(string typeOfObjectInSocket)
@@ -69,7 +76,22 @@ namespace Controllers
 
             if (typeOfObjectInSocket == "SmallRoom(Clone)")
             {
-                _socketTransform.transform.localPosition = new Vector3(-0.528f, 0.032f, 0.486f);
+                _socketTransform.transform.localPosition = new Vector3(-0.515f, 0.032f, 0.486f);
+            }
+
+            if (typeOfObjectInSocket == "SmallRoof(Clone)")
+            {
+                _socketTransform.transform.localPosition = new Vector3(-1.103f, -0.006f, 1.094f);
+            }
+            
+            if (typeOfObjectInSocket == "LargeRoof(Clone)")
+            {
+                _socketTransform.transform.localPosition = new Vector3(-0.545f, 0.41f, 0.58f);
+            }
+            
+            if (typeOfObjectInSocket == "CornerRoof(Clone)")
+            {
+                _socketTransform.transform.localPosition = new Vector3(-0.28f, 0.39f, 0.186f);
             }
         }
 
@@ -81,18 +103,23 @@ namespace Controllers
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
             obj.transform.localScale = scaleChange;
-            _controller.TurnOffSocketCeiling(obj);
-            _socketVisual.SetActive(true);
             obj.GetComponent<Room>().controllerID = "";
+            
+            _socketVisual.SetActive(true);
+            
+            if (_controller.IsRoof(obj))
+            {
+                return;
+            }
+            
+            _controller.TurnOffSocketCeiling(obj);
         }
 
         private void HoverEntered(HoverEnterEventArgs args)
         {
             _socketAccessibilityController.ProcessEnterC(args, _controller, _root, _mesh);
         }
-
-
-
+        
         private void HoverExited(HoverExitEventArgs args)
         {
             _socketAccessibilityController.ProcessExitC(_mesh);

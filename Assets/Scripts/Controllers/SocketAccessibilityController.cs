@@ -10,6 +10,8 @@ namespace Controllers
         public Color meshColorAllowed = new Color(0, 204, 102, 0.3f);
         public Color meshColorDanger = new Color(255, 0, 0, 0.3f);
 
+        private SocketController _controller = new SocketController();
+
         public void ColorActive(MeshFilter mesh)
         {
             mesh.GetComponent<MeshRenderer>().material.color = meshColorActive;
@@ -39,8 +41,8 @@ namespace Controllers
                 return false;
             }
 
-            //Ja mājas struktūrai mēģina pievienot mājas kontrolieri, tad arī šī darbība nav atļauta
-            if (rootObj.name == "HomeController(Clone)")
+            //Ja mājas struktūrai mēģina pievienot mājas kontrolieri vai jumtus labajā vai kreisajā pusē, tad arī šī darbība nav atļauta
+            if (rootObj.name == "HomeController(Clone)" || _controller.IsRoof(obj))
             {
                 ColorDanger(mesh);
                 return false;
@@ -67,9 +69,13 @@ namespace Controllers
             GameObject objInSocket = obj.transform.root.gameObject;
             string typeOfRootObject = root.name;
 
-            if (typeOfRootObject != typeOfObjectInSocket && !objInSocket.CompareTag("Connected"))
+            if (typeOfRootObject != typeOfObjectInSocket && !objInSocket.CompareTag("Connected") && !controller.IsRoof(obj))
             {
                 ColorDanger(mesh);
+            }
+            else if(typeOfRootObject == "SmallRoom(Clone)" && typeOfObjectInSocket == "SmallRoof(Clone)" || typeOfRootObject == "LargeRoom(Clone)" && typeOfObjectInSocket == "LargeRoof(Clone)" || typeOfRootObject == "CornerRoom(Clone)" && typeOfObjectInSocket == "CornerRoof(Clone)")
+            {
+                ColorAllowed(mesh);
             }
             else
             {
@@ -88,7 +94,7 @@ namespace Controllers
             XRBaseInteractable obj = args.interactable;
             string typeOfObjectInSocket = obj.gameObject.transform.root.gameObject.name;
             
-            if (typeOfObjectInSocket == "HomeController(Clone)")
+            if (typeOfObjectInSocket == "HomeController(Clone)" || _controller.IsRoof(obj))
             {
                 ColorDanger(mesh);
             }

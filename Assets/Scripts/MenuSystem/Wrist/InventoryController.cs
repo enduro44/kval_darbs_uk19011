@@ -11,15 +11,17 @@ namespace MenuSystem.Wrist
         private static InventoryController _instance;
         private XRSocketInteractor _socketI;
         private SocketController _controller;
+        private PrefabData _prefabData;
         private static GameObject _objInInventory;
         
         public static GameObject inventoryObject;
         public Transform spawnPoint;
-        private GameObject _newRoom;
         void Awake()
         {
+            
             _instance = this;
             _controller = new SocketController();
+            _prefabData = PrefabData.Instance();
             _socketI = gameObject.GetComponent<XRSocketInteractor>();
             _socketI.selectEntered.AddListener(Entered);
             _socketI.selectEntered.AddListener(GetObject);
@@ -37,7 +39,11 @@ namespace MenuSystem.Wrist
             XRBaseInteractable obj = args.interactable;
             string typeOfObjectInSocket = _controller.GetType(obj);
 
-            if (typeOfObjectInSocket == "CornerRoom(Clone)" || typeOfObjectInSocket == "LargeRoom(Clone)" || typeOfObjectInSocket == "SmallRoom(Clone)")
+            Vector3 inventoryScale = inventoryObject.transform.lossyScale;
+            Vector3 objInSocketScale = args.interactable.gameObject.transform.lossyScale;
+            //TODO: jāizdomā change scale loģika
+            
+            if (typeOfObjectInSocket == "CornerRoom(Clone)" || typeOfObjectInSocket == "LargeRoom(Clone)" || typeOfObjectInSocket == "SmallRoom(Clone)" || _controller.IsRoof(obj))
             {
                 Vector3 scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
                 obj.transform.localScale = scaleChange;
@@ -56,30 +62,29 @@ namespace MenuSystem.Wrist
             {
                 Destroy(_objInInventory);
             }
-            PrefabData prefabData = PrefabData.Instance();
-            
-            GameObject prefab = new GameObject();
+
+            GameObject prefab;
             switch (objectCategory)
             {
                 case "home":
-                    prefab = prefabData.GetPrefab(objectType);
+                    prefab = _prefabData.GetPrefab(objectType);
                     break;
                 case "furniture":
-                    prefab = prefabData.GetFurniturePrefab(objectType);
+                    prefab = _prefabData.GetFurniturePrefab(objectType);
                     break;
                 case "playable":
-                    prefab = prefabData.GetPlayablePrefab(objectType);
+                    prefab = _prefabData.GetPlayablePrefab(objectType);
                     break;
                 default:
                     Debug.Log("Category does not exist");
                     return;
             }
             
-            GameObject newBase = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-            newBase.SetActive(false);
-            newBase.transform.position = inventoryObject.transform.position;
-            newBase.transform.rotation = inventoryObject.transform.rotation;
-            newBase.SetActive(true);
+            GameObject newObject = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+            newObject.SetActive(false);
+            newObject.transform.rotation = inventoryObject.transform.rotation;
+            newObject.transform.position = inventoryObject.transform.position;
+            newObject.SetActive(true);
         }
         
         private void GetObject(SelectEnterEventArgs args)

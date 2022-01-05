@@ -35,6 +35,11 @@ namespace Controllers
         
         public static void RemoveSocket(string controllerID, XRSocketInteractor socket)
         {
+            if (socket == null)
+            {
+                return;
+            }
+            
             foreach (var data in EmptyActiveSockets)
             {
                 if (controllerID == data.controllerID)

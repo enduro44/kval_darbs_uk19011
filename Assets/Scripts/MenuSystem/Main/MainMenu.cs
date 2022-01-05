@@ -138,7 +138,7 @@ namespace MenuSystem.Main
         private void PopulateSaveGameData()
         {
             string[] savedGames = _gameManager.GetSavedGames();
-            for (int i = 0; i < savedGames.Length; i++)
+            for (int i = savedGames.Length - 1; i >= 0; i--)
             {
                 GameObject button = Instantiate(saveButtonPrefab, contentParent) as GameObject;
                 button.GetComponent<LoadGameButtonItem>().saveName = savedGames[i];

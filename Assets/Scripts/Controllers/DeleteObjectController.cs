@@ -9,6 +9,7 @@ namespace Controllers
     {
         private GameObject _gameObjectRightHand;
         private GameObject _gameObjectLeftHand;
+        public static bool isPlayGameMode = true;
 
         public void SetGameObjectRightHand(SelectEnterEventArgs args)
         {
@@ -33,11 +34,17 @@ namespace Controllers
         //Metodi izsauc kreisā kontroliera sekundārās pogas spiediens
         public void DeleteObjectsInHands(InputAction.CallbackContext context)
         {
+            if (isPlayGameMode)
+            {
+                return;
+            }
+            
             if (_gameObjectLeftHand != null)
             {
                 _gameObjectLeftHand.GetComponent<XRGrabInteractable>().colliders.Clear();
                 Destroy(_gameObjectLeftHand);
             }
+            
             if (_gameObjectRightHand != null)
             {
                 _gameObjectRightHand.GetComponent<XRGrabInteractable>().colliders.Clear();

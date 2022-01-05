@@ -19,6 +19,14 @@ namespace GameManagerData.data
         public const string CORNER_ROOM = "CornerRoom(Clone)";
         [SerializeField] private GameObject cornerRoomPrefab;
         
+        [Header("Roofs")]
+        public const string LARGE_ROOF = "LargeRoof(Clone)";
+        [SerializeField] private GameObject largeRoofPrefab;
+        public const string SMALL_ROOF = "SmallRoof(Clone)";
+        [SerializeField] private GameObject smallRoofPrefab;
+        public const string CORNER_ROOF = "CornerRoof(Clone)";
+        [SerializeField] private GameObject cornerRoofPrefab;
+        
         [Header("Furniture")]
         public const string BED = "Bed(Clone)";
         public GameObject bedPrefab;
@@ -204,6 +212,12 @@ namespace GameManagerData.data
                     return smallRoomPrefab;
                 case CORNER_ROOM:
                     return cornerRoomPrefab;
+                case LARGE_ROOF:
+                    return largeRoofPrefab;
+                case SMALL_ROOF:
+                    return smallRoofPrefab;
+                case CORNER_ROOF:
+                    return cornerRoofPrefab;
                 case CONTROLLER:
                     return homeControllerPrefab;
                 default:

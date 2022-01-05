@@ -49,8 +49,10 @@ namespace Controllers
 
         private void Entered(SelectEnterEventArgs args)
         {
+            string nameOfObject = args.interactable.gameObject.transform.root.gameObject.name;
             //Spēle neļauj pievienot mājas kontrolieri citam mājas kontrolierim, tapēc viens no kontrolieriem tiek dzēsts
-            if (args.interactable.gameObject.transform.root.gameObject.name == "HomeController(Clone)")
+            //Kā arī mājas kontrolierim nevar pievienot jumtu
+            if (name == "HomeController(Clone)" || _socketController.IsRoof(args.interactable))
             {
                 Destroy(_homeSocket.selectTarget.gameObject.transform.root.gameObject);
                 return;
