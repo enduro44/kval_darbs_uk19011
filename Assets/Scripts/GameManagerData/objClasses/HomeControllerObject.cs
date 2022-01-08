@@ -19,7 +19,6 @@ namespace GameManagerData.objClasses
         {
             GameData.HomeControllers.Remove(this);
             RoomController.GrabbableRooms.Remove(gameObject);
-           
         }
 
         private string GuidGenerator()

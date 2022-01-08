@@ -75,6 +75,11 @@ namespace Controllers
 
         private void Exited(SelectExitEventArgs args)
         {
+            if (!_canBePlaced)
+            {
+                return;
+            }
+            
             string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
             EmptyActiveSocketController.AddSocket(controllerID, _socketR);
             

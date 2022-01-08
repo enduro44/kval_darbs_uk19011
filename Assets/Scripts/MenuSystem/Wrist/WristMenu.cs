@@ -93,7 +93,7 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
-            PlayableController.SetAllPlayablesNotMovable();
+            PlayableController.SetAllPlayablesMovable();
             DeleteObjectController.isPlayGameMode = true;
             
             ScrollViewController.HideScrollView();
@@ -153,7 +153,7 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOnAllSockets();
             RoomController.ToggleGrabOnForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
-            PlayableController.SetAllPlayablesMovable();
+            PlayableController.SetAllPlayablesNotMovable();
             DeleteObjectController.isPlayGameMode = false;
             
             ShowBuildMenu();
@@ -176,7 +176,7 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureMovable();
-            PlayableController.SetAllPlayablesMovable();
+            PlayableController.SetAllPlayablesNotMovable();
             DeleteObjectController.isPlayGameMode = false;
 
             ShowFurnishMenu();
@@ -199,7 +199,7 @@ namespace MenuSystem.Wrist
             EmptyActiveSocketController.TurnOffAllSockets();
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
-            PlayableController.SetAllPlayablesNotMovable();
+            PlayableController.SetAllPlayablesMovable();
             DeleteObjectController.isPlayGameMode = false;
             
             ShowPlayablesMenu();
@@ -251,7 +251,6 @@ namespace MenuSystem.Wrist
             confirmationExitToMain.SetActive(false);
             savingGamePopup.SetActive(true);
             bool isGameSaved = SaveGame();
-            Debug.Log(isGameSaved);
             textObject.text = "Saving the game...";
             yield return null;
             yield return new WaitForSeconds(10f);

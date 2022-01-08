@@ -36,11 +36,7 @@ namespace Controllers
 
         private void Entered(SelectEnterEventArgs args)
         {
-            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
-            EmptyActiveSocketController.RemoveSocket(controllerID, _socketC);
-            
             XRBaseInteractable obj = args.interactable;
-
             string typeOfObjectInSocket = _controller.GetType(obj);
             string typeOfRootObject = _root.name;
 
@@ -49,15 +45,19 @@ namespace Controllers
                 Destroy(_socketC.selectTarget.gameObject.transform.root.gameObject);
                 return;
             }
+            
+            string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+            obj.GetComponent<Room>().controllerID = controllerID;
+            Debug.Log("suta šo id: " + controllerID);
+            
+            EmptyActiveSocketController.RemoveSocket(controllerID, _socketC);
+            Debug.Log("vai ir tukšs?: " + controllerID);
+            _socketVisual.SetActive(false);
 
             TransformPosition(typeOfObjectInSocket);
 
             Vector3 scaleChange = new Vector3(1, 1, 1);
             obj.transform.localScale = scaleChange;
-            
-            obj.GetComponent<Room>().controllerID = controllerID;
-            
-            _socketVisual.SetActive(false);
             
             if (_controller.IsRoof(obj))
             {
@@ -98,21 +98,22 @@ namespace Controllers
         private void Exited(SelectExitEventArgs args)
         {
             string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
+            Debug.Log("suta šo id: " + controllerID);
             EmptyActiveSocketController.AddSocket(controllerID, _socketC);
             
             XRBaseInteractable obj = args.interactable;
             Vector3 scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
             obj.transform.localScale = scaleChange;
-            obj.GetComponent<Room>().controllerID = "";
-            
+
             _socketVisual.SetActive(true);
             
             if (_controller.IsRoof(obj))
             {
+                obj.GetComponent<Room>().controllerID = "";
                 return;
             }
-            
             _controller.TurnOffSocketCeiling(obj);
+            obj.GetComponent<Room>().controllerID = "";
         }
 
         private void HoverEntered(HoverEnterEventArgs args)

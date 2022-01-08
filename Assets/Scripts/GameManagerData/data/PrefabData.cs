@@ -383,5 +383,165 @@ namespace GameManagerData.data
                     return animalCatPrefab;
             }
         }
+
+        public static Vector3 GetSizeVector3(string type)
+        {
+            switch (type)
+            {
+                case LARGE_ROOM:
+                    return new Vector3(0.1f,0.1f,0.1f);
+                case SMALL_ROOM:
+                    return new Vector3(0.1f,0.1f,0.1f);
+                case CORNER_ROOM:
+                    return new Vector3(0.1f,0.1f,0.1f);
+                case LARGE_ROOF:
+                    return new Vector3(0.1f,0.1f,0.1f);
+                case SMALL_ROOF:
+                    return new Vector3(0.1f,0.1f,0.1f);
+                case CORNER_ROOF:
+                    return new Vector3(0.1f,0.1f,0.1f);
+                case CONTROLLER:
+                    return new Vector3(0.1f,0.1f,0.1f);
+                case BED:
+                    return new Vector3(0.05f,0.05f,0.05f);
+                case BED_BLUE:
+                    return new Vector3(0.05f,0.05f,0.05f);
+                case BED_BROWN:
+                    return new Vector3(0.05f,0.05f,0.05f);
+                case BED_GREEN:
+                    return new Vector3(0.05f,0.05f,0.05f);
+                case BED_PINK:
+                    return new Vector3(0.05f,0.05f,0.05f);
+                case BED_WHITE:
+                    return new Vector3(0.05f,0.05f,0.05f);
+                case BIN_GREEN:
+                    return new Vector3(0.6f,0.6f,0.4f);
+                case BIN_WHITE:
+                    return new Vector3(0.6f,0.6f,0.4f);
+                case BIN_YELLOW:
+                    return new Vector3(0.6f,0.6f,0.4f);
+                case CARPET:
+                    return new Vector3(1,1,1);
+                case CARPET_BEIGE:
+                    return new Vector3(1,1,1);
+                case CARPET_BROWN:
+                    return new Vector3(1,1,1);
+                case CARPET_DARK:
+                    return new Vector3(1,1,1);
+                case CARPET_PINK:
+                    return new Vector3(1,1,1);
+                case CHAIR:
+                    return new Vector3(0.04666358f,0.1399907f,0.06999537f);
+                case CHAIR_DARK:
+                    return new Vector3(0.04666358f,0.1399907f,0.06999537f);
+                case CHAIR_GREEN:
+                    return new Vector3(0.04666358f,0.1399907f,0.06999537f);
+                case CHAIR_LIGHT:
+                    return new Vector3(0.04666358f,0.1399907f,0.06999537f);
+                case CHAIR_WHITE:
+                    return new Vector3(0.04666358f,0.1399907f,0.06999537f);
+                case CHAIR_SMALL:
+                    return new Vector3(0.008012706f,0.004807624f,0.008012706f);
+                case CHAIR_SMALL_DARK:
+                    return new Vector3(0.008012706f,0.004807624f,0.008012706f);
+                case CHAIR_SMALL_GREEN:
+                    return new Vector3(0.008012706f,0.004807624f,0.008012706f);
+                case CHAIR_SMALL_LIGHT:
+                    return new Vector3(0.008012706f,0.004807624f,0.008012706f);
+                case CHAIR_SMALL_RED:
+                    return new Vector3(0.008012706f,0.004807624f,0.008012706f);
+                case CHAIR_SMALL_WHITE:
+                    return new Vector3(0.008012706f,0.004807624f,0.008012706f);
+                case COUCH:
+                    return new Vector3(0.151962f,0.07641409f,0.07598101f);
+                case COUCH_BEIGE:
+                    return new Vector3(0.151962f,0.07641409f,0.07598101f);
+                case COUCH_GREEN:
+                    return new Vector3(0.151962f,0.07641409f,0.07598101f);
+                case CUSHION:
+                    return new Vector3(0.5f,0.5f,0.5f);
+                case EGG_STOOL:
+                    return new Vector3(0.248465f,0.248465f,0.248465f);
+                case EGG_STOOL_DARK:
+                    return new Vector3(0.248465f,0.248465f,0.248465f);
+                case EGG_STOOL_LIGHT:
+                    return new Vector3(0.248465f,0.248465f,0.248465f);
+                case EGG_TABLE:
+                    return new Vector3(0.139776f,0.139776f,0.139776f);
+                case EGG_TABLE_DARK:
+                    return new Vector3(0.139776f,0.139776f,0.139776f);
+                case EGG_TABLE_LIGHT:
+                    return new Vector3(0.139776f,0.139776f,0.139776f);
+                case FRIDGE:
+                    return new Vector3(0.0050625f,0.0050625f,0.0050625f);
+                case MICROWAVE:
+                    return new Vector3(0.02f,0.02f,0.02f);
+                case OVEN:
+                    return new Vector3(0.008418f,0.0101016f,0.008418f);
+                case OVEN_2:
+                    return new Vector3(0.008418f,0.0101016f,0.008418f);
+                case SIDE_TABLE:
+                    return new Vector3(0.1148225f,0.1607515f,0.1148225f);
+                case SIDE_TABLE_GREEN:
+                    return new Vector3(0.1148225f,0.1607515f,0.1148225f);
+                case SINK:
+                    return new Vector3(0.008418f,0.0101016f,0.008418f);
+                case SMALL_TABLE:
+                    return new Vector3(0.005185424f,0.003889068f,0.005185424f);
+                case SMALL_TABLE_GREEN:
+                    return new Vector3(0.005185424f,0.003889068f,0.005185424f);
+                case SMALL_TABLE_RED:
+                    return new Vector3(0.005185424f,0.003889068f,0.005185424f);
+                case SMALL_TABLE_WHITE:
+                    return new Vector3(0.005185424f,0.003889068f,0.005185424f);
+                case SOFA:
+                    return new Vector3(0.07599001f,0.07599001f,0.07599001f);
+                case SOFA_BEIGE:
+                    return new Vector3(0.07599001f,0.07599001f,0.07599001f);
+                case SOFA_GREEN:
+                    return new Vector3(0.07599001f,0.07599001f,0.07599001f);
+                case STAND_1:
+                    return new Vector3(0.008418f,0.0101016f,0.008418f);
+                case STAND_2:
+                    return new Vector3(0.008418f,0.0101016f,0.008418f);
+                case STAND_3:
+                    return new Vector3(0.008418f,0.0101016f,0.008418f);
+                case TABLE:
+                    return new Vector3(0.01402f,0.0052575f,0.0052575f);
+                case TABLE_GREEN:
+                    return new Vector3(0.01402f,0.0052575f,0.0052575f);
+                case TABLE_RED:
+                    return new Vector3(0.01402f,0.0052575f,0.0052575f);
+                case TABLE_WHITE:
+                    return new Vector3(0.01402f,0.0052575f,0.0052575f);
+                case TV:
+                    return new Vector3(0.092015f,0.092015f,0.092015f);
+                case VASE:
+                    return new Vector3(0.105418f,0.105418f,0.105418f);
+                case VASE_PINK:
+                    return new Vector3(0.105418f,0.105418f,0.105418f);
+                case ANIMAL_CAT:
+                    return new Vector3(1,1,1);
+                case CAR_BLUE:
+                    return new Vector3(0.47822f,0.47822f,0.47822f);
+                case CAR_HOTDOG_TRACK:
+                    return new Vector3(0.1053681f,0.1053681f,0.1053681f);
+                case DOLL_BARBIE:
+                    return new Vector3(0.03571492f,0.04879732f,0.03571492f);
+                case DOLL_BOY:
+                    return new Vector3(0.09904563f,0.07464772f,0.04421187f);
+                case DOLL_FEMALE:
+                    return new Vector3(0.07396753f,0.09497089f,0.07396753f);
+                case DOLL_MALE:
+                    return new Vector3(0.1108268f,0.07557795f,0.1108268f);
+                case DOLL_POLICE:
+                    return new Vector3(0.1108268f,0.07557795f,0.1108268f);
+                case MONSTER_BAT:
+                    return new Vector3(0.113242f,0.113242f,0.113242f);
+                default:
+                    Debug.Log("Type doesn't match, default Vector3 provided: "+ type);
+                    return new Vector3(1,1,1);
+            }
+        }
     }
 }

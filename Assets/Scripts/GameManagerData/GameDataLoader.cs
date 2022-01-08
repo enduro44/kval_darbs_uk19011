@@ -7,16 +7,18 @@ namespace GameManagerData
     {
         void Awake()
         {
-            PlayerController playerController = PlayerController.Instance();
-            playerController.DisableMovementAndRays();
             
             GameManager gameManager = GameManager.Instance();
-            gameManager.InstantiateLoadedData();
-
+            PlayerController playerController = PlayerController.Instance();
+            
             if (!GameManager.IsLoadGame())
             {
                 playerController.PreparePlayerNewGame();
+                return;
             }
+            
+            playerController.DisableMovementAndRays();
+            gameManager.InstantiateLoadedData();
         }
     }
 }

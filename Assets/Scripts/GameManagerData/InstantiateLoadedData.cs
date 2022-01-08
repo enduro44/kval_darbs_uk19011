@@ -1,6 +1,7 @@
 using GameManagerData.data;
 using GameManagerData.objClasses;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 /*
  * Class takes data from file and creates saved game controllers in the scene
@@ -38,6 +39,8 @@ namespace GameManagerData
             Transform roomTransform = room.transform;
             roomTransform.localScale = roomSize;
             roomTransform.eulerAngles = roomRot;
+            
+            room.GetComponent<XRGrabInteractable>().interactionLayerMask = (1<<6) | (1<<7);
         }
 
         public void LoadSavedFurniture(FurnitureData data)

@@ -23,30 +23,40 @@ namespace Controllers
 
         public static void AddSocket(string controllerID, XRSocketInteractor socket)
         {
+            Debug.Log("Adding a scoket");
             foreach (var data in EmptyActiveSockets)
             {
+                Debug.Log("controller ID: " + data.controllerID + "sockets: " + data.emptyActiveSockets.Count + " controller we search: " + controllerID);
                 if (controllerID == data.controllerID)
                 {
+                    Debug.Log("controller found");
                     data.AddSocket(socket);
                     return;
                 }
             }
+            Debug.Log("controller  not found");
         }
         
         public static void RemoveSocket(string controllerID, XRSocketInteractor socket)
         {
+            Debug.Log("Removing a scoket");
             if (socket == null)
             {
+                Debug.Log("socket is null");
                 return;
             }
             
             foreach (var data in EmptyActiveSockets)
             {
+                Debug.Log("controller ID: " + data.controllerID + "sockets: " + data.emptyActiveSockets.Count + " controller we search: " + controllerID);
                 if (controllerID == data.controllerID)
                 {
+                    Debug.Log("controller found");
                     data.RemoveSocket(socket);
+                    return;
                 }
             }
+            Debug.Log("controller  not found");
         }
 
         public static void TurnOnAllSockets()
@@ -69,6 +79,7 @@ namespace Controllers
         {
             foreach (var data in EmptyActiveSockets)
             {
+                Debug.Log("Turning off for " + data.controllerID);
                 if (data.isControllerEmpty)
                 {
                     _controller.TurnOffControllerSocket(data.controllerSocket);
@@ -77,6 +88,7 @@ namespace Controllers
                 }
                 foreach (var socket in data.emptyActiveSockets)
                 {
+                    Debug.Log("Turning off a socket");
                     _controller.TurnOffSocket(socket);
                 }
             }

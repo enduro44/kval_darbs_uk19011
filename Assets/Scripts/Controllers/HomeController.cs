@@ -1,3 +1,4 @@
+using System.Collections;
 using GameManagerData.data;
 using GameManagerData.objClasses;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace Controllers
         private EmptyActiveSocketData _emptyActiveSocketData;
 
         private SocketAccessibilityController _socketAccessibilityController;
-        private static GameObject _root;
+        private GameObject _root;
         
         private void Awake()
         {
@@ -49,12 +50,14 @@ namespace Controllers
 
         private void Entered(SelectEnterEventArgs args)
         {
-            string nameOfObject = args.interactable.gameObject.transform.root.gameObject.name;
+            Debug.Log(_root.GetComponent<HomeControllerObject>().controllerID);
+            string nameOfObject = _socketController.GetType(args.interactable);
             //Spēle neļauj pievienot mājas kontrolieri citam mājas kontrolierim, tapēc viens no kontrolieriem tiek dzēsts
             //Kā arī mājas kontrolierim nevar pievienot jumtu
-            if (name == "HomeController(Clone)" || _socketController.IsRoof(args.interactable))
+            if (nameOfObject == "HomeController(Clone)" || _socketController.IsRoof(args.interactable))
             {
                 Destroy(_homeSocket.selectTarget.gameObject.transform.root.gameObject);
+                _root = gameObject.transform.root.gameObject;
                 return;
             }
             
@@ -68,11 +71,7 @@ namespace Controllers
             
             //Pievienotajai istabai tiek piešķirts mājas kontroliera identifikators
             obj.GetComponent<Room>().controllerID = _root.GetComponent<HomeControllerObject>().controllerID;
-            
-            //Pievienotajai istabai tiek konfigurētas kontakligzdas un piešķirta etiķete, kā tā ir pievienota struktūrai
-            TurnOnSockets(obj);
-            _socketController.ToogleConnectedTag(obj);
-            
+
             //Kad istaba ir pievienota, mājas kontroliera vizuālais veidols tiek izslēgts
             _socketVisualOnEmpty.SetActive(false);
 
@@ -80,11 +79,22 @@ namespace Controllers
             GameObject room = args.interactable.gameObject;
             RoomController.GrabbableRooms.Add(room);
             RoomController.GrabbableRooms.Remove(_root);
+            
+            //Pievienotajai istabai tiek konfigurētas kontakligzdas un piešķirta etiķete, kā tā ir pievienota struktūrai
+            _socketController.ToogleConnectedTag(obj);
+
+            StartCoroutine(TurnSocketsOn(obj));
+        }
+        
+        IEnumerator TurnSocketsOn(XRBaseInteractable obj)
+        {
+            yield return new WaitForSeconds(0.15f);
+            TurnOnSockets(obj);
         }
     
         private void Exited(SelectExitEventArgs args)
         {
-            if (args.interactable.gameObject.transform.root.gameObject.name == "HomeController(Clone)")
+            if (args.interactable.gameObject.transform.root.gameObject.name == "HomeController(Clone)" || _socketController.IsRoof(args.interactable))
             {
                 return;
             }
@@ -97,12 +107,12 @@ namespace Controllers
             Vector3 scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
             obj.transform.localScale = scaleChange;
 
-            //Istaba vairs nepieder mājas kontrolierim, tāpēc tās kontroliera ID tiek nodzēsts
-            obj.GetComponent<Room>().controllerID = "";
-            
             //Istabai izslēdz visas kontakligzdas un noņem pievienoto etiķeti
             ResetSockets(obj);
             _socketController.ToogleConnectedTag(obj);
+            
+            //Istaba vairs nepieder mājas kontrolierim, tāpēc tās kontroliera ID tiek nodzēsts
+            obj.GetComponent<Room>().controllerID = "";
             
             //Tukšam kontrolierim ieslēdz atpakaļ tā vizuālo atveidojumu
             _socketVisualOnEmpty.SetActive(true);
@@ -141,19 +151,21 @@ namespace Controllers
         }
 
         //Metode padara mājas kontroliera objektu paņemamu
-        public static void SetControllerGrabbable()
+        public void SetControllerGrabbable()
         {
             if (_root == null)
             {
                 return;
             }
+            Debug.Log("Controller grabbalbe");
             //Lai spēlētājs mājas kontroliera objektu varētu pacelt, tam tiek piešķirts LayerMask ar kuru spēlētājs var mijiedarboties
             _root.transform.root.GetComponent<XRGrabInteractable>().interactionLayerMask = (1<<7) | (1<<8);
         }
         
         //Metode padara mājas kontroliera objektu nepaņemamu
-        public static void SetControllerNotGrabbable()
+        public void SetControllerNotGrabbable()
         {
+            Debug.Log("Controller not grabbalbe");
             //Lai spēlētājs mājas kontroliera objektu nevarētu pacelt, tam tiek piešķirts LayerMask ar kuru spēlētājs nevar mijiedarboties
             _root.transform.root.GetComponent<XRGrabInteractable>().interactionLayerMask = 1<<3;
         }

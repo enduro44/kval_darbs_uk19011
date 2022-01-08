@@ -8,7 +8,6 @@ using Controllers;
 using GameManagerData.data;
 using GameManagerData.objClasses;
 using MenuSystem.Main;
-using MenuSystem.Wrist;
 using UnityEngine;
 using Application = UnityEngine.Application;
 
@@ -30,6 +29,7 @@ namespace GameManagerData
         public InstantiateLoadedData instantiateLoadedData;
 
         [Header("Constants")] 
+        private const string SAVES = "/saves/";
         private const string PLAYER = "/player";
         
         private const string ROOMS_SUB = "/rooms";
@@ -58,7 +58,7 @@ namespace GameManagerData
         {
             ResetGameData();
             PlayerData.GameID = DateTime.Now.ToString("yyyy-MM-dd_HH-mm");
-            Directory.CreateDirectory(Application.persistentDataPath + "/" + PlayerData.GameID);
+            Directory.CreateDirectory(Application.persistentDataPath + SAVES + PlayerData.GameID);
             LoadNewScene("Testing");
             
         }
@@ -96,7 +96,7 @@ namespace GameManagerData
 
         private void SavePlayer(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder +  PLAYER;
+            string path = Application.persistentDataPath + SAVES + folder +  PLAYER;
             
             FileStream stream = new FileStream(path, FileMode.Create);
             PlayerController playerController = PlayerController.Instance();
@@ -108,8 +108,8 @@ namespace GameManagerData
 
         private void SaveControllerData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder +  HOME_CONTROLLERS_SUB;
-            string countPath = Application.persistentDataPath + "/" + folder + HOME_CONTROLLERS_COUNT_SUB;
+            string path = Application.persistentDataPath + SAVES + folder +  HOME_CONTROLLERS_SUB;
+            string countPath = Application.persistentDataPath + SAVES + folder + HOME_CONTROLLERS_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.HomeControllers.Count);
@@ -126,8 +126,8 @@ namespace GameManagerData
         
         private void SaveRoomData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder + ROOMS_SUB;
-            string countPath = Application.persistentDataPath + "/" + folder + ROOMS_COUNT_SUB;
+            string path = Application.persistentDataPath + SAVES + folder + ROOMS_SUB;
+            string countPath = Application.persistentDataPath + SAVES + folder + ROOMS_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Rooms.Count);
@@ -144,8 +144,8 @@ namespace GameManagerData
         
         private void SaveFurnitureData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder + FURNITURE_SUB;
-            string countPath = Application.persistentDataPath + "/" + folder + FURNITURE_COUNT_SUB;
+            string path = Application.persistentDataPath + SAVES + folder + FURNITURE_SUB;
+            string countPath = Application.persistentDataPath + SAVES + folder + FURNITURE_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Furniture.Count);
@@ -162,8 +162,8 @@ namespace GameManagerData
         
         private void SavePlayableData(BinaryFormatter formatter, string folder)
         {
-            string path = Application.persistentDataPath + "/" + folder + PLAYABLE_SUB;
-            string countPath = Application.persistentDataPath + "/" + folder + PLAYABLE_COUNT_SUB;
+            string path = Application.persistentDataPath + SAVES + folder + PLAYABLE_SUB;
+            string countPath = Application.persistentDataPath + SAVES + folder + PLAYABLE_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Playables.Count);
@@ -187,15 +187,15 @@ namespace GameManagerData
             _saveNameData = saveName;
             MainMenu mainMenu = MainMenu.Instance();
             
-            if (!Directory.Exists(Application.persistentDataPath + "/" + saveName))
+            if (!Directory.Exists(Application.persistentDataPath + SAVES + saveName))
             {
-                Debug.Log("Game does not exist, path: " + Application.persistentDataPath + "/" + saveName);
+                Debug.Log("Game does not exist, path: " + Application.persistentDataPath + SAVES + saveName);
                 mainMenu.ShowGameCouldNotBeLoadedError();
                 return;
             }
 
             //Case where game was created, but nothing was saved
-            string[] files = Directory.GetFiles(Application.persistentDataPath + "/" + saveName);
+            string[] files = Directory.GetFiles(Application.persistentDataPath + SAVES + saveName);
              if (files.Length == 0)
              {
                  _saveNameData = saveName;
@@ -247,7 +247,7 @@ namespace GameManagerData
         private void LoadPlayer(BinaryFormatter formatter, string saveName)
         {
             
-            string path = Application.persistentDataPath + "/" + saveName +  PLAYER;
+            string path = Application.persistentDataPath + SAVES + saveName +  PLAYER;
             
             if (File.Exists(path))
             {
@@ -264,8 +264,8 @@ namespace GameManagerData
         
         private void LoadControllers(BinaryFormatter formatter, string saveName)
         {
-            string controllersPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_SUB;
-            string controllersCountPath = Application.persistentDataPath + "/" + saveName + HOME_CONTROLLERS_COUNT_SUB;
+            string controllersPath = Application.persistentDataPath + SAVES + saveName + HOME_CONTROLLERS_SUB;
+            string controllersCountPath = Application.persistentDataPath + SAVES + saveName + HOME_CONTROLLERS_COUNT_SUB;
 
             int controllerCount = 0;
             if (File.Exists(controllersCountPath))
@@ -306,8 +306,8 @@ namespace GameManagerData
 
         private void LoadRooms(BinaryFormatter formatter, string saveName)
         {
-            string roomsPath = Application.persistentDataPath + "/" + saveName + ROOMS_SUB;
-            string roomsCountPath = Application.persistentDataPath + "/" + saveName + ROOMS_COUNT_SUB;
+            string roomsPath = Application.persistentDataPath + SAVES + saveName + ROOMS_SUB;
+            string roomsCountPath = Application.persistentDataPath + SAVES + saveName + ROOMS_COUNT_SUB;
 
             int roomCount = 0;
             if (File.Exists(roomsCountPath))
@@ -359,8 +359,8 @@ namespace GameManagerData
         
         private void LoadFurniture(BinaryFormatter formatter, string saveName)
         {
-            string path = Application.persistentDataPath + "/" + saveName + FURNITURE_SUB;
-            string countPath = Application.persistentDataPath + "/" + saveName + FURNITURE_COUNT_SUB;
+            string path = Application.persistentDataPath + SAVES + saveName + FURNITURE_SUB;
+            string countPath = Application.persistentDataPath + SAVES + saveName + FURNITURE_COUNT_SUB;
 
             int furnitureCount = 0;
             if (File.Exists(countPath))
@@ -399,8 +399,8 @@ namespace GameManagerData
         
         private void LoadPlayables(BinaryFormatter formatter, string saveName)
         {
-            string path = Application.persistentDataPath + "/" + saveName + PLAYABLE_SUB;
-            string countPath = Application.persistentDataPath + "/" + saveName + PLAYABLE_COUNT_SUB;
+            string path = Application.persistentDataPath + SAVES + saveName + PLAYABLE_SUB;
+            string countPath = Application.persistentDataPath + SAVES + saveName + PLAYABLE_COUNT_SUB;
 
             int playableCount = 0;
             if (File.Exists(countPath))
@@ -496,7 +496,7 @@ namespace GameManagerData
 
         public string[] GetSavedGames()
         {
-            string path = Application.persistentDataPath;
+            string path = Application.persistentDataPath + SAVES;
             string[] savedGames = Directory.GetDirectories(path)
                 .Select(Path.GetFileName)
                 .ToArray();
@@ -505,7 +505,7 @@ namespace GameManagerData
 
         public void DeleteGame(string saveName)
         {
-            Directory.Delete(Application.persistentDataPath + "/" + saveName, true);
+            Directory.Delete(Application.persistentDataPath + SAVES + saveName, true);
         }
 
         public void ResetGameData()

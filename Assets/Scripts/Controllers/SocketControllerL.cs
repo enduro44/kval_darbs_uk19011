@@ -38,6 +38,7 @@ namespace Controllers
                 Destroy(_socketL.selectTarget.gameObject.transform.root.gameObject);
                 return;
             }
+            Debug.Log("iegāja: " + args.interactable.gameObject.transform.root.gameObject.name);
             
             string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
             EmptyActiveSocketController.RemoveSocket(controllerID, _socketL);
@@ -83,6 +84,11 @@ namespace Controllers
 
         private void Exited(SelectExitEventArgs args)
         {
+            if (!_canBePlaced)
+            {
+                return;
+            }
+            
             string controllerID = gameObject.transform.root.gameObject.GetComponent<Room>().controllerID;
             EmptyActiveSocketController.AddSocket(controllerID, _socketL);
             

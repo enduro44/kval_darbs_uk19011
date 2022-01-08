@@ -1,8 +1,10 @@
+using System.Numerics;
 using Controllers;
 using GameManagerData.data;
-using GameManagerData.objClasses;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace MenuSystem.Wrist
 {
@@ -13,6 +15,7 @@ namespace MenuSystem.Wrist
         private SocketController _controller;
         private PrefabData _prefabData;
         private static GameObject _objInInventory;
+        private Vector3 _objInInventoryScale;
         
         public static GameObject inventoryObject;
         public Transform spawnPoint;
@@ -38,21 +41,14 @@ namespace MenuSystem.Wrist
         {
             XRBaseInteractable obj = args.interactable;
             string typeOfObjectInSocket = _controller.GetType(obj);
-
-            Vector3 inventoryScale = inventoryObject.transform.lossyScale;
-            Vector3 objInSocketScale = args.interactable.gameObject.transform.lossyScale;
-            //TODO: jāizdomā change scale loģika
-            
-            if (typeOfObjectInSocket == "CornerRoom(Clone)" || typeOfObjectInSocket == "LargeRoom(Clone)" || typeOfObjectInSocket == "SmallRoom(Clone)" || _controller.IsRoof(obj))
-            {
-                Vector3 scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
-                obj.transform.localScale = scaleChange;
-            }
+            Vector3 objScale = PrefabData.GetSizeVector3(typeOfObjectInSocket);
+            obj.transform.localScale = objScale;
         }
 
         private void Exited(SelectExitEventArgs args)
         {
-            //args.interactable.transform.root.gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask &= ~(1<<11);
+            args.interactable.transform.root.gameObject.GetComponent<XRGrabInteractable>().interactionLayerMask &= 1<<7;
+            _objInInventory.transform.localScale = _objInInventoryScale;
             _objInInventory = null;
         }
 
@@ -81,9 +77,13 @@ namespace MenuSystem.Wrist
             }
             
             GameObject newObject = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+            _objInInventoryScale = newObject.transform.localScale;
             newObject.SetActive(false);
-            newObject.transform.rotation = inventoryObject.transform.rotation;
+
+            Vector3 objScale = PrefabData.GetSizeVector3(objectType);
+            //newObject.transform.rotation = inventoryObject.transform.rotation;
             newObject.transform.position = inventoryObject.transform.position;
+            newObject.transform.localScale = objScale;
             newObject.SetActive(true);
         }
         
@@ -95,7 +95,7 @@ namespace MenuSystem.Wrist
         
         public static void HideInventory()
         {
-            if (!_objInInventory)
+            if (_objInInventory != null)
             {
                 Destroy(_objInInventory);
             }
