@@ -112,10 +112,9 @@ namespace MenuSystem.Wrist
             isGameBeingSaved = true;
             _playerController.DisableMovementAndRays();
             TextMeshProUGUI textObject = savingGamePopup.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-            bool isGameSaved = SaveGame();
-            Debug.Log(isGameSaved);
             textObject.text = "Saving the game...";
-            yield return new WaitForSeconds(5f);
+            SaveGame();
+            yield return new WaitForSeconds(1f);
             textObject.text = "Game saved!";
             yield return new WaitForSeconds(0.5f);
             _playerController.EnableMovementAndRays();
@@ -124,30 +123,6 @@ namespace MenuSystem.Wrist
             isGameBeingSaved = false;
         }
 
-        // public void GameSavedWithPopup()
-        // {
-        //     Debug.Log("here");
-        //     TextMeshProUGUI textObject = savingGamePopup.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-        //     textObject.text = "Game saved!";
-        //     
-        //     _playerController.EnableMovementAndRays();
-        //     savingGamePopup.SetActive(false);
-        //     mainMenuUI.SetActive(true);
-        //
-        //     if (shouldExitToMain)
-        //     {
-        //         textObject.text = "Exiting to main menu!";
-        //         ExitToMain();
-        //     }
-        //
-        //     if (shouldExit)
-        //     {
-        //         textObject.text = "Exiting the game!";
-        //         Exit();
-        //     }
-        //     isGameBeingSaved = false;
-        // }
-        
         public void BuildButton()
         {
             EmptyActiveSocketController.TurnOnAllSockets();
@@ -250,14 +225,13 @@ namespace MenuSystem.Wrist
             TextMeshProUGUI textObject = savingGamePopup.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
             confirmationExitToMain.SetActive(false);
             savingGamePopup.SetActive(true);
-            bool isGameSaved = SaveGame();
             textObject.text = "Saving the game...";
-            yield return null;
-            yield return new WaitForSeconds(10f);
+            SaveGame();
+            yield return new WaitForSeconds(1f);
             textObject.text = "Game saved!";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             textObject.text = "Exiting to main menu!";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             ExitToMain();
         }
 
@@ -284,15 +258,13 @@ namespace MenuSystem.Wrist
             TextMeshProUGUI textObject = savingGamePopup.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
             confirmationExit.SetActive(false);
             savingGamePopup.SetActive(true);
-            bool isGameSaved = SaveGame();
-            Debug.Log(isGameSaved);
             textObject.text = "Saving the game...";
-            yield return null;
-            yield return new WaitForSeconds(10f);
+            SaveGame();
+            yield return new WaitForSeconds(1f);
             textObject.text = "Game saved!";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             textObject.text = "Exiting the game!";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             Exit();
         }
 
@@ -302,10 +274,10 @@ namespace MenuSystem.Wrist
             gameManager.QuitGame();
         }
 
-        public bool SaveGame()
+        public void SaveGame()
         {
             GameManager gameManager = GameManager.Instance();
-            return gameManager.SaveGame();
+            gameManager.SaveGame();
         }
     }
 }

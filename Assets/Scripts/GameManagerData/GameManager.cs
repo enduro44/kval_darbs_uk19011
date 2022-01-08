@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using Controllers;
 using GameManagerData.data;
 using GameManagerData.objClasses;
@@ -17,9 +18,8 @@ namespace GameManagerData
     {
         private static GameManager _instance;
         public SceneController sceneController;
-        
-        [Header("Load data")]
-        private string _saveNameData;
+
+        [Header("Load data")] private string _saveNameData;
         private static bool _loadGame = false;
         private PlayerData _playerLoadData = new PlayerData();
         private List<HomeLoadData> _homeLoadData = new List<HomeLoadData>();
@@ -31,16 +31,16 @@ namespace GameManagerData
         [Header("Constants")] 
         private const string SAVES = "/saves/";
         private const string PLAYER = "/player";
-        
+
         private const string ROOMS_SUB = "/rooms";
         private const string ROOMS_COUNT_SUB = "/rooms.count";
 
         private const string HOME_CONTROLLERS_SUB = "/controllers";
         private const string HOME_CONTROLLERS_COUNT_SUB = "/controllers.count";
-        
+
         private const string FURNITURE_SUB = "/furniture";
         private const string FURNITURE_COUNT_SUB = "/furniture.count";
-        
+
         private const string PLAYABLE_SUB = "/playable";
         private const string PLAYABLE_COUNT_SUB = "/playable.count";
 
@@ -50,7 +50,8 @@ namespace GameManagerData
             DontDestroyOnLoad(this.gameObject);
         }
 
-        public static GameManager Instance() {
+        public static GameManager Instance()
+        {
             return _instance;
         }
 
@@ -60,41 +61,42 @@ namespace GameManagerData
             PlayerData.GameID = DateTime.Now.ToString("yyyy-MM-dd_HH-mm");
             Directory.CreateDirectory(Application.persistentDataPath + SAVES + PlayerData.GameID);
             LoadNewScene("Testing");
-            
+
         }
 
-        public bool SaveGame()
+        public async void SaveGame()
         {
             string folder = PlayerData.GameID;
 
             BinaryFormatter formatter = new BinaryFormatter();
 
+            var tasks = new List<Task>();
             try
             {
                 //Saving Player 
-                SavePlayer(formatter, folder);
+                tasks.Add(SavePlayer(formatter, folder));
 
                 //Saving Home controllers
-                SaveControllerData(formatter, folder);
+                tasks.Add(SaveControllerData(formatter, folder));
 
                 //Saving Rooms
-                SaveRoomData(formatter, folder);
+                tasks.Add( SaveRoomData(formatter, folder));
 
                 //Saving Furniture
-                SaveFurnitureData(formatter, folder);
+                tasks.Add( SaveFurnitureData(formatter, folder));
 
                 //Saving Playables
-                SavePlayableData(formatter, folder);
+                tasks.Add( SavePlayableData(formatter, folder));
             }
             catch (Exception e)
             {
                 Debug.Log(e);
-                return false;
             }
-            return true;
+
+            await Task.WhenAll(tasks);
         }
 
-        private void SavePlayer(BinaryFormatter formatter, string folder)
+        private async Task SavePlayer(BinaryFormatter formatter, string folder)
         {
             string path = Application.persistentDataPath + SAVES + folder +  PLAYER;
             
@@ -104,15 +106,18 @@ namespace GameManagerData
 
             formatter.Serialize(stream, gameData);
             stream.Close();
+
+            await Task.Yield();
         }
 
-        private void SaveControllerData(BinaryFormatter formatter, string folder)
+        private async Task SaveControllerData(BinaryFormatter formatter, string folder)
         {
             string path = Application.persistentDataPath + SAVES + folder +  HOME_CONTROLLERS_SUB;
             string countPath = Application.persistentDataPath + SAVES + folder + HOME_CONTROLLERS_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.HomeControllers.Count);
+            countStream.Close();
 
             for (int i = 0; i < GameData.HomeControllers.Count; i++)
             {
@@ -122,15 +127,18 @@ namespace GameManagerData
                 formatter.Serialize(stream, data);
                 stream.Close();
             }
+
+            await Task.Yield();
         }
         
-        private void SaveRoomData(BinaryFormatter formatter, string folder)
+        private async Task SaveRoomData(BinaryFormatter formatter, string folder)
         {
             string path = Application.persistentDataPath + SAVES + folder + ROOMS_SUB;
             string countPath = Application.persistentDataPath + SAVES + folder + ROOMS_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Rooms.Count);
+            countStream.Close();
 
             for (int i = 0; i < GameData.Rooms.Count; i++)
             {
@@ -140,15 +148,18 @@ namespace GameManagerData
                 formatter.Serialize(stream, data);
                 stream.Close();
             }
+            
+            await Task.Yield();
         }
         
-        private void SaveFurnitureData(BinaryFormatter formatter, string folder)
+        private async Task SaveFurnitureData(BinaryFormatter formatter, string folder)
         {
             string path = Application.persistentDataPath + SAVES + folder + FURNITURE_SUB;
             string countPath = Application.persistentDataPath + SAVES + folder + FURNITURE_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Furniture.Count);
+            countStream.Close();
 
             for (int i = 0; i < GameData.Furniture.Count; i++)
             {
@@ -158,15 +169,18 @@ namespace GameManagerData
                 formatter.Serialize(stream, data);
                 stream.Close();
             }
+            
+            await Task.Yield();
         }
         
-        private void SavePlayableData(BinaryFormatter formatter, string folder)
+        private async Task SavePlayableData(BinaryFormatter formatter, string folder)
         {
             string path = Application.persistentDataPath + SAVES + folder + PLAYABLE_SUB;
             string countPath = Application.persistentDataPath + SAVES + folder + PLAYABLE_COUNT_SUB;
 
             FileStream countStream = new FileStream(countPath, FileMode.Create);
             formatter.Serialize(countStream, GameData.Playables.Count);
+            countStream.Close();
 
             for (int i = 0; i < GameData.Playables.Count; i++)
             {
@@ -176,9 +190,8 @@ namespace GameManagerData
                 formatter.Serialize(stream, data);
                 stream.Close();
             }
-            // WristMenu wristMenu = WristMenu.Instance();
-            // wristMenu.GameSavedWithPopup();
             
+            await Task.Yield();
         }
 
         public void LoadGame(string saveName)

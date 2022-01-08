@@ -540,7 +540,7 @@ namespace GameManagerData.data
                     return new Vector3(0.113242f,0.113242f,0.113242f);
                 default:
                     Debug.Log("Type doesn't match, default Vector3 provided: "+ type);
-                    return new Vector3(1,1,1);
+                    return new Vector3(0.1f,0.1f,0.1f);
             }
         }
     }
