@@ -421,15 +421,15 @@ namespace GameManagerData.data
                 case BIN_YELLOW:
                     return new Vector3(0.6f,0.6f,0.4f);
                 case CARPET:
-                    return new Vector3(1,1,1);
+                    return new Vector3(0.032493f,0.032493f,0.032493f);
                 case CARPET_BEIGE:
-                    return new Vector3(1,1,1);
+                    return new Vector3(0.032493f,0.032493f,0.032493f);
                 case CARPET_BROWN:
-                    return new Vector3(1,1,1);
+                    return new Vector3(0.032493f,0.032493f,0.032493f);
                 case CARPET_DARK:
-                    return new Vector3(1,1,1);
+                    return new Vector3(0.032493f,0.032493f,0.032493f);
                 case CARPET_PINK:
-                    return new Vector3(1,1,1);
+                    return new Vector3(0.032493f,0.032493f,0.032493f);
                 case CHAIR:
                     return new Vector3(0.04666358f,0.1399907f,0.06999537f);
                 case CHAIR_DARK:
@@ -475,7 +475,7 @@ namespace GameManagerData.data
                 case FRIDGE:
                     return new Vector3(0.0050625f,0.0050625f,0.0050625f);
                 case MICROWAVE:
-                    return new Vector3(0.02f,0.02f,0.02f);
+                    return new Vector3(0.01106508f,0.01106508f,0.01106508f);
                 case OVEN:
                     return new Vector3(0.008418f,0.0101016f,0.008418f);
                 case OVEN_2:
@@ -521,9 +521,9 @@ namespace GameManagerData.data
                 case VASE_PINK:
                     return new Vector3(0.105418f,0.105418f,0.105418f);
                 case ANIMAL_CAT:
-                    return new Vector3(1,1,1);
+                    return new Vector3(0.45638f,0.45638f,0.45638f);
                 case CAR_BLUE:
-                    return new Vector3(0.47822f,0.47822f,0.47822f);
+                    return new Vector3(0.06474143f,0.06474143f,0.06474143f);
                 case CAR_HOTDOG_TRACK:
                     return new Vector3(0.1053681f,0.1053681f,0.1053681f);
                 case DOLL_BARBIE:

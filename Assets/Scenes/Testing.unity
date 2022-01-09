@@ -9648,7 +9648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 18448130450562824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000028182105
+      value: 0.0075760754
       objectReference: {fileID: 0}
     - target: {fileID: 18448130450562824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9840,7 +9840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.97332925
       objectReference: {fileID: 0}
     - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9848,7 +9848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.22941265
       objectReference: {fileID: 0}
     - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_LocalRotation.z
@@ -9864,7 +9864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1227462198719153597, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -26.525
       objectReference: {fileID: 0}
     - target: {fileID: 1242082954297724503, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_text
@@ -10167,12 +10167,56 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1007329737}
     - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllBedroomFurniture.Array.size
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllKitchenFurniture.Array.size
       value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[2].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 458fd09cfc5e1cd43820b8673df920ae, type: 3}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[2].type
+      value: Carpet(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[3].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 6988208993d87f3498f2fd74af853638, type: 3}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[3].type
+      value: CarpetBeige(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[4].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 6fc79e70514f2c141afbd1b2bdb19a47, type: 3}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[4].type
+      value: CarpetBrown(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[5].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 99791e2377134344cb188e3c5bce6dac, type: 3}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[5].type
+      value: CarpetDark(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[6].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 19fececcd0a1f554180ce653e93c8381, type: 3}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAccessories.Array.data[6].type
+      value: CarpetPink(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllLivingroomFurniture.Array.size
@@ -19219,7 +19263,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh73598
+  m_Name: pb_Mesh30112
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
