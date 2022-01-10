@@ -7,6 +7,7 @@ namespace GameManagerData.data
     [Serializable]
     public class HomeControllerData
     {
+        //Klase satur mājas kontroliera saglabājamo datu struktūru un konstruktoru
         public string type = "HomeController(Clone)";
         public string controlledID;
         public float[] position;

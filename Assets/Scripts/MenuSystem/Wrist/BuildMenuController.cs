@@ -6,7 +6,8 @@ namespace MenuSystem.Wrist
 {
     public class BuildMenuController : MonoBehaviour
     {
-
+        //Klase satur informāciju par visiem būvēšanas stadijas spēles objektiem un nodrošina
+        //ritināmā skata aizpildīšanu ar datiem, ko tā satur
         public const string TYPE = "home";
         public PrefabIcon[] AllBases;
         public PrefabIcon[] AllSmallRooms;

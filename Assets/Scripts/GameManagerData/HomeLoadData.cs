@@ -6,6 +6,7 @@ namespace GameManagerData
 {
     public class HomeLoadData
     {
+        //Klase satur mājas kontroliera un tam piederošo istabu ielādētos datus
         public string ControllerID;
         public HomeControllerData HomeControllerData;
         public List<RoomData> ControllersRooms = new List<RoomData>();

@@ -5,6 +5,7 @@ namespace MenuSystem
 {
     public class FadeController : MonoBehaviour
     {
+        //Klase nodrošina galvenās izvēlnes skatu maiņas animāciju - izgaišanu un parādīšanos
         public void FadeIn(GameObject obj)
         {
             CanvasGroup group = obj.GetComponent<CanvasGroup>();

@@ -14,6 +14,8 @@ using Application = UnityEngine.Application;
 
 namespace GameManagerData
 {
+    //Klase pārvalda visu loģiku, kas saistīta ar jaunas spēles sākšanu, spēles turpināšanu, dzēšanu, ainu maiņu, 
+    //saglabāto spēļu saraksta iegūšanu
     public class GameManager : MonoBehaviour
     {
         private static GameManager _instance;
@@ -60,10 +62,12 @@ namespace GameManagerData
             ResetGameData();
             PlayerData.GameID = DateTime.Now.ToString("yyyy-MM-dd_HH-mm");
             Directory.CreateDirectory(Application.persistentDataPath + SAVES + PlayerData.GameID);
-            LoadNewScene("Testing");
-
+            LoadNewScene("Testing"); //Spēles ainas nosaukums ir palicis no laika, kad autore testēja kā būvēt spēles 
+            //ainas un ir saglabājis savu vēsturisko nosaukumu
         }
 
+        //Funkcija nodrošina spēles datu saglabāšanu failu krātuvē, to veicot ar asinhronu funkciju, kas sagaida
+        //kad visi uzdevumi ir pabeigti, pirms tā ļauj spēlētājam turpināt spēli
         public async void SaveGame()
         {
             string folder = PlayerData.GameID;
@@ -96,6 +100,7 @@ namespace GameManagerData
             await Task.WhenAll(tasks);
         }
 
+        //Saglabāšana visiem spēles datiem ir līdzīga, tie tiek saglabāti bināros failos
         private async Task SavePlayer(BinaryFormatter formatter, string folder)
         {
             string path = Application.persistentDataPath + SAVES + folder +  PLAYER;
@@ -194,6 +199,7 @@ namespace GameManagerData
             await Task.Yield();
         }
 
+        //Spēles turpināšanas funkcija
         public void LoadGame(string saveName)
         {
             ResetGameData();
@@ -207,7 +213,7 @@ namespace GameManagerData
                 return;
             }
 
-            //Case where game was created, but nothing was saved
+            //situācija, kurā spēlētājs ir izveidojis jaunu spēli, bet neko tajā nav saglabājis
             string[] files = Directory.GetFiles(Application.persistentDataPath + SAVES + saveName);
              if (files.Length == 0)
              {
@@ -218,6 +224,8 @@ namespace GameManagerData
 
             BinaryFormatter formatter = new BinaryFormatter();
 
+            //try catch bloks mēģina ielādēt saglabātos spēles datus, ja tajos ir kāda kļūda
+            //spēlētājam tiek parādīts kļūdas ziņojums galvenajā izvēlnē
             try
             {
                 LoadGameData();
@@ -257,6 +265,9 @@ namespace GameManagerData
             LoadPlayables(formatter, _saveNameData);
         }
 
+        
+        //Datu ielāde notiek līdzīgā kartībā kā datu saglabāšana. Atšķirība ir tajā, ka nolasītos datus saglabā
+        //struktūrās, kuras vēlāk tiks izmantotas spēles objektu izveidošanai spēles ainā
         private void LoadPlayer(BinaryFormatter formatter, string saveName)
         {
             
@@ -357,7 +368,8 @@ namespace GameManagerData
                             break;
                         }
                     }
-
+                    //Brīvās istabas ir jāapstrādā atsevišķi, lai ielādes procesā nerastos kļūdaini savienojumi brīvajām
+                    //istabām ar mājas sturktūrām
                     if (data != null)
                     {
                         _freeroamRoomData.Add(data);
@@ -449,7 +461,8 @@ namespace GameManagerData
                 }
             }
         }
-
+        
+        //Funkciju izsauce GameDataLoader klase, lai iesāktu ielādēto datu izveidošanas procesu
         public void InstantiateLoadedData()
         {
             if (!_loadGame)
@@ -459,9 +472,11 @@ namespace GameManagerData
             StartCoroutine(ProcessLoadedData());
         }
 
+        //Funkcija secīgi apstrādā un izveido ielādētos datus, nodrošina to konfigurāciju un kontrolē spēlētāja pozīciju
+        //un tam pieejamās darbības pēc datu izveidošanas
         IEnumerator ProcessLoadedData()
         {
-            //Creating each controller and its rooms first
+            //Vispirms tiek izveidots katrs mājas kontrolieris un tam piederošās mājas
             foreach (var controller in _homeLoadData)
             {
                 GameObject home = instantiateLoadedData.LoadSavedController(controller.HomeControllerData);
@@ -473,32 +488,33 @@ namespace GameManagerData
                 EmptyActiveSocketController.TurnOffAllForSpecificHome(home.GetComponent<HomeControllerObject>().controllerID);
             }
             
-            //Adding free roaming rooms
+            //Tad tiek izveidotas brīvās istabas
             foreach (var room in _freeroamRoomData)
             {
                 instantiateLoadedData.LoadSavedRoom(room);
             }
 
-            //Adding furniture
+            //Tiek pievienotas mēbeles
             foreach (var furniture in _furnitureLoadData.Furniture)
             {
                 instantiateLoadedData.LoadSavedFurniture(furniture);
             }
             
-            //Adding playables
+            //Tiek pievienoti spēlējamie objekti
             foreach (var playable in _playableLoadData.Playables)
             {
                 instantiateLoadedData.LoadSavedPlayable(playable);
             }
             
+            //Spēle tiek sagatavota spēlēšanas stadijai
             RoomController.ToggleGrabOffForGrabbableRooms();
             FurnitureController.SetAllFurnitureNotMovable();
             
             yield return new WaitForSeconds(2f);
             PlayerController playerController = PlayerController.Instance();
+            //Spēlētājs tiek sagatavos saglabātas spēles turpināšanai
             playerController.PreparePlayerLoadGame(_playerLoadData);
             
-            //Setting back the variable to false
             _loadGame = false;
         }
 
@@ -507,6 +523,7 @@ namespace GameManagerData
             return _loadGame;
         }
 
+        //Funkcija atgriež saglabāto spēļu sarakstu
         public string[] GetSavedGames()
         {
             string path = Application.persistentDataPath + SAVES;
@@ -521,6 +538,7 @@ namespace GameManagerData
             Directory.Delete(Application.persistentDataPath + SAVES + saveName, true);
         }
 
+        //Funkcija nodrošina, ka visi aktīvās spēles dati ir tukši, kad tiek ielādēta jauna vai turpināma spēle
         public void ResetGameData()
         {
             EmptyActiveSocketController.EmptyActiveSockets.Clear();

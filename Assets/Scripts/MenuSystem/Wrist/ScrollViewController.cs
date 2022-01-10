@@ -1,12 +1,11 @@
-﻿using System;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace MenuSystem.Wrist
 {
     public class ScrollViewController : MonoBehaviour
     {
+        //Klase nodrošina ritināmā skata loģiku, datu pievienošanu
         public static Transform contentParent;
         public static GameObject scrollView;
         public GameObject objectButtonPrefab;
@@ -17,6 +16,8 @@ namespace MenuSystem.Wrist
             scrollView = gameObject.transform.parent.gameObject.transform.parent.gameObject;
         }
 
+        //Klase saņem kādus datus tai ir jāpievieno ritināmajā skatā un izveido pogas, kuras
+        //spēlētājs var spiest, lai izveidotu spēles objektus
         public void PopulateData(PrefabIcon[] data, string type)
         {
             DestroyPreviousData();

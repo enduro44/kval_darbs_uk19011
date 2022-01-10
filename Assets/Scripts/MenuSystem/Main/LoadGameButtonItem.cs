@@ -11,6 +11,8 @@ namespace MenuSystem.Main
 {
     public class LoadGameButtonItem : MonoBehaviour
     {
+        //Klase satur turpināmas spēles datus un funkcijas. Tā ir piestiprināta pogas objektam, 
+        //kas spēlētājam ir redzams saglabāto spēļu saraksta skatā.
         [HideInInspector] public string saveName;
 
         [SerializeField] public GameObject buttonText;
@@ -32,6 +34,7 @@ namespace MenuSystem.Main
             _gameManager.LoadGame(saveName);
         }
 
+        //Spēles dzēšanas dialoga parādīšanas funkcija
         public void OnDeleteButtonClick()
         {
             _mainMenu.ShowPopup(saveName, gameObject);

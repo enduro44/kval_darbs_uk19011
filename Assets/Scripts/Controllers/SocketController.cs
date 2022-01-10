@@ -31,7 +31,8 @@ namespace Controllers
         {
             return obj.transform.root.gameObject;
         }
-
+        
+        //Ieslēdzot kontaktligzdu ir svarīgi noteikt vai tā ir istaba, kas ir jumts, jo jumtiem nav jāieslēdz kontaktligzdas
         public bool IsRoof(XRBaseInteractable obj)
         {
             string typeOfObjectInSocket = GetType(obj);
@@ -43,6 +44,7 @@ namespace Controllers
             return false;
         }
         
+        //Funkcija piešķir savienojuma etiķeti istabām
         public void ToogleConnectedTag(XRBaseInteractable obj)
         {
             GameObject rootObj = obj.transform.root.gameObject;
@@ -132,13 +134,15 @@ namespace Controllers
             _socketVisual.SetActive(false);
         }
 
+        //Brīvās aktīvās kontaktligzdas tiek pievienotas to mājas kontroliera struktūrā
         public void AddSocketToList(XRBaseInteractable obj, XRSocketInteractor socket)
         {
             GameObject root = GetRoot(obj);
             Room room = root.GetComponent<Room>();
             EmptyActiveSocketController.AddSocket(room.controllerID, socket);
         }
-
+        
+        //Kad kontaktligzda vairs nav brīva, to no mājas kontroliera struktūras noņem
         public void RemoveSocketFromList(XRBaseInteractable obj, XRSocketInteractor socket)
         {
             GameObject root = GetRoot(obj);
@@ -146,6 +150,7 @@ namespace Controllers
             EmptyActiveSocketController.RemoveSocket(room.controllerID, socket);
         }
 
+        //Funkcijas pārvalda specifiski mājas kontroliera kontaktligzdas ieslēgšanu un izslēgšanu
         public void TurnOnControllerSocket(XRSocketInteractor socket)
         {
             GameObject visual = socket.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;

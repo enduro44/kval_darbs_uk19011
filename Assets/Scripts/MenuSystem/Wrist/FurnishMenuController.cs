@@ -5,6 +5,8 @@ namespace MenuSystem.Wrist
 {
     public class FurnishMenuController : MonoBehaviour
     {
+        //Klase satur informāciju par visiem mēbelēšanas stadijas spēles objektiem un nodrošina
+        //ritināmā skata aizpildīšanu ar datiem, ko tā satur
         public const string TYPE = "furniture";
         public PrefabIcon[] AllKitchenFurniture;
         public PrefabIcon[] AllLivingroomFurniture;

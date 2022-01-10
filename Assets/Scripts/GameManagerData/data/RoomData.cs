@@ -7,6 +7,7 @@ namespace GameManagerData.data
     [Serializable]
     public class RoomData
     {
+        //Klase satur istabu saglabājamo datu struktūru un konstruktoru
         public string type;
         public string controllerID;
         public float[] position;

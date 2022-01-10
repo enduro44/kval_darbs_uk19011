@@ -9,6 +9,7 @@ namespace GameManagerData
 {
     public class SceneController : MonoBehaviour
     {
+        //Klase nodrošina ainas maiņas līdzprogrammas darbību
         public void StartSceneLoad(string sceneName)
         {
             StartCoroutine(LoadGameSceneAsync(sceneName));

@@ -10,6 +10,9 @@ namespace MenuSystem.Wrist
 {
     public class WristMenu : MonoBehaviour
     {
+        //Klase nodrošina plaukstas izvēlnes skatu loģiku un komunikāciju ar GameManager klasi, lai
+        //spēlētājs varētu saglabāt spēli, iziet uz galveno izvēlni vai iziet no spēles. Kā arī klase 
+        //nodrošina spēles stadiju maiņu
         private static WristMenu _instance;
         public GameObject wristUI;
         
@@ -24,9 +27,7 @@ namespace MenuSystem.Wrist
 
         public bool activeWristUI = true;
         private bool isGameBeingSaved = false;
-        // private bool shouldExitToMain = false;
-        // private bool shouldExit = false;
-        
+
         public GameObject inventoryObject;
         public XRSocketInteractor inventorySocket;
 
@@ -44,7 +45,7 @@ namespace MenuSystem.Wrist
         private void Start()
         {
             wristUI.SetActive(false);
-            inventorySocket.gameObject.SetActive(false);
+            InventoryController.HideInventory();
             activeWristUI = false;
             _playerController = PlayerController.Instance();
             inventorySocket = inventoryObject.GetComponent<XRSocketInteractor>();
@@ -62,8 +63,9 @@ namespace MenuSystem.Wrist
         {
             if (activeWristUI && !isGameBeingSaved)
             {
+                ScrollViewController.HideScrollView();
+                InventoryController.HideInventory();
                 wristUI.SetActive(false);
-                inventorySocket.gameObject.SetActive(false);
                 activeWristUI = false;
                 _playerController.EnableRayLeftHand();
                 return;
@@ -88,6 +90,7 @@ namespace MenuSystem.Wrist
             }
         }
 
+        //Spēlēšanas stadijas aktivizēšana
         public void PlayButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
@@ -123,6 +126,7 @@ namespace MenuSystem.Wrist
             isGameBeingSaved = false;
         }
 
+        //Mēbelēšanas stadijas aktivizēšana
         public void BuildButton()
         {
             EmptyActiveSocketController.TurnOnAllSockets();
@@ -134,6 +138,7 @@ namespace MenuSystem.Wrist
             ShowBuildMenu();
         }
 
+        //Būvēšanas izvēlnes parādīšana
         private void ShowBuildMenu()
         {
             mainMenuUI.SetActive(false);
@@ -146,6 +151,7 @@ namespace MenuSystem.Wrist
             InventoryController.ShowInventory();
         }
 
+        //Mēbelēšanas stadijas aktivizēšana
         public void FurnishButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
@@ -157,6 +163,7 @@ namespace MenuSystem.Wrist
             ShowFurnishMenu();
         }
 
+        //Mēbelēšanas izvēlnes parādīšana
         private void ShowFurnishMenu()
         {
             mainMenuUI.SetActive(false);
@@ -169,6 +176,7 @@ namespace MenuSystem.Wrist
             InventoryController.ShowInventory();
         }
 
+        //Spēlējamo objektu stadijas aktivizēšana
         public void PlayablesButton()
         {
             EmptyActiveSocketController.TurnOffAllSockets();
@@ -180,6 +188,7 @@ namespace MenuSystem.Wrist
             ShowPlayablesMenu();
         }
 
+        //Spēlējamo objektu izvēlnes parādīšana
         private void ShowPlayablesMenu()
         {
             mainMenuUI.SetActive(false);

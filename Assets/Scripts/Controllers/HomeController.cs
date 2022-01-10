@@ -50,7 +50,6 @@ namespace Controllers
 
         private void Entered(SelectEnterEventArgs args)
         {
-            Debug.Log(_root.GetComponent<HomeControllerObject>().controllerID);
             string nameOfObject = _socketController.GetType(args.interactable);
             //Spēle neļauj pievienot mājas kontrolieri citam mājas kontrolierim, tapēc viens no kontrolieriem tiek dzēsts
             //Kā arī mājas kontrolierim nevar pievienot jumtu
@@ -88,7 +87,7 @@ namespace Controllers
         
         IEnumerator TurnSocketsOn(XRBaseInteractable obj)
         {
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.05f);
             TurnOnSockets(obj);
         }
     
@@ -157,7 +156,6 @@ namespace Controllers
             {
                 return;
             }
-            Debug.Log("Controller grabbalbe");
             //Lai spēlētājs mājas kontroliera objektu varētu pacelt, tam tiek piešķirts LayerMask ar kuru spēlētājs var mijiedarboties
             _root.transform.root.GetComponent<XRGrabInteractable>().interactionLayerMask = (1<<7) | (1<<8);
         }
@@ -165,7 +163,6 @@ namespace Controllers
         //Metode padara mājas kontroliera objektu nepaņemamu
         public void SetControllerNotGrabbable()
         {
-            Debug.Log("Controller not grabbalbe");
             //Lai spēlētājs mājas kontroliera objektu nevarētu pacelt, tam tiek piešķirts LayerMask ar kuru spēlētājs nevar mijiedarboties
             _root.transform.root.GetComponent<XRGrabInteractable>().interactionLayerMask = 1<<3;
         }

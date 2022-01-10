@@ -7,6 +7,8 @@ namespace GameManagerData.objClasses
 {
     public class HomeControllerObject : MonoBehaviour
     {
+        //Klase nodrošina, ka katrs mājas kontroliera objekts tiks pievienots tam atbilstošajā aktīvās spēles datu sarakstā, un tiks noņemts, 
+        //kad tas tiek iznīcināts. Kā arī tā nodrošina, ka mājas kontrolierim ir unikāls identifikators
         public string controllerID;
         private bool _isGuidUnique;
         void Awake()

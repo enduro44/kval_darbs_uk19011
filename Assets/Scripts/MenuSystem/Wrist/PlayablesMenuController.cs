@@ -4,6 +4,8 @@ namespace MenuSystem.Wrist
 {
     public class PlayablesMenuController : MonoBehaviour
     {
+        //Klase satur informāciju par visiem spēlējamo objektu stadijas spēles objektiem un nodrošina
+        //ritināmā skata aizpildīšanu ar datiem, ko tā satur
         public const string TYPE = "playable";
         public PrefabIcon[] AllDolls;
         public PrefabIcon[] AllMonsters;

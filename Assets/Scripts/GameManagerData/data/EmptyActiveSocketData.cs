@@ -7,6 +7,8 @@ namespace GameManagerData.data
     [Serializable]
     public class EmptyActiveSocketData
     {
+        //Klase nodrošina stuktūras - mājas kontrolieris + tam piederošo istabu brīvās aktīvās kontaktligzdas. Stuktūras visiem mājas kontrolieriem tiek saliktas sarkastā
+        //un izmantotas spēles stadijas maiņai
         public string controllerID;
         public XRSocketInteractor controllerSocket;
         public bool isControllerEmpty = true;

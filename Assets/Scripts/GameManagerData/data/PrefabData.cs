@@ -6,6 +6,8 @@ namespace GameManagerData.data
     [Serializable]
     public class PrefabData : MonoBehaviour
     {
+        //Klase satur visu spēles objektu, kurus iespējams izveidot spēles ainā tipu un objekta sagatavi. Kā arī Vector3 izmēru, kādā objektam jābūt, kad tas atrodas
+        //inventāra logā
         private static PrefabData _instance;
         [Header("Controller")]
         public const string CONTROLLER = "HomeController(Clone)";
@@ -120,6 +122,9 @@ namespace GameManagerData.data
         public const string OVEN_2 = "Oven2(Clone)";
         public GameObject oven2Prefab;
         
+        public const string SHOWER = "Shower(Clone)";
+        public GameObject showerPrefab;
+        
         public const string SIDE_TABLE = "SideTable(Clone)";
         public GameObject sideTablePrefab;
         public const string SIDE_TABLE_GREEN = "SideTableGreen(Clone)";
@@ -161,6 +166,9 @@ namespace GameManagerData.data
         public const string TABLE_WHITE = "TableWhite(Clone)";
         public GameObject tableWhitePrefab;
         
+        public const string TOILET = "Toilet(Clone)";
+        public GameObject toiletPrefab;
+        
         public const string TV = "TV(Clone)";
         public GameObject tvPrefab;
         
@@ -173,11 +181,13 @@ namespace GameManagerData.data
         public const string ANIMAL_CAT = "AnimalCat(Clone)";
         public GameObject animalCatPrefab;
         
+        public const string APPLE = "Apple(Clone)";
+        public GameObject applePrefab;
+        
         public const string CAR_BLUE = "CarBlue(Clone)";
         public GameObject carBluePrefab;
         public const string CAR_HOTDOG_TRACK = "CarHotdogTrack(Clone)";
         public GameObject carHotdogTrackPrefab;
-        
         
         public const string DOLL_BARBIE = "DollBarbie(Clone)";
         public GameObject dollBarbiePrefab;
@@ -189,6 +199,9 @@ namespace GameManagerData.data
         public GameObject dollMalePrefab;
         public const string DOLL_POLICE = "DollPolice(Clone)";
         public GameObject dollPolicePrefab;
+        
+        public const string DRINK = "Drink(Clone)";
+        public GameObject drinkPrefab;
         
         public const string MONSTER_BAT = "MonsterBat(Clone)";
         public GameObject monsterBatPrefab;
@@ -202,6 +215,7 @@ namespace GameManagerData.data
             return _instance;
         }
         
+        //Funkcija istabu un mājas kontroliera sagatavju iegūšanai
         public GameObject GetPrefab(string type)
         {
             switch (type)
@@ -226,6 +240,7 @@ namespace GameManagerData.data
             }
         }
 
+        //Funkcija mēbeļu sagatvju iegūšanai
         public GameObject GetFurniturePrefab(string type)
         {
             switch (type)
@@ -310,6 +325,8 @@ namespace GameManagerData.data
                     return ovenPrefab;
                 case OVEN_2:
                     return oven2Prefab;
+                case SHOWER:
+                    return showerPrefab;
                 case SIDE_TABLE:
                     return sideTablePrefab;
                 case SIDE_TABLE_GREEN:
@@ -344,6 +361,8 @@ namespace GameManagerData.data
                     return tableRedPrefab;
                 case TABLE_WHITE:
                     return tableWhitePrefab;
+                case TOILET:
+                    return toiletPrefab;
                 case TV:
                     return tvPrefab;
                 case VASE:
@@ -356,12 +375,15 @@ namespace GameManagerData.data
             }
         }
 
+        //Funkcija spēlējamo objektu sagatavju iegūšanai
         public GameObject GetPlayablePrefab(string type)
         {
             switch (type)
             {
                 case ANIMAL_CAT:
                     return animalCatPrefab;
+                case APPLE:
+                    return applePrefab;
                 case CAR_BLUE:
                     return carBluePrefab;
                 case CAR_HOTDOG_TRACK:
@@ -376,6 +398,8 @@ namespace GameManagerData.data
                     return dollMalePrefab;
                 case DOLL_POLICE:
                     return dollPolicePrefab;
+                case DRINK:
+                    return drinkPrefab;
                 case MONSTER_BAT:
                     return monsterBatPrefab;
                 default:
@@ -384,6 +408,7 @@ namespace GameManagerData.data
             }
         }
 
+        //Funkcija spēles objekta izmēra inventāra logā iegūšanai
         public static Vector3 GetSizeVector3(string type)
         {
             switch (type)
@@ -480,6 +505,8 @@ namespace GameManagerData.data
                     return new Vector3(0.008418f,0.0101016f,0.008418f);
                 case OVEN_2:
                     return new Vector3(0.008418f,0.0101016f,0.008418f);
+                case SHOWER:
+                    return new Vector3(0.01912354f,0.01912354f,0.01912354f);
                 case SIDE_TABLE:
                     return new Vector3(0.1148225f,0.1607515f,0.1148225f);
                 case SIDE_TABLE_GREEN:
@@ -514,6 +541,8 @@ namespace GameManagerData.data
                     return new Vector3(0.01402f,0.0052575f,0.0052575f);
                 case TABLE_WHITE:
                     return new Vector3(0.01402f,0.0052575f,0.0052575f);
+                case TOILET:
+                    return new Vector3(0.02385988f,0.02385988f,0.02385988f);
                 case TV:
                     return new Vector3(0.092015f,0.092015f,0.092015f);
                 case VASE:
@@ -522,6 +551,8 @@ namespace GameManagerData.data
                     return new Vector3(0.105418f,0.105418f,0.105418f);
                 case ANIMAL_CAT:
                     return new Vector3(0.45638f,0.45638f,0.45638f);
+                case APPLE:
+                    return new Vector3(0.05747329f,0.05747329f,0.05747329f);
                 case CAR_BLUE:
                     return new Vector3(0.06474143f,0.06474143f,0.06474143f);
                 case CAR_HOTDOG_TRACK:
@@ -536,6 +567,8 @@ namespace GameManagerData.data
                     return new Vector3(0.1108268f,0.07557795f,0.1108268f);
                 case DOLL_POLICE:
                     return new Vector3(0.1108268f,0.07557795f,0.1108268f);
+                case DRINK:
+                    return new Vector3(0.03048f, 0.03048f, 0.03048f);
                 case MONSTER_BAT:
                     return new Vector3(0.113242f,0.113242f,0.113242f);
                 default:

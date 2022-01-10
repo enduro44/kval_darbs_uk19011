@@ -9736,39 +9736,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
-      value: 0
+      value: 0.7843138
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_PressedColor.g
-      value: 0
+      value: 0.7843138
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_PressedColor.r
-      value: 0
+      value: 0.7843138
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 837646967335524824, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 867033971633941896, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_Sprite
@@ -10179,6 +10179,10 @@ PrefabInstance:
       value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBathroomFurniture.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllAccessories.Array.data[2].icon
       value: 
       objectReference: {fileID: 21300000, guid: 458fd09cfc5e1cd43820b8673df920ae, type: 3}
@@ -10289,6 +10293,22 @@ PrefabInstance:
     - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllKitchenFurniture.Array.data[9].type
       value: EggTableDarkWood(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBathroomFurniture.Array.data[0].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: b0a5c1e731b2fb644874f205760f6f42, type: 3}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBathroomFurniture.Array.data[0].type
+      value: Shower(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBathroomFurniture.Array.data[1].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 887728326e607804bac94543de5d0328, type: 3}
+    - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllBathroomFurniture.Array.data[1].type
+      value: Toilet(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 5120934424012395429, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllBedroomFurniture.Array.data[10].type
@@ -10637,6 +10657,26 @@ PrefabInstance:
     - target: {fileID: 5913146705393623738, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: AllPets.Array.data[0].type
       value: AnimalCat(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913146705393623738, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAdditionalPlayables.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913146705393623738, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAdditionalPlayables.Array.data[0].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: e070e4f6e3e45f440908b88a11cd2ba3, type: 3}
+    - target: {fileID: 5913146705393623738, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAdditionalPlayables.Array.data[0].type
+      value: Apple(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913146705393623738, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAdditionalPlayables.Array.data[1].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8208a6d126a803c4989536db83ede898, type: 3}
+    - target: {fileID: 5913146705393623738, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
+      propertyPath: AllAdditionalPlayables.Array.data[1].type
+      value: Drink(Clone)
       objectReference: {fileID: 0}
     - target: {fileID: 6260068215501895137, guid: 6a15da8df28f71f4387f82d54927f566, type: 3}
       propertyPath: m_text
@@ -19263,7 +19303,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30112
+  m_Name: pb_Mesh105994
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

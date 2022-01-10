@@ -131,17 +131,6 @@
                     "action": "DeleteObjectsInHands",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e2be6f49-0135-4628-a329-eb12326f6a1c",
-                    "path": "<XRSimulatedController>{LeftHand}/secondaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DeleteObjectsInHands",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

@@ -8,6 +8,7 @@ namespace GameManagerData
     [Serializable]
     public class GameData : MonoBehaviour
     {
+        //Klasē glabās aktīvās spēles visu izveidoto spēles objektu datus
         public static List<Room> Rooms = new List<Room>();
         public static List<Furniture> Furniture = new List<Furniture>();
         public static List<Playable> Playables = new List<Playable>();

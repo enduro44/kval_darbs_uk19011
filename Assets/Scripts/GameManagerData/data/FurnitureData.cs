@@ -7,6 +7,7 @@ namespace GameManagerData.data
     [Serializable]
     public class FurnitureData
     {
+        //Klase satur mēbeļu saglabājamo datu struktūru un konstruktoru
         public string type;
         public float[] position;
         public float[] size;

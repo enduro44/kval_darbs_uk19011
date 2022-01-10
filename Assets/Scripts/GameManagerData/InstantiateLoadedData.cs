@@ -3,13 +3,11 @@ using GameManagerData.objClasses;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-/*
- * Class takes data from file and creates saved game controllers in the scene
- */
 namespace GameManagerData
 {
     public class InstantiateLoadedData : MonoBehaviour
     {
+        //Klase nodrošina ielādēto datu izveidi spēles objektu formā spēles ainā
         public PrefabData prefabData;
         
         public GameObject LoadSavedController(HomeControllerData data)

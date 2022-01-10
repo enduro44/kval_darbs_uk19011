@@ -34,6 +34,7 @@ namespace Controllers
         //Metodi izsauc kreisā kontroliera sekundārās pogas spiediens
         public void DeleteObjectsInHands(InputAction.CallbackContext context)
         {
+            //Spēlēšanas stadijā objektu dzēšana nav atļauta
             if (isPlayGameMode)
             {
                 return;

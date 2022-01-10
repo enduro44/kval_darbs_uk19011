@@ -5,6 +5,7 @@ namespace MenuSystem.Main
 {
     public class MainMenu : MonoBehaviour
     {
+        //Klase nodrošina galvenās izvēlens skatu maiņu
         private static MainMenu _instance;
         public GameObject mainUI;
         [SerializeField] public GameObject saveButtonPrefab;
@@ -12,9 +13,7 @@ namespace MenuSystem.Main
         private FadeController _fadeController;
 
         private GameObject _mainMenuUI;
-        //private GameObject _newGameUI;
         private GameObject _loadGameUI;
-        //private GameObject _optionsUI;
         private GameObject _confirmationUI;
         private GameObject _errorUI;
         
@@ -27,9 +26,7 @@ namespace MenuSystem.Main
         {
             _instance = this;
             _mainMenuUI = mainUI.transform.GetChild(0).gameObject;
-            //_newGameUI = mainUI.transform.GetChild(1).gameObject;
             _loadGameUI = mainUI.transform.GetChild(2).gameObject;
-            //_optionsUI = mainUI.transform.GetChild(3).gameObject;
             _confirmationUI = mainUI.transform.GetChild(4).gameObject;
             _errorUI = mainUI.transform.GetChild(5).gameObject;
             _fadeController = mainUI.AddComponent<FadeController>();
@@ -44,9 +41,7 @@ namespace MenuSystem.Main
         {
             _mainMenuUI.SetActive(true);
             _fadeController.FadeIn(_mainMenuUI);
-            //_newGameUI.SetActive(false);
             _loadGameUI.SetActive(false);
-            //_optionsUI.SetActive(false);
             _confirmationUI.SetActive(false);
             _errorUI.SetActive(false);
         }
@@ -75,14 +70,6 @@ namespace MenuSystem.Main
             _fadeController.FadeIn(_mainMenuUI);
             _mainMenuUI.SetActive(true);
         }
-
-        // public void OptionsButton()
-        // {
-        //     _fadeController.FadeOut(_mainMenuUI);
-        //     _mainMenuUI.SetActive(false);
-        //     _fadeController.FadeIn(_optionsUI);
-        //     _optionsUI.SetActive(true);
-        // }
 
         public void ExitButton()
         {
@@ -135,6 +122,7 @@ namespace MenuSystem.Main
             _loadGameUI.SetActive(true);
         }
 
+        //Funkcija rada pogas ar saglabāto spēļu identifikatoriem
         private void PopulateSaveGameData()
         {
             string[] savedGames = _gameManager.GetSavedGames();
